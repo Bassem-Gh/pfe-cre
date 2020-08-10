@@ -40,14 +40,14 @@ class LyceeController extends Controller
     public function saisie(Request $request)
     {
         $idd=$request->get('nameetab');
-
+/*
         $data = DB::table('classe')
         ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
         ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
         ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
         ->where('etab.typeetab','=',$idd)
         ->select('niveau.codeniv','etab.codeetab as id','etab.libetab','niveau.libniv' )
-        ->get();
+        ->get();*/
         
         $data1 = DB::table('etab')
        ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
@@ -75,7 +75,20 @@ class LyceeController extends Controller
 
 
        
-    return view('lycees.saisieclasse', compact('data','data1','data2'));
+    return view('lycees.saisieclasse', compact('data1','data2'));
+    }
+
+
+    public function getNiveau($sectionid=0){
+
+    	// Fetch Users by Departmentid
+        $userData['data'] = Niveau::orderby("libniv","asc")
+        			->select('codeniv','libniv')
+        			->where('sect',$sectionid)
+        			->get();
+  
+       // echo json_encode($userData);
+       // exit;
     }
 
 

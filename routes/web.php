@@ -35,6 +35,8 @@ Route::get('pages-comingsoon', 'QovexController@index');
 Route::post('login-status', 'QovexController@checkStatus');
 //Route::get('login', 'QovexController@logout');
 Route::resource('lycees','LyceeController');
+Route::get('/getNiveau/{id}', 'LyceeController@getNiveau');
+
 Route::resource('collegestech','CollegetechController');
 Route::resource('pilotes','PiloteController');
 Route::resource('piloteslycee','PiloteLcController'); 
