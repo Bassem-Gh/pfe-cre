@@ -42,22 +42,10 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{  url('besoin') }}" class=" waves-effect">
-                        <i class="mdi mdi-calendar-text"></i>
-                        <span>Gestion des besoins 2 test lel git </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{  url('besoin') }}" class=" waves-effect">
-                        <i class="mdi mdi-calendar-text"></i>
-                        <span>Gestion des besoins 2 test lel git haythem </span>
-                    </a>
-                </li>
+              
 
                
-                
+  
                
 
               
