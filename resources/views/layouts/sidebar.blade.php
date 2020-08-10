@@ -39,10 +39,10 @@
                         <span >Gestion des ecoles<span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="tasks-list">Colléges techniques </a></li>
-                        <li><a href="tasks-list">Colléges</a></li>
-                        <li><a href="tasks-kanban">Lycée</a></li>
-                        <li><a href="tasks-create">Etablissement pilote</a></li>
+                        <li><a href="{{ route('piloteslycee.index') }}">Colléges techniques </a></li>
+                        <li><a href="{{ route('colleges.index') }}">Colléges</a></li>
+                        <li><a href="{{ route('lycees.index') }}">Lycée</a></li>
+                        <li><a href="{{ route('pilotes.index') }}">Etablissement pilote</a></li>
                     </ul>
                 </li>
 

@@ -26,6 +26,9 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                     <a class="btn btn-success" href="{{ route('create_college') }}"> إضافة مؤسسة جديدة</a>
                                 </div>   
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    <a class="btn btn-success" href="{{ route('create_college') }}"> إضافة قسم جديدة</a>
+                                </div>   
                         <div class="card">
                                 <div class="card-body">
 

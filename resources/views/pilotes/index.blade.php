@@ -8,10 +8,7 @@
          @slot('title') Gestion des besoins  @endslot
          @slot('li_1') Pages  @endslot
      @endcomponent
-     
-     @component('common-components.menu2')
-     @endcomponent
-     
+ 
      <div class="row">
                         <div class="col-12">
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

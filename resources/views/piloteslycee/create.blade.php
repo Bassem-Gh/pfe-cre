@@ -10,8 +10,7 @@
          @slot('li_1') Pages  @endslot
      @endcomponent
      
-     @component('common-components.menu2')
-     @endcomponent
+
      
 <div class="row">
     <div class="col-lg-12 margin-tb">

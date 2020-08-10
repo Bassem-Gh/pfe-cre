@@ -9,8 +9,7 @@
          @slot('li_1') Pages  @endslot
      @endcomponent
      
-     @component('common-components.menu2')
-     @endcomponent
+  
      
 
 
