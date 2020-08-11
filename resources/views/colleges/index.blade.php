@@ -23,12 +23,14 @@
 
                     <div class="row">
                         <div class="col-12">
-                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <table   class="col-xs-12 col-sm-12 col-md-12 text-center"  border="0">
+                                <tr><td>
                                     <a class="btn btn-success" href="{{ route('create_college') }}"> إضافة مؤسسة جديدة</a>
-                                </div>   
-                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <a class="btn btn-success" href="{{ route('create_college') }}"> إضافة قسم جديدة</a>
-                                </div>   
+                              </td><td>  
+                             
+                                    <a class="btn btn-success" href=" {{ url('saisie_classe_college') }}"> إضافة قسم جديدة</a>
+                            </td></tr>
+                                </table>   
                         <div class="card">
                                 <div class="card-body">
 

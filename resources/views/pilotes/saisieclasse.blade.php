@@ -48,7 +48,7 @@
  <tr width="100%" > 
   
   <td>
-  <select id='etab' name="etab" onchange='myFunction1()' >
+  <select id='etab' name="etab" onchange='myFunction1p()' >
   <option value="" selected="true">Sélectionnez l'etablissement</option>
   @foreach($data1 as $row1)
   <option value=" {{ $row1->id}} ">  {{ $row1->libetab }} </option>
@@ -60,20 +60,8 @@
 </td>
   </tr> 
   
-  <tr width="100%">
-  <td>
-  <select id='sect' name="sect"   onchange='myFunction3()' > 
-  <option value="0" selected="true">Sélectionnez la section</option>
-  @foreach($data2 as $row2)
-  <option value=" {{ $row2->codesection}} ">  {{ $row2->libsection }} </option>
-  @endforeach
-</select>
- </td>
 
-     <td  bgcolor="#bcfbb5" dir="ltr" width="100%" align="center"><label width="100%" >الشعبة</label></td>
-</tr>
-
-<tr width="100%" > 
+  <tr width="100%" > 
   
   <td>
   <select id='niv'  name="niv">
@@ -86,6 +74,7 @@
   </tr> 
 
 
+
 <tr width="100%" > 
   <td>
   <input id="nbc" type="number" name="nbc" ></input>
@@ -96,7 +85,7 @@
   </tr> 
 
 <tr width="100%" > 
-  <td><b><input type="submit" id="insert" value="ok" onclick="myFunction2()"> </b></input></td>
+  <td><b><input type="submit" id="insert" value="ok" onclick="myFunction2p()"> </b></input></td>
   <!--td><button type="" id="insert"><b>ok</b></button></td-->
   </tr> 
 

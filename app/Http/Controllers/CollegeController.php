@@ -29,6 +29,47 @@ class CollegeController extends Controller
        
      return view('colleges.index', compact('data'));
     }
+    
+
+    public function getTablec(Request $request){
+        if(Request()->ajax()) {
+            $id = $request->all();
+        }
+        $gg=$id['idetab'];
+       // dd($gg);
+    	// Fetch Users by Departmentid
+        $data = DB::table('classe')->distinct()
+        ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
+        ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
+        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+        ->where('etab.codeetab', '=', $gg)
+        ->select('niveau.libniv','niveau.codeniv','etab.libetab','classe.nbclasse' )
+        ->get();
+
+ return response ($data);
+      //  echo json_encode($data);
+       //exit;
+    }
+    
+    public function saisiec(Request $request)
+    {
+        $idd=$request->get('nameetab');
+
+        
+        $data1 = DB::table('etab')
+       ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
+       ->join('delegation', 'delegation.code', '=', 'etab.delegation')
+       
+       ->select('etab.codeetab as id','etab.libetab' )
+       ->where('etab.typeetab','=','20')
+       ->get();
+
+
+    return view('colleges.saisieclasse', compact('data1'));
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.
