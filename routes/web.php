@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return redirect('/index');
 });
@@ -35,7 +34,9 @@ Route::get('pages-comingsoon', 'QovexController@index');
 Route::post('login-status', 'QovexController@checkStatus');
 //Route::get('login', 'QovexController@logout');
 Route::resource('lycees','LyceeController');
-Route::get('/getNiveau/{id}', 'LyceeController@getNiveau');
+Route::get('/getNiveau', 'LyceeController@getNiveau')->name('getNiveau');
+Route::get('/gettable', 'LyceeController@getTable')->name('gettable'); 
+Route::get('/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
 
 Route::resource('collegestech','CollegetechController');
 Route::resource('pilotes','PiloteController');

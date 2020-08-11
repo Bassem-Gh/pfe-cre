@@ -16,8 +16,12 @@
      
  
      @yield('cont')
+    
+
      <div class="col-12">
-                               
+                                  
+<script src="{{asset('js/main.js')}}" type="text/javascript"></script>
+
                                <div class="card">
                                        <div class="card-body">
   
@@ -35,14 +39,16 @@
 <div class="container">
   
    <table    align="center"  dir="ltr">
-<form name="insertion" width="100%" method="post" action="insert.php">
+<form name="insertion" width="100%" method="post" >
+  
+@csrf_field 
 <tbody>
   
 
  <tr width="100%" > 
   
   <td>
-  <select id='etab' onchange="getetab()" name="etab" >
+  <select id='etab' name="etab" onchange='myFunction1()' >
   <option value="" selected="true">Sélectionnez l'etablissement</option>
   @foreach($data1 as $row1)
   <option value=" {{ $row1->id}} ">  {{ $row1->libetab }} </option>
@@ -56,13 +62,14 @@
   
   <tr width="100%">
   <td>
-  <select id='sect' name="sect"  > 
-  <option value="" selected="true">Sélectionnez la section</option>
+  <select id='sect' name="sect"   onchange='myFunction3()' > 
+  <option value="0" selected="true">Sélectionnez la section</option>
   @foreach($data2 as $row2)
   <option value=" {{ $row2->codesection}} ">  {{ $row2->libsection }} </option>
   @endforeach
 </select>
  </td>
+
      <td  bgcolor="#bcfbb5" dir="ltr" width="100%" align="center"><label width="100%" >الشعبة</label></td>
 </tr>
 
@@ -70,8 +77,7 @@
   
   <td>
   <select id='niv'  name="niv">
-  <option value='0' >Sélectionnez le niveau</option>
-
+  
  </select>
   </td>
 <td  bgcolor="#bcfbb5" dir="ltr" width="100%" align="center" >
@@ -90,7 +96,7 @@
   </tr> 
 
 <tr width="100%" > 
-  <td><b><input type="submit" id="insert" value="ok"> </b></input></td>
+  <td><b><input type="submit" id="insert" value="ok" onclick="myFunction2()"> </b></input></td>
   <!--td><button type="" id="insert"><b>ok</b></button></td-->
   </tr> 
 
@@ -132,7 +138,7 @@
    
                               
                       </thead>
-  <tbody>  
+  <tbody id="tab">  
   </tbody>
   </table>
   
@@ -147,57 +153,51 @@
   </div>
   </div>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-   <!--  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
-
+    <!--  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>  -->
+ <!--
   <script  type="text/javascript" language="javascript" >
- $(document).ready(function(){
 
-// Department Change
-$('#sect').change(function(){
+ $(document).ready(function(){ 
+  $('#sect').on('change',function(){
 
-   // Department id
-   var id = $(this).val();
-//alert (id);
-   // Empty the dropdown
-   $('#niv').find('option').not(':first').remove();
 
-   // AJAX request 
-   $.ajax({
-     url: 'getNiveau/'+id,
-     type: 'get',
-     dataType: 'json',
-     success: function(response){
+var id=$('#sect').val();
 
-       var len = 0;
-       if(response['data'] != null){
-         len = response['data'].length;
-       }
+  alert(id);
+  $('#niv').empty();
+  $('#niv').append('<option value="0" disabled selected>Processing.....</option>');
+  
 
-       if(len > 0){
-         // Read data and create <option >
-         for(var i=0; i<len; i++){
+  // AJAX request 
+  
+  $.ajax({
+    url: 'getNiveau',
+    type: 'Get',
+    dataType: 'json',
 
-           var codeniv = response['data'][i].codeniv;
-           var libniv = response['data'][i].libniv;
+    success: function(response){
+     var response=JSON.parse(response);
+   console.log(response);
 
-           var option = "<option value='"+codeniv+"'>"+libniv+"</option>"; 
+     $('#niv').empty();
+     $('#niv').append('<option value="0" disabled selected>selectioner niveau</option>');
+  
+  response.foreach(element =>{
+   $('#niv').append('<option value="${element['codeniv']}" >${element['libniv']}</option>');
 
-           $("#niv").append(option); 
-         }
-       }
-
-     }
   });
-});
+    }
+ });
 
 });
-  </script>
+});
+  </script> -->
 @endsection
 @section('script')
 
 <!-- Required datatable js -->
 <script src="{{ URL::asset('/libs/datatables/datatables.min.js')}}"></script>
-<!-- <script src="{{ URL::asset('/libs/bootstrap-editable/bootstrap-editable.min.js')}}"></script> -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script>
+<script src="{{ URL::asset('/libs/bootstrap-editable/bootstrap-editable.min.js')}}"></script> 
+
 <script src="{{ URL::asset('/js/pages/table-editable.int.js')}}"></script>
 @endsection

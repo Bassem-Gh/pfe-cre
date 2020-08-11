@@ -79,16 +79,40 @@ class LyceeController extends Controller
     }
 
 
-    public function getNiveau($sectionid=0){
-
+    public function getTable(Request $request){
+        if(Request()->ajax()) {
+            $id = $request->all();
+        }
+        $gg=$id['idetab'];
+       // dd($gg);
     	// Fetch Users by Departmentid
-        $userData['data'] = Niveau::orderby("libniv","asc")
-        			->select('codeniv','libniv')
-        			->where('sect',$sectionid)
-        			->get();
-  
-       // echo json_encode($userData);
-       // exit;
+        $data = DB::table('classe')->distinct()
+        ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
+        ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
+        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+        ->where('etab.codeetab', '=', $gg)
+        ->select('niveau.libniv','etab.libetab','classe.nbclasse' )
+        ->get();
+
+ return response ($data);
+      //  echo json_encode($data);
+       //exit;
+    }
+
+    public function getNiveau(Request $request){
+        if(Request()->ajax()) {
+            $id = $request->all();
+        }
+        $gg=$id['ccod'];
+       // dd($gg);
+    	// Fetch Users by Departmentid
+        $data = DB::table('niveau')
+        ->where('niveau.sect', '=',$gg)
+        ->select('niveau.codeniv','niveau.libniv' )
+        ->get();
+ return response ($data);
+      //  echo json_encode($data);
+       //exit;
     }
 
 
@@ -118,20 +142,29 @@ class LyceeController extends Controller
            'typeetab'=>$request->get('typeetab'),
            'delegation'=>$request->get('delegation'),
            
-           
        ]);
        $lycee->save();
       //dd($produit);
-      
-
-      
-     
-        
-           
         return redirect()->route('lycees.index')
         ->with('success','etablissement created successfully.');
     }
 
+    public function insertclasse(Request $request)
+    {
+        if(Request()->ajax()) {
+            $id = $request->all();
+        }
+        $gg=$id['idetab'];
+        
+        $lycee =new Classe([
+            'nbclasse'=>$gg,   
+       ]);
+       $lycee->save();
+      //dd($produit);
+        return response ($data);
+        /*redirect()->route('lycees.saisieclasse')
+        ->with('success','etablissement created successfully.');*/
+    }
     /**
      * Display the specified resource.
      *
