@@ -37,7 +37,7 @@ Route::resource('lycees','LyceeController');
 ///////saisie classe lycee ajax ///////////
 Route::get('/getNiveau', 'LyceeController@getNiveau')->name('getNiveau');
 Route::get('/gettable', 'LyceeController@getTable')->name('gettable'); 
-Route::get('/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
+Route::post('/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
 /////// saisie classe college ajax //////////
 
 Route::get('/gettablec', 'CollegeController@getTablec')->name('gettablec'); 
@@ -60,7 +60,7 @@ Route::get('/create_lycee', 'LyceeController@create')->name('create_lycee');
 
 Route::get('/edit/{id}', 'CollegeController@edit')->name('editcollege');
 Route::get('/edit_lycee/{id}', 'LyceeController@edit')->name('editlycee');
-
+ 
 Route::get('/saisie_classe_lycee', 'LyceeController@saisie');
 Route::get('/saisie_classe_college', 'CollegeController@saisiec');
 Route::get('/saisie_classe_pilotelc', 'PiloteLcController@saisiepl');

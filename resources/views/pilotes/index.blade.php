@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('title') Gestion des besoins @endsection
+@section('title') Gestion des écoles @endsection
 
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') Gestion des besoins  @endslot
-         @slot('li_1') Pages  @endslot
+         @slot('title') Gestion des écoles  @endslot
+         @slot('li_1') Etablissement pilote @endslot
      @endcomponent
  
      <div class="row">

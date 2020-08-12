@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') Gestion des besoins @endsection
+@section('title') Gestion des écoles @endsection
 
 @section('content')
 
