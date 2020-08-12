@@ -9,7 +9,7 @@ class Classe extends Model
     protected $primaryKey = ['codetab','codeniv','anscol'];
     protected $table="classe";
     protected $fillable = [
-        'nbclasse','created_at','updated_at'
+        'codetab','codeniv','anscol','nbclasse','created_at','updated_at'
     ];
 
 

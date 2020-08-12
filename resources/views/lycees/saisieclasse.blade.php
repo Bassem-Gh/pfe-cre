@@ -16,6 +16,7 @@
      
  
      @yield('cont')
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     
 
      <div class="col-12">
@@ -39,8 +40,9 @@
 <div class="container">
   
    <table    align="center"  dir="ltr">
-<form name="insertion" width="100%" method="post" >
-  
+<form name="insertion" width="100%" methode="POST" >
+@csrf
+
 
 <tbody>
   
@@ -59,6 +61,7 @@
 <label width="100%" >المؤسسة التربوية</label>
 </td>
   </tr> 
+  
   
   <tr width="100%">
   <td>
@@ -85,18 +88,19 @@
   </td>
   </tr> 
 
-
-<tr width="100%" > 
+  <tr width="100%" > 
   <td>
-  <input id="nbc" type="number" name="nbc" ></input>
+  <input  id="nbc" type="number" name="nbc" ></input>
   </td>
 <td  bgcolor="#bcfbb5" dir="ltr" width="100%" align="center" >
   <label width="100%" >عدد الفصول</label>
   </td>
   </tr> 
 
+
+
 <tr width="100%" > 
-  <td><b><input type="submit" id="insert" value="ok" onclick="myFunction2()"> </b></input></td>
+  <td><b><input type="button" id="insert" value="ok" onclick="myFunction2()"> </b></input></td>
   <!--td><button type="" id="insert"><b>ok</b></button></td-->
   </tr> 
 

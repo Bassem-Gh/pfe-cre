@@ -40,14 +40,7 @@ class LyceeController extends Controller
     public function saisie(Request $request)
     {
         $idd=$request->get('nameetab');
-/*
-        $data = DB::table('classe')
-        ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
-        ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
-        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
-        ->where('etab.typeetab','=',$idd)
-        ->select('niveau.codeniv','etab.codeetab as id','etab.libetab','niveau.libniv' )
-        ->get();*/
+
         
         $data1 = DB::table('etab')
        ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
@@ -63,10 +56,7 @@ class LyceeController extends Controller
 
        ////////////take theh name of the section//////
        $data2 = DB::table('section')
-       //->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
-       //->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
-       //->join('etab', 'etab.codeetab', '=', 'classe.codetab')
-       //->join('section', 'section.codesection', '=', 'niveau.sect')
+       
        ->where('section.codesection', '>=','1')
 
 
@@ -154,16 +144,21 @@ class LyceeController extends Controller
         if(Request()->ajax()) {
             $id = $request->all();
         }
-        $gg=$id['idetab'];
-        
-        $lycee =new Classe([
-            'nbclasse'=>$gg,   
-       ]);
-       $lycee->save();
+       $nbc=$id['nbc'];
+       $etab=$id['etab'];
+       $niv=$id['niv'];
+        //dd($gg);
+        /*$lycee =new Classe([
+           'nbclasse'=>$nbc,  
+           'codetab'=>$etab,
+           'codeniv'=>$niv,
+
+        ]);
+      $lycee->save();*/
       //dd($produit);
-        return response ($data);
+      return response()->json(['success'=>'Got Simple Ajax Request.']);
         /*redirect()->route('lycees.saisieclasse')
-        ->with('success','etablissement created successfully.');*/
+        ->with('success','etablissement created successfully.');*/ 
     }
     /**
      * Display the specified resource.

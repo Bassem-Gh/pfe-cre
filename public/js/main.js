@@ -97,26 +97,38 @@ function myFunction2() {
  
   //var id = document.getElementById('sect');
       
-       var idetab = $('#nbc').val();
-      alert(idetab);
-  
+       var nbc = $('#nbc').val();
+       var etab = $('#etab').val();
+       var niv = $('#niv').val();
+      alert(etab);
+      alert(niv);
+      alert(nbc);
+     /* $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },*/
  
-       $.ajax({
-              type: "post",
-           
-              url: 'insertclasse',
-              data: { 'idetab':idetab },   
+        $.ajax({
+              type: "POST",
+              url: '/insertclasse',
+              data: { 'nbc':nbc,
+              'etab':etab,
+              'niv':niv ,
+             "_token": "{{ csrf_token() }}"
+      },  
               dataType:'json', 
                success:function(data)
                  {
-                  alert('success','classe insert successfully');
+                  alert('classe insert successfully');
                  
                                  
                   } , 
                  error:function() {
                      alert('error');
+                     console.error();
+                     
                  }
-              });
+                });
  }
 
 
