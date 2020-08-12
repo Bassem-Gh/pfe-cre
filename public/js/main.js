@@ -133,7 +133,7 @@ function myFunction2() {
 
 
 
- //////////////////////// partie saisie classe college ajax ////////////////
+ //////////////////////// partie saisie classe colle  e ajax ////////////////
    
  
 

@@ -40,8 +40,10 @@
 <div class="container">
   
    <table    align="center"  dir="ltr">
+
 <form name="insertion" width="100%" methode="POST" >
 @csrf
+
 
 
 <tbody>
@@ -51,7 +53,7 @@
   
   <td>
   <select id='etab' name="etab" onchange='myFunction1()' >
-  <option value="" selected="true">Sélectionnez l'etablissement</option>
+  <option value="" selected="true">Sélectionnez l etablissement</option>
   @foreach($data1 as $row1)
   <option value=" {{ $row1->id}} ">  {{ $row1->libetab }} </option>
   @endforeach
@@ -61,6 +63,8 @@
 <label width="100%" >المؤسسة التربوية</label>
 </td>
   </tr> 
+
+
   
   
   <tr width="100%">
@@ -100,7 +104,9 @@
 
 
 <tr width="100%" > 
+
   <td><b><input type="button" id="insert" value="ok" onclick="myFunction2()"> </b></input></td>
+  
   <!--td><button type="" id="insert"><b>ok</b></button></td-->
   </tr> 
 
@@ -176,7 +182,7 @@ var id=$('#sect').val();
   
   $.ajax({
     url: 'getNiveau',
-    type: 'Get',
+    type: 'Post',
     dataType: 'json',
 
     success: function(response){
