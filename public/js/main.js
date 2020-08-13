@@ -92,42 +92,46 @@ function myFunction1() {
  ////////////insert classe
    
 function myFunction2() {
-    
-
- 
-  //var id = document.getElementById('sect');
-      
+        
        var nbc = $('#nbc').val();
        var etab = $('#etab').val();
        var niv = $('#niv').val();
       alert(etab);
       alert(niv);
       alert(nbc);
-     /* $.ajaxSetup({
+     
+      $('#form_output').html('');
+      var url = $(this).attr("data-link");
+      $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },*/
- 
+        }
+      });
+        
+      
         $.ajax({
               type: "POST",
               url: '/insertclasse',
+              
               data: { 'nbc':nbc,
               'etab':etab,
               'niv':niv ,
-             "_token": "{{ csrf_token() }}"
-      },  
+             //'_token' :  $('input[name="_token"]').val(),
+        },
+              contentType: false,
+              processData: false,                        
               dataType:'json', 
-               success:function(data)
-                 {
-                  alert('classe insert successfully');
-                 
-                                 
-                  } , 
-                 error:function() {
-                     alert('error');
-                     console.error();
-                     
-                 }
+                  success:function(data)
+                    {
+                            $('#form_output').html(data.success);
+                          $('#etab_table').DataTable().ajax.reload();
+                          
+                      } , 
+                      error:function(data) {
+                                          alert('error'); 
+                                          var errors = data.responseJSON;
+                                          console.log(errors);
+                                        }
                 });
  }
 
@@ -354,3 +358,40 @@ function myFunction2p() {
               });
   }
   
+
+
+
+
+
+  function test() {
+  
+  
+    $("#msg").hide();
+    //alert("working");
+
+      $("#msg").show();
+
+      var nbc = $('#nbc').val();
+      var etab = $('#etab').val();
+      var niv = $('#niv').val();
+     
+      var token = $("#token").val();
+      alert(nbc);
+      alert(etab);
+      alert(niv);
+      $.ajax({
+        type: "post",
+        data: "nbc=" + nbc + "&etab=" + etab + "&niv=" + niv + "&_token=" + token ,
+        url:'/insertclasse',
+        success:function(data){
+          $("#msg").html("classe has been inserted");
+          $("#msg").fadeOut(2000);
+        } , 
+            error:function(data) {
+                               alert('error'); 
+                               
+                                console.log(data);
+                             }
+      });
+  
+  }

@@ -38,7 +38,7 @@ Route::resource('lycees','LyceeController');
 Route::get('/getNiveau', 'LyceeController@getNiveau')->name('getNiveau');
 Route::get('/gettable', 'LyceeController@getTable')->name('gettable'); 
 
-Route::post('/insertclasse', 'LyceeController@insertclasse');
+Route::post('/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
 
 /////// saisie classe college ajax //////////
 

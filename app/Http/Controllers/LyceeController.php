@@ -140,25 +140,55 @@ class LyceeController extends Controller
     }
 
     public function insertclasse(Request $request)
-    {
+    { /*
+        $success_output = '';
+
         if(Request()->ajax()) {
             $id = $request->all();
         }
        $nbc=$id['nbc'];
        $etab=$id['etab'];
        $niv=$id['niv'];
-        //dd($gg);
-        /*$lycee =new Classe([
+        dd($id);
+        $data =new Classe([
            'nbclasse'=>$nbc,  
            'codetab'=>$etab,
            'codeniv'=>$niv,
 
         ]);
-      $lycee->save();*/
-      //dd($produit);
-      return response()->json(['success'=>'Got Simple Ajax Request.']);
-        /*redirect()->route('lycees.saisieclasse')
-        ->with('success','etablissement created successfully.');*/ 
+      $data->save();
+      $success_output = '<div class="alert alert-success">Data Inserted</div>';
+      
+      $output = array(
+        'success'   =>  $success_output
+    );
+    
+    echo json_encode($output);
+    //return response ()->json ( $data );
+    //return Response::json($data); */
+
+
+    $nbc = $request->nbc;
+    $etab = $request->etab;
+    $niv = $request->niv;
+    /*$add_product = DB::table('classe')
+    ->where('codetab',$etab,'codeniv',$niv)
+    ->update(
+        [ 'nbclasse'=>$nbc ]
+      );*/
+    $add_product = DB::table("classe")->where( 'codetab', $etab) 
+    ->Orwhere('codeniv',$niv)
+    ->update([
+        'nbclasse'=>$nbc,  
+      
+        ]);
+
+    if($add_product){
+      echo "done";
+    }else{
+      echo "Error";
+    }
+
     }
     /**
      * Display the specified resource.
