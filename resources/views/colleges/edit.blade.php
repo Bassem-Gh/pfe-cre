@@ -21,9 +21,7 @@
          @slot('title') Gestion des besoins  @endslot
          @slot('li_1') Pages  @endslot
      @endcomponent
-     
-     @component('common-components.menu2')
-     @endcomponent
+
 
 <div class="row">
  <div class="col-md-12">
@@ -39,7 +37,8 @@
          @endforeach
          </ul>
   @endif
-
+  <div class="card">
+                                <div class="card-body">
   @foreach($data as $college)
   <form method="post" action="{{ route('colleges.update', $college->id) }}">
    @csrf
@@ -65,6 +64,8 @@
    </div>
   </form>
  </div>
+</div>
+</div>
 </div>
 
 @endsection

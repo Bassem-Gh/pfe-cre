@@ -39,8 +39,12 @@
 <div class="container">
   
    <table    align="center"  dir="ltr">
-<form name="insertion" width="100%" method="post" >
-  
+<form name="insertion" width="100%" method="POST" >
+<!----------- jdida ------>
+<p id="msg" class="alert alert-success "></p> 
+<input type="hidden" value="{{csrf_token()}}" id="token"/>
+
+{!! csrf_field() !!}
 
 <tbody>
   
@@ -85,7 +89,7 @@
   </tr> 
 
 <tr width="100%" > 
-  <td><b><input type="submit" id="insert" value="ok" onclick="myFunction2pl()"> </b></input></td>
+  <td><b><input type="button" id="insert" value="ok" onclick="insertl()"> </b></input></td>
   <!--td><button type="" id="insert"><b>ok</b></button></td-->
   </tr> 
 

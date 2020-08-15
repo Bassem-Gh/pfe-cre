@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="{{  url('besoin') }}" class=" waves-effect">
+                    <a href=" {{ url('Besoin_mat_par_etab') }}" class=" waves-effect">
                         <i class="mdi mdi-calendar-text"></i>
                         <span>Gestion des besoins</span>
                     </a>

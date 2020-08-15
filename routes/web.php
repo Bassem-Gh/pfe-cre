@@ -43,9 +43,11 @@ Route::post('/insertclasse', 'LyceeController@insertclasse')->name('insertclasse
 /////// saisie classe college ajax //////////
 
 Route::get('/gettablec', 'CollegeController@getTablec')->name('gettablec'); 
-Route::get('/insertclassec', 'CollegeController@insertclassec')->name('insertclassec');
+//Route::get('/insertclassec', 'CollegeController@insertclassec')->name('insertclassec');
+
 ////////////saisie classe pilote lycee ajax ////
 Route::get('/gettablepl', 'PiloteLcController@getTablepl')->name('gettablepl'); 
+//Route::post('/insertclassepl', 'PiloteLcController@insertclassepl')->name('insertclassepl');
 
 ////////////saisie classe pilote ajax ////
 route::get('/gettablep', 'PiloteController@getTablep')->name('gettablep'); 
@@ -60,6 +62,13 @@ Route::get('/create_pilote', 'PiloteController@create')->name('create_pilote');
 Route::get('/create_pilote_lycee', 'PiloteLcController@create')->name('create_pilote_lycee');
 Route::get('/create_lycee', 'LyceeController@create')->name('create_lycee');
 
+/////besoin par etab ////
+Route::get('/Besoin_mat_par_etab', 'LyceeController@indexbetab');
+
+Route::get('/Get_data','LyceeController@gettableb');
+Route::get('/Get_data2','LyceeController@gettableb2');
+
+//////
 Route::get('/edit/{id}', 'CollegeController@edit')->name('editcollege');
 Route::get('/edit_lycee/{id}', 'LyceeController@edit')->name('editlycee');
  

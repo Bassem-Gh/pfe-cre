@@ -17,8 +17,7 @@
          
      @endcomponent
  
-     @component('common-components.menu2')
-     @endcomponent
+    
          
 
                     <div class="row">
@@ -55,7 +54,7 @@
    
                     
     
-   <a class="btn btn-primary" data_toggle="modal" data_target="#edit" >تعديل</a>
+   <a class="btn btn-primary" href="{{ route('editcollege',$row->id) }}" >تعديل</a>
 
    @csrf
    @method('DELETE')

@@ -3,12 +3,9 @@
 
 function myFunction3() {
     
-
- 
-    //var id = document.getElementById('sect');
         
          var ccod = $('#sect').val();
-        alert(ccod);
+        
     
    
          $.ajax({
@@ -19,15 +16,11 @@ function myFunction3() {
                 dataType:'json', 
                  success:function(data)
                    {
-                    alert('success');
-                       /* var response=JSON.parse(response);
-                    console.log(response);*/
-                 
+                   
                       $('#niv').empty();
                       $('#niv').append('<option value="0" disabled selected>selectioner niveau</option>');
                    
                       $.each(data, function(idx,elem){
-                     //$('#niv').append('<option value="1">ezrez</option>');
                     $('#niv').append('<option value='+elem.codeniv+'>'+elem.libniv+'</option>');
                  
                    });
@@ -43,34 +36,17 @@ function myFunction3() {
    /////////////////
    
 function myFunction1() {
-    
-
- 
-  //var id = document.getElementById('sect');
-      
+          
        var idetab = $('#etab').val();
-      alert(idetab);
-  
- 
-       $.ajax({
-              type: "Get",
-           
-              url: 'gettable',
-              data: { 'idetab':idetab },   
-              dataType:'json', 
+           $.ajax({
+                    type: "Get",
+                    url: 'gettable',
+                    data: { 'idetab':idetab },   
+                    dataType:'json', 
                success:function(data)
                  {
-                  alert('success');
+          
                   $('#tab').empty();
-                  //$('#niv').empty();
-                  //$('#sect').empty();
-                 // $('#sect').append('<option value="0" disabled selected>selectioner section</option>');
-
-                     /* var response=JSON.parse(response);
-                  console.log(response);*/
-               
-    
-         
                     $.each(data, function(idx,elem){
                  
                   $('#tab').append('<tr><td>'+elem.libetab+'</td><td>'+elem.libniv+'</td><td>'+elem.nbclasse+'</td></tr>');
@@ -89,55 +65,51 @@ function myFunction1() {
  
  }
 
- ////////////insert classe
+
+
+ 
+function insertl() {
+  
+  
+  $("#msg").hide();
+ 
+    $("#msg").show();
+
+    var nbc = $('#nbc').val();
+    var etab = $('#etab').val();
+    var niv = $('#niv').val();
    
-function myFunction2() {
-        
-       var nbc = $('#nbc').val();
-       var etab = $('#etab').val();
-       var niv = $('#niv').val();
-      alert(etab);
-      alert(niv);
-      alert(nbc);
-     
-      $('#form_output').html('');
-      var url = $(this).attr("data-link");
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      });
-        
-      
-        $.ajax({
-              type: "POST",
-              url: '/insertclasse',
-              
-              data: { 'nbc':nbc,
-              'etab':etab,
-              'niv':niv ,
-             //'_token' :  $('input[name="_token"]').val(),
-        },
-              contentType: false,
-              processData: false,                        
-              dataType:'json', 
-                  success:function(data)
-                    {
-                            $('#form_output').html(data.success);
-                          $('#etab_table').DataTable().ajax.reload();
-                          
-                      } , 
-                      error:function(data) {
-                                          alert('error'); 
-                                          var errors = data.responseJSON;
-                                          console.log(errors);
-                                        }
-                });
- }
+    var token = $("#token").val();
+   
+    $.ajax({
+      type: "post",
+      data: "nbc=" + nbc + "&etab=" + etab + "&niv=" + niv + "&_token=" + token ,
+      url:'/insertclasse',
+      success:function(data){
+       $("#msg").html("classe has been inserted");
+        $("#msg").fadeOut(2000);
+       
+        $('#etab_table').DataTable().ajax.reload();
+      } , 
+          error:function(data) {
+                             alert('error'); 
+                             
+                              console.log(data);
+                           }
+    });
+
+}
 
 
 
- //////////////////////// partie saisie classe colle  e ajax ////////////////
+
+
+
+
+
+
+
+ //////////////////////// partie saisie classe college ajax ////////////////
    
  
 
@@ -149,9 +121,7 @@ function myFunction1c() {
 //var id = document.getElementById('sect');
     
      var idetab = $('#etab').val();
-    alert(idetab);
-
-
+ 
      $.ajax({
             type: "Get",
          
@@ -182,45 +152,18 @@ function myFunction1c() {
 
 }
 
-////////////insert classe
- 
-function myFunction2c() {
-  
 
 
-//var id = document.getElementById('sect');
-    
-     var idetab = $('#nbc').val();
-    alert(idetab);
 
 
-     $.ajax({
-            type: "post",
-         
-            url: 'insertclasse',
-            data: { 'idetab':idetab },   
-            dataType:'json', 
-             success:function(data)
-               {
-                alert('success','classe insert successfully');
-               
-                               
-                } , 
-               error:function() {
-                   alert('error');
-               }
-            });
-}
 
-
- //////////////////////// partie saisie classe pilote lycee ajax ////////////////
+ //////////////////////// partie saisie classe pilote lycee ajax //////////////////////////////////////////
    
  
 function myFunction1p() {
   
 
 
-//var id = document.getElementById('sect');
     
      var idetab = $('#etab').val();
     alert(idetab);
@@ -256,37 +199,10 @@ function myFunction1p() {
 
 }
 
-////////////insert classe
- 
-function myFunction2p() {
-  
 
 
-//var id = document.getElementById('sect');
-    
-     var idetab = $('#nbc').val();
-    alert(idetab);
 
-
-     $.ajax({
-            type: "post",
-         
-            url: 'insertclasse',
-            data: { 'idetab':idetab },   
-            dataType:'json', 
-             success:function(data)
-               {
-                alert('success','classe insert successfully');
-               
-                               
-                } , 
-               error:function() {
-                   alert('error');
-               }
-            });
-}
-
- //////////////////////// partie saisie classe pilote ajax ////////////////
+ //////////////////////// partie saisie classe pilote ajax ////////////////////////////////////////////
 
  function myFunction1pl() {
   
@@ -322,76 +238,104 @@ function myFunction2p() {
                      alert('error');
                  }
               });
-         
-             
-     
-  
+          
   }
   
-  ////////////insert classe
-   
-  function myFunction2pl() {
+        /////////////////besoin par etab ///////////////
+  
+
+
+
+        function myFunction4() {
     
-  
-  
-  //var id = document.getElementById('sect');
-      
-       var idetab = $('#nbc').val();
-      alert(idetab);
-  
-  
-       $.ajax({
-              type: "post",
-           
-              url: 'insertclasse',
-              data: { 'idetab':idetab },   
-              dataType:'json', 
-               success:function(data)
-                 {
-                  alert('success','classe insert successfully');
+
+ 
+          var idop = document.getElementById("mat");
+              
+                 var ccod = $('#mat').val();
+                 alert(ccod);
+               
+         
+                $.ajax({
+                      type: "Get",
+                      url: '/Get_data',
+                      data: { 'ccod':ccod },   
+                      dataType:'json', 
+                       success:function(response)
+                         {
+                            
+                             $('#tab').empty();
+                      
+                                     var x=0;
+                                       var table = $("#tab");
+                                      $.each(response['reql'], function( idx,elem2)
+                                      {
+                                           
+                                         
+                                                $.ajax({
+                                                 type: "Get",
+                                                 url: '/Get_data2',
+                                                 data: { 'codemat':elem2.codemat,
+                                             'ccod':ccod },   
+                                                 dataType:'json', 
+                                                  success:function(data2)
+                                                    {
+                                                    
+                                                     $.each(data2, function( idx3,elem3) {
+         
+                                                         $toth=(elem3.nb12*12) + (elem3.nb15*15) + (elem3.nb16*16) +(elem3.nb05 *0.5); 
+                                                         $totp=elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05;
+         
+                                                         if($totp>0){
+                                                             $totsd=elem3.tot/$totp;
+                                                         }
+                                                          else {$totsd=0;}
+         
+                                                                 if(elem3.nb18>0){                                                 
+                                                                     $md=(elem3.tot-$toth)/elem3.nb18;
+                                                                 }
+                                                                     else {$md=$totsd;}
+                                                                     if($totsd.toFixed(2)>18)
+                                                                     {
+                                                                         $ad=(elem3.tot/18-$totp).toFixed(2);
+                                                                     }
+                                                                     else{$ad=0; }  
+         
+                                                                     if($ad+$totp>0){
+                                                                         $mf=(elem3.tot/($ad+$totp)).toFixed(2);
+                                                                     }
+                                                                         else{$mf=0;}
+         
+                                                                        // elem3.nb18
+                                                         //table.append("<tr><td>"+$mf+"</td><td>"+ $ad+"</td><td>"+$totsd.toFixed(2)+"</td><td>"+$md.toFixed(2)+"</td><td>"+(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05)+"</td><td>"+elem3.nb05+"</td><td>"+elem3.nb12+"</td><td>"+elem3.nb15+"</td><td>"+elem3.nb16+"</td><td>"+elem3.nb18+"</td><td>"+Math.trunc(elem3.tot)+"</td><td>"+elem3.libmat+"</td><td>"+elem3.id+"</td></tr>");
+                                                         table.append("<tr><td>"+elem3.id+"</td><td>"+elem3.libmat+"</td><td>"+Math.trunc(elem3.tot)+"</td><td>"+elem3.nb18+"</td><td>"+elem3.nb16+"</td><td>"+elem3.nb15+"</td><td>"+elem3.nb12+"</td><td>"+elem3.nb05+"</td><td>"+(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05)+"</td><td>"+$md.toFixed(2)+"</td><td>"+$totsd.toFixed(2)+"</td><td>"+$ad+"</td><td>"+$mf+"</td></tr>");
+                                                     });
+                                                     
+         
+                                                    }
+                                                 });
+                       
+                                     
+         
+         
+                                    });
+                                    
+                                         
+                          } , 
+                         error:function(response) {
+                             alert('error');
+                             console.log(response);
+                         }
+                      });
                  
-                                 
-                  } , 
-                 error:function() {
-                     alert('error');
-                 }
-              });
-  }
-  
+                     
+             
+         
+         }
+         
+         
+         
+         
 
 
 
-
-
-  function test() {
-  
-  
-    $("#msg").hide();
-    //alert("working");
-
-      $("#msg").show();
-
-      var nbc = $('#nbc').val();
-      var etab = $('#etab').val();
-      var niv = $('#niv').val();
-     
-      var token = $("#token").val();
-      alert(nbc);
-      alert(etab);
-      alert(niv);
-      $.ajax({
-        type: "post",
-        data: "nbc=" + nbc + "&etab=" + etab + "&niv=" + niv + "&_token=" + token ,
-        url:'/insertclasse',
-        success:function(data){
-          $("#msg").html("classe has been inserted");
-          $("#msg").fadeOut(2000);
-        } , 
-            error:function(data) {
-                               alert('error'); 
-                               
-                                console.log(data);
-                             }
-      });
-  
-  }

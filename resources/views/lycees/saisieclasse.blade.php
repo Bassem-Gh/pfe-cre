@@ -35,15 +35,16 @@
 
 
 </div>
-<div> </br></div>
 
 <div class="container">
-<span id="form_output"></span>
-   <table id="etab_table"   align="center"  dir="ltr">
+
+   <table id="etab_table"  align="center"  dir="ltr">
 
 <form name="insertion" width="100%" methode="POST" >
-<!----------- jdida ------>>
-<p id="msg" class="alert alert-success"></p>
+  
+
+<!----------- jdida ------>
+<p id="msg" class="alert alert-success "></p> 
 <input type="hidden" value="{{csrf_token()}}" id="token"/>
 
 {!! csrf_field() !!}
@@ -108,7 +109,7 @@
 
 <tr width="100%" > 
 
-  <td><b><input type="button" id="insert" value="ok" onclick="test()"> </b></input></td>
+  <td><b><input type="button" id="insert" value="ok" onclick="insertl()"> </b></input></td>
   
   <!--td><button type="" id="insert"><b>ok</b></button></td-->
   </tr> 

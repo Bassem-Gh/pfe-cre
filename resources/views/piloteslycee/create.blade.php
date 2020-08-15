@@ -31,7 +31,8 @@
         </ul>
     </div>
 @endif
-   
+<div class="card">
+                                <div class="card-body">
 <form action="{{ route('piloteslycee.store') }}" method="POST">
     @csrf
   
@@ -91,4 +92,6 @@
     </div>
    
 </form>
+</div>
+    </div>
 @endsection

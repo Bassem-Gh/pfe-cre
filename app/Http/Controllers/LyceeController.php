@@ -30,7 +30,18 @@ class LyceeController extends Controller
        
      return view('lycees.index', compact('data'));
     }
-
+    public function indexbetab()
+    {   
+        $data = DB::table('etab')
+       ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
+       ->join('delegation', 'delegation.code', '=', 'etab.delegation')
+       
+       ->select('etab.codeetab as id','etab.libetab' )
+       //->where('etab.typeetab','=','20')
+       ->get();
+     
+     return view('lycees.b_mat_par_etab', compact('data'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -140,46 +151,25 @@ class LyceeController extends Controller
     }
 
     public function insertclasse(Request $request)
-    { /*
-        $success_output = '';
-
-        if(Request()->ajax()) {
-            $id = $request->all();
-        }
-       $nbc=$id['nbc'];
-       $etab=$id['etab'];
-       $niv=$id['niv'];
-        dd($id);
-        $data =new Classe([
-           'nbclasse'=>$nbc,  
-           'codetab'=>$etab,
-           'codeniv'=>$niv,
-
-        ]);
-      $data->save();
-      $success_output = '<div class="alert alert-success">Data Inserted</div>';
-      
-      $output = array(
-        'success'   =>  $success_output
-    );
-    
-    echo json_encode($output);
-    //return response ()->json ( $data );
-    //return Response::json($data); */
-
+    { 
 
     $nbc = $request->nbc;
     $etab = $request->etab;
     $niv = $request->niv;
-    /*$add_product = DB::table('classe')
-    ->where('codetab',$etab,'codeniv',$niv)
-    ->update(
-        [ 'nbclasse'=>$nbc ]
-      );*/
+
+    $fetch = DB::table('classe')
+    ->where('codetab',$etab)->where('codeniv',$niv)
+    ->select('nbclasse')->get();
+
+    foreach($fetch  as $raw)
+    {
+        $n=$raw->nbclasse;
+    }
+ 
     $add_product = DB::table("classe")->where( 'codetab', $etab) 
-    ->Orwhere('codeniv',$niv)
+    ->where('codeniv',$niv)
     ->update([
-        'nbclasse'=>$nbc,  
+        'nbclasse'=>$nbc+$n,  
       
         ]);
 
@@ -281,4 +271,74 @@ class LyceeController extends Controller
         return redirect()->route('lycees.index')
         ->with('success','etablissement deleted successfully');
     }
+
+    public function gettableb(Request $request)
+    {
+     
+       $reql = DB::table('classe') 
+      
+        ->join('matiere', 'matiere.codniv', '=', 'classe.codeniv')
+        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+       
+       ->select( 'matiere.libmat','matiere.codemat')
+       ->distinct()
+     
+      ->where('etab.codeetab','=',$request->get('ccod')) 
+       ->get();
+
+    
+                $data = DB::table('classe') 
+                ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
+                ->join('matiere', 'matiere.codniv', '=', 'classe.codeniv')
+                ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+                ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
+                ->join('delegation', 'delegation.code', '=', 'etab.delegation')
+                ->join("effectif",function($join){
+                    $join->on("effectif.codeetab","=","etab.codeetab")
+                        ->on("effectif.codemat","=","matiere.codemat");
+                })
+                ->where('etab.codeetab','=',$request->get('ccod')) 
+               ->select('effectif.nb12','effectif.nb15','effectif.nb16','effectif.nb18','effectif.nb05','matiere.libmat','matiere.codemat','matiere.nbh','etab.codeetab as id','etab.libetab','classe.nbclasse')
+               ->distinct()
+         
+               ->get();
+            
+              
+      
+
+     
+$response= [
+    'reql' => $reql,
+    'data' => $data
+];
+
+    
+       return    response()->json($response);
+    }
+    public function gettableb2(Request $request)
+    {
+        
+        $data2 = DB::table('classe') 
+        ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
+        ->join('matiere', 'matiere.codniv', '=', 'classe.codeniv')
+        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+        ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
+        ->join('delegation', 'delegation.code', '=', 'etab.delegation')
+        ->join("effectif",function($join){
+            $join->on("effectif.codeetab","=","etab.codeetab")
+                ->on("effectif.codemat","=","matiere.codemat");
+        })
+        ->where('matiere.codemat','=',$request->get('codemat')) 
+        ->where('etab.codeetab','=',$request->get('ccod')) 
+       ->select(DB::raw("SUM(matiere.nbh*classe.nbclasse)as tot"),'effectif.nb12','effectif.nb15','effectif.nb16','effectif.nb18','effectif.nb05','matiere.libmat','matiere.codemat','matiere.nbh','etab.codeetab as id','etab.libetab','classe.nbclasse')
+       
+       ->distinct()
+
+     
+     
+       ->get();
+       return    response()->json($data2);
+
+    }
+
 }

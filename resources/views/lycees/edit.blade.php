@@ -27,7 +27,8 @@
          @endforeach
          </ul>
   @endif
-
+  <div class="card">
+<div class="card-body">
   @foreach($data as $college)
   <form method="post" action="{{ route('lycees.update', $college->id) }}">
    @csrf
@@ -53,6 +54,8 @@
    </div>
   </form>
  </div>
+</div>
+</div>
 </div>
 
 

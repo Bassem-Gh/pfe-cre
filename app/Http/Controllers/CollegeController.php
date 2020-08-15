@@ -51,6 +51,37 @@ class CollegeController extends Controller
        //exit;
     }
     
+    public function insertclassec(Request $request)
+    { 
+
+    $nbc = $request->nbc;
+    $etab = $request->etab;
+    $niv = $request->niv;
+
+    $fetch = DB::table('classe')
+    ->where('codetab',$etab)->where('codeniv',$niv)
+    ->select('nbclasse')->get();
+
+    foreach($fetch  as $raw)
+    {
+        $n=$raw->nbclasse;
+    }
+ 
+    $add_product = DB::table("classe")->where( 'codetab', $etab) 
+    ->where('codeniv',$niv)
+    ->update([
+        'nbclasse'=>$nbc+$n,  
+      
+        ]);
+
+    if($add_product){
+      echo "done";
+    }else{
+      echo "Error";
+    }
+
+    }
+
     public function saisiec(Request $request)
     {
         $idd=$request->get('nameetab');

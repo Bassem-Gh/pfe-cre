@@ -11,7 +11,8 @@
  
      <div class="row">
                         <div class="col-12">
-                           
+                        <div class="card">
+                                <div class="card-body">
                                 <table   class="col-xs-12 col-sm-12 col-md-12 text-center"  border="0">
                                 <tr><td>
                                     <a class="btn btn-success" href="{{ route('create_pilote') }}"> إضافة مؤسسة جديدة</a>
@@ -19,8 +20,7 @@
                              
                                     <a class="btn btn-success" href=" {{ url('saisie_classe_pilote') }}"> إضافة قسم جديدة</a>
                             </td></tr>
-                        <div class="card">
-                                <div class="card-body">
+                        
 
                                    
 

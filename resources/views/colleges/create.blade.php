@@ -10,8 +10,7 @@
          @slot('li_1') Pages  @endslot
      @endcomponent
      
-     @component('common-components.menu2')
-     @endcomponent
+    
      
 <div class="row">
     <div class="col-lg-12 margin-tb">
@@ -32,7 +31,8 @@
         </ul>
     </div>
 @endif
-   
+<div class="card">
+<div class="card-body">
 <form action="{{ route('colleges.store') }}" method="POST">
     @csrf
   
@@ -92,4 +92,6 @@
     </div>
    
 </form>
+</div>
+    </div>
 @endsection
