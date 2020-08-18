@@ -55,6 +55,9 @@ route::get('/gettablep', 'PiloteController@getTablep')->name('gettablep');
 Route::resource('collegestech','CollegetechController');
 Route::resource('pilotes','PiloteController');
 Route::resource('piloteslycee','PiloteLcController'); 
+///teachers
+Route::get('/create_enseignant', 'EnseignantController@create')->name('create_enseignant');
+Route::resource('enseignants','EnseignantController'); 
 
 Route::resource('colleges','CollegeController');
 Route::get('/create_college', 'CollegeController@create')->name('create_college');

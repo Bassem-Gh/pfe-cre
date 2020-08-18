@@ -52,7 +52,16 @@
                         <span>Gestion des besoins</span>
                     </a>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <i class="mdi mdi-calendar-check"></i>
+                    <span >Gestion des enseignants<span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="{{ route('enseignants.index') }}">Liste des enseignants </a></li>
 
+                </ul>
+                </li>
               
 
                
