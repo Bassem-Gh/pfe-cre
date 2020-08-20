@@ -98,6 +98,20 @@
                             </div>
                          </div>
 
+                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                            <div class="col-md-12">
+                            <label for="password" class="control-label"> كلمة السر</label>
+                            <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}" >
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            </div>
+
                         <div class="form-group{{ $errors->has('nbr_enf') ? ' has-error' : '' }}">
                             <div class="col-md-12">
                                 <label for="nbr_enf" class="control-label">عدد الاطفال</label>
