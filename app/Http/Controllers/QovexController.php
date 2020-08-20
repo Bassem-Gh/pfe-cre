@@ -12,12 +12,20 @@ class QovexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   /* public function indexhome(Request $request)
+    {
+        if(view()->exists($request->path())){
+            return view('home');
+        }
+        return view('pages-404');
+    }*/
+
     public function indexbesoin(Request $request)
     {
-      //  if(view()->exists($request->path())){
+        if(view()->exists($request->path())){
             return view('besoin');
-       // }
-        //return view('pages-404');
+        }
+        return view('pages-404');
     }
     
     public function index(Request $request)

@@ -13,25 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return redirect('/index');
+    //return redirect('/index');
+    return redirect('/login');
 });
 
 Auth::routes();
 Route::get('logout', 'QovexController@logout');
 
-Route::get('pages-login', 'QovexController@index');
+//Route::get('pages-login', 'QovexController@index');
 //Route::get('pages-login-2', 'QovexController@index');
 Route::get('pages-register', 'QovexController@index');
-Route::get('pages-register-2', 'QovexController@index');
-Route::get('pages-recoverpw', 'QovexController@index');
-Route::get('pages-recoverpw-2', 'QovexController@index');
-Route::get('pages-lock-screen', 'QovexController@index');
-Route::get('pages-lock-screen-2', 'QovexController@index');
+//Route::get('pages-register-2', 'QovexController@index');
+//Route::get('pages-recoverpw', 'QovexController@index');
+//Route::get('pages-recoverpw-2', 'QovexController@index');
+//Route::get('pages-lock-screen', 'QovexController@index');
+//Route::get('pages-lock-screen-2', 'QovexController@index');
 Route::get('pages-404', 'QovexController@index');
 Route::get('pages-500', 'QovexController@index');
-Route::get('pages-maintenance', 'QovexController@index');
-Route::get('pages-comingsoon', 'QovexController@index');
-Route::post('login-status', 'QovexController@checkStatus');
+//Route::get('pages-maintenance', 'QovexController@index');
+//Route::get('pages-comingsoon', 'QovexController@index');
+//Route::post('login-status', 'QovexController@checkStatus');
 //Route::get('login', 'QovexController@logout');
 
 
@@ -99,9 +100,12 @@ Route::get('/Gestion_Besoin', 'QovexController@indexbesoin')->name('besoin');
 //Route::post('/login', 'QovexController@logout')->name('logout');
 // You can also use auth middleware to prevent unauthenticated users
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+   // Route::get('/home', 'QovexController@indexhome')->name('home');
+    Route::get('/index', 'QovexController@indexbesoin')->name('index');
     Route::get('{any}', 'QovexController@index');
 });
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/index', 'QovexController@indexbesoin')->name('index');
+Route::get('{any}', 'QovexController@index');

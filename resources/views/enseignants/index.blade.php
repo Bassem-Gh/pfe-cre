@@ -67,7 +67,7 @@
              <td>{{$row->telephone}}</td>
              <td>{{$row->sexe}}</td>
              <td>{{$row->sec_s}}</td>
-             <td> <form action="" method="POST">
+             <td> <form action="{{ route('enseignants.destroy',$row->id) }}" method="POST">
    
               <a class="btn btn-primary" href="">تعديل</a>
 

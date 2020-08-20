@@ -9,6 +9,7 @@ use App\Grade;
 use App\Decision;
 use App\User;
 use Datatables;
+use Redirect;
 //use Auth;
 class EnseignantController extends Controller
 {
@@ -51,7 +52,7 @@ class EnseignantController extends Controller
           'email' => $request['email'],
           'telephone' => $request['telephone'],
           'adresse' => $request['adresse'],
-          'password' => bcrypt($request['sec_s']),
+          'password' => bcrypt($request['password']),
           'sexe' => $request['sexe'],
           'date_n' => date('Y-m-d', strtotime(str_replace('-', '/', $request['date_n']))),
           'lieu_n' => $request['lieu_n'],
@@ -72,7 +73,7 @@ class EnseignantController extends Controller
          'email' => $request['email'],
          'telephone' => $request['telephone'],
          'adresse' => $request['adresse'],
-         'password' => bcrypt($request['sec_s']),
+         'password' => bcrypt($request['password']),
          'sexe' => $request['sexe'],
          'date_n' => date('Y-m-d', strtotime(str_replace('-', '/', $request['date_n']))),
          'lieu_n' => $request['lieu_n'],
@@ -142,10 +143,17 @@ class EnseignantController extends Controller
       return view('enseignants.modifier' , ['user'=>$user,'diplom'=>$diplom,'grade'=>$grade,'echelon'=>$echelon]);
   }
 
+  public function destroy(Enseignant $enseignant)
+  {
+      $enseignant->delete();
+      return redirect()->route('enseignants.index')->with('message', 'تم حذف الحساب بنجاح');
+     // return redirect::back()->with('message', 'تم حذف الحساب بنجاح');
+  }
+/*
   public function supprimer(User $user)
   {
       $user = $user->delete();
       return redirect::back()->with('message', 'تم حذف الحساب بنجاح');
-   }
+   }*/
 
 }
