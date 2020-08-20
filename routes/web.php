@@ -33,37 +33,52 @@ Route::get('pages-maintenance', 'QovexController@index');
 Route::get('pages-comingsoon', 'QovexController@index');
 Route::post('login-status', 'QovexController@checkStatus');
 //Route::get('login', 'QovexController@logout');
+
+
+
+////////////////////// lycee//////////////////////////////
+//saisie classe ajax 
 Route::resource('lycees','LyceeController');
-///////saisie classe lycee ajax ///////////
 Route::get('/getNiveau', 'LyceeController@getNiveau')->name('getNiveau');
 Route::get('/gettable', 'LyceeController@getTable')->name('gettable'); 
-
+//insert
 Route::post('/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
+//create
+Route::get('/create_lycee', 'LyceeController@create')->name('create_lycee');
 
-/////// saisie classe college ajax //////////
 
+
+//////////////////// college ajax ////////////////////////////
+//saisie classe 
 Route::get('/gettablec', 'CollegeController@getTablec')->name('gettablec'); 
-//Route::get('/insertclassec', 'CollegeController@insertclassec')->name('insertclassec');
+Route::resource('colleges','CollegeController');
+Route::get('/create_college', 'CollegeController@create')->name('create_college');
 
-////////////saisie classe pilote lycee ajax ////
-Route::get('/gettablepl', 'PiloteLcController@getTablepl')->name('gettablepl'); 
-//Route::post('/insertclassepl', 'PiloteLcController@insertclassepl')->name('insertclassepl');
 
-////////////saisie classe pilote ajax ////
-route::get('/gettablep', 'PiloteController@getTablep')->name('gettablep'); 
 
-Route::resource('collegestech','CollegetechController');
+/////////////////////saisie classe pilote lycee ajax ////
 Route::resource('pilotes','PiloteController');
 Route::resource('piloteslycee','PiloteLcController'); 
-///teachers
+Route::get('/gettablepl', 'PiloteLcController@getTablepl')->name('gettablepl'); 
+Route::get('/create_pilote_lycee', 'PiloteLcController@create')->name('create_pilote_lycee');
+Route::get('/create_pilote', 'PiloteController@create')->name('create_pilote');
+
+//Route::post('/insertclassepl', 'PiloteLcController@insertclassepl')->name('insertclassepl');
+//college pilote 
+route::get('/gettablep', 'PiloteController@getTablep')->name('gettablep'); 
+
+
+
+///////////////////college tech//////////////////////////
+Route::resource('collegestech','CollegetechController');
+
+
+
+////////////////////teachers//////////////////////////////
 Route::get('/create_enseignant', 'EnseignantController@create')->name('create_enseignant');
 Route::resource('enseignants','EnseignantController'); 
 
-Route::resource('colleges','CollegeController');
-Route::get('/create_college', 'CollegeController@create')->name('create_college');
-Route::get('/create_pilote', 'PiloteController@create')->name('create_pilote');
-Route::get('/create_pilote_lycee', 'PiloteLcController@create')->name('create_pilote_lycee');
-Route::get('/create_lycee', 'LyceeController@create')->name('create_lycee');
+
 
 /////besoin par etab ////
 Route::get('/Besoin_mat_par_etab', 'LyceeController@indexbetab');
