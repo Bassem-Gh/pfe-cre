@@ -28,12 +28,19 @@
                         <span>Dashboard</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="index">Stats</a></li>
+                        <li><a href=" {{ route ('index') }}">Stats</a></li>
                         
                     </ul>
                 </li>
 
                 <li>
+                
+                    @if (session('error'))
+                                        <div class="alert alert-danger" role="alert" >
+                                        {{ session('error') }}
+                                        </div>
+                                    @endif
+
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-calendar-check"></i>
                         <span >Gestion des ecoles<span>
@@ -47,12 +54,15 @@
                 </li>
 
                 <li>
-                    <a href=" {{ url('Besoin_mat_par_etab') }}" class=" waves-effect">
+            
+                    <a href=" {{ route('Besoin_mat_par_etab') }}" class=" waves-effect">
                         <i class="mdi mdi-calendar-text"></i>
                         <span>Gestion des besoins</span>
                     </a>
                 </li>
-                <li>
+                <li> 
+                 
+                
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="mdi mdi-calendar-check"></i>
                     <span >Gestion des enseignants<span>

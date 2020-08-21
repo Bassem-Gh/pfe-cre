@@ -21,9 +21,9 @@ class RedirectIfAuthenticated
     {        
         if (Auth::guard($guard)->check()) {      
            // dd(Auth::user()->role); 
-             if (Auth::user()->role == 'admin')
-                //return redirect()->intended('/index');
-                return redirect()->guest('/index');
+            if (Auth::user()->role == 'admin')
+                
+                return redirect('/index');
 
              elseif (Auth::user()->role == 'user')
                  return redirect('/home');

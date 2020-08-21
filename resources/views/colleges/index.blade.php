@@ -27,7 +27,7 @@
                                     <a class="btn btn-success" href="{{ route('create_college') }}"> إضافة مؤسسة جديدة</a>
                               </td><td>  
                              
-                                    <a class="btn btn-success" href=" {{ url('saisie_classe_college') }}"> إضافة قسم جديدة</a>
+                                    <a class="btn btn-success" href=" {{ url('/colleges/saisie_classe_college') }}"> إضافة قسم جديدة</a>
                             </td></tr>
                                 </table>   
                         <div class="card">

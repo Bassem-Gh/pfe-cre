@@ -11,7 +11,7 @@ function myFunction3() {
          $.ajax({
                 type: "Get",
              
-                url: 'getNiveau',
+                url: '/lycees/getNiveau',
                 data: { 'ccod':ccod },   
                 dataType:'json', 
                  success:function(data)
@@ -40,7 +40,7 @@ function myFunction1() {
        var idetab = $('#etab').val();
            $.ajax({
                     type: "Get",
-                    url: 'gettable',
+                    url: '/lycees/gettable',
                     data: { 'idetab':idetab },   
                     dataType:'json', 
                success:function(data)
@@ -84,7 +84,7 @@ function insertl() {
     $.ajax({
       type: "post",
       data: "nbc=" + nbc + "&etab=" + etab + "&niv=" + niv + "&_token=" + token ,
-      url:'/insertclasse',
+      url:'/lycees/insertclasse',
       success:function(data){
        $("#msg").html("classe has been inserted");
         $("#msg").fadeOut(2000);
@@ -125,7 +125,7 @@ function myFunction1c() {
      $.ajax({
             type: "Get",
          
-            url: 'gettablec',
+            url: '/colleges/gettablec',
             data: { 'idetab':idetab },   
             dataType:'json', 
              success:function(data)
@@ -172,7 +172,7 @@ function myFunction1p() {
      $.ajax({
             type: "Get",
          
-            url: 'gettablep',
+            url: '/pilotes/gettablep',
             data: { 'idetab':idetab },   
             dataType:'json', 
              success:function(data)
@@ -217,7 +217,7 @@ function myFunction1p() {
        $.ajax({
               type: "Get",
            
-              url: 'gettablep',
+              url: '/pilotes/gettablep',
               data: { 'idetab':idetab },   
               dataType:'json', 
                success:function(data)
@@ -258,7 +258,7 @@ function myFunction1p() {
          
                 $.ajax({
                       type: "Get",
-                      url: '/Get_data',
+                      url: '/lycees/Get_data',
                       data: { 'ccod':ccod },   
                       dataType:'json', 
                        success:function(response)
@@ -274,7 +274,7 @@ function myFunction1p() {
                                          
                                                 $.ajax({
                                                  type: "Get",
-                                                 url: '/Get_data2',
+                                                 url: '/lycees/Get_data2',
                                                  data: { 'codemat':elem2.codemat,
                                              'ccod':ccod },   
                                                  dataType:'json', 

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Redirect;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -21,12 +21,27 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    /*public function index()
+    public function index()
     {
         return view('home');
     }
-    public function indexbesoin()
-    {
-        return view('besoin');
-    }*/
+    
+    public function authPages(Request $request) {
+        if(view()->exists('role:user'.$request->path())){
+            return view('role:user'.$request->path());
+        }
+        return view('pages-404');
+    }
+
+    public function checkStatus(){
+        if(!Auth::check()) {
+            return abort(404);
+        }
+        return false;
+    }
+    
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
+    }
 }

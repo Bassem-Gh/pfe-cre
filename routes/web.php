@@ -34,63 +34,79 @@ Route::get('pages-500', 'QovexController@index');
 //Route::get('pages-comingsoon', 'QovexController@index');
 //Route::post('login-status', 'QovexController@checkStatus');
 //Route::get('login', 'QovexController@logout');
-Route::resource('lycees','LyceeController');
-///////saisie classe lycee ajax ///////////
-Route::get('/getNiveau', 'LyceeController@getNiveau')->name('getNiveau');
-Route::get('/gettable', 'LyceeController@getTable')->name('gettable'); 
 
-Route::post('/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
+//Route::post('/login', 'QovexController@logout')->name('logout');
+// You can also use auth middleware to prevent unauthenticated users
+/*Route::group(['middleware' => 'auth'], function () {
+   // Route::get('/home', 'QovexController@indexhome')->name('home');
+   Route::get('/index', 'QovexController@indexbesoin')->name('index');
+    Route::get('{any}', 'QovexController@index');
+});*/
+
+
+//Route::get('/index', 'QovexController@indexbesoin')->name('index');
+//Route::get('{any}', 'HomecontrollerController@index');
+
+
+Route::group(['middleware' => 'auth'], function() {
+   Route::get('/home', 'HomeController@index');
+   //Route::get('logout', 'HomeController@logout');
+});
+
+////////session admin///////////////
+Route::group(['middleware' =>['auth', 'admin'] ], function() {
+    Route::get('/index', 'QovexController@indexbesoin')->name('index');
+    Route::get('{any}', 'QovexController@index');
+  //  Route::get('/home', 'QovexController@indexhome')->name('home');
+ 
+///////saisie classe lycee ajax ///////////
+Route::get('/lycees/getNiveau', 'LyceeController@getNiveau')->name('getNiveau');
+Route::get('/lycees/gettable', 'LyceeController@getTable')->name('gettable'); 
+
+Route::post('/lycees/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
 
 /////// saisie classe college ajax //////////
 
-Route::get('/gettablec', 'CollegeController@getTablec')->name('gettablec'); 
+Route::get('/colleges/gettablec', 'CollegeController@getTablec')->name('gettablec'); 
 //Route::get('/insertclassec', 'CollegeController@insertclassec')->name('insertclassec');
 
 ////////////saisie classe pilote lycee ajax ////
-Route::get('/gettablepl', 'PiloteLcController@getTablepl')->name('gettablepl'); 
+Route::get('/piloteslycee/gettablepl', 'PiloteLcController@getTablepl')->name('gettablepl'); 
 //Route::post('/insertclassepl', 'PiloteLcController@insertclassepl')->name('insertclassepl');
-
+                           
 ////////////saisie classe pilote ajax ////
-route::get('/gettablep', 'PiloteController@getTablep')->name('gettablep'); 
+route::get('/pilotes/gettablep', 'PiloteController@getTablep')->name('gettablep'); 
 
-Route::resource('collegestech','CollegetechController');
-Route::resource('pilotes','PiloteController');
-Route::resource('piloteslycee','PiloteLcController'); 
+Route::resource('/lycees/lycees','LyceeController');
+Route::resource('/pilotes/pilotes','PiloteController');
+Route::resource('/piloteslycee/piloteslycee','PiloteLcController'); 
+
 ///teachers
-Route::get('/create_enseignant', 'EnseignantController@create')->name('create_enseignant');
-Route::resource('enseignants','EnseignantController'); 
+Route::get('/enseignants/create_enseignant', 'EnseignantController@create')->name('create_enseignant');
+Route::resource('/enseignants/enseignants','EnseignantController'); 
 
-Route::resource('colleges','CollegeController');
-Route::get('/create_college', 'CollegeController@create')->name('create_college');
-Route::get('/create_pilote', 'PiloteController@create')->name('create_pilote');
-Route::get('/create_pilote_lycee', 'PiloteLcController@create')->name('create_pilote_lycee');
-Route::get('/create_lycee', 'LyceeController@create')->name('create_lycee');
+Route::resource('/colleges/colleges','CollegeController');
+Route::get('/colleges/create_college', 'CollegeController@create')->name('create_college');
+Route::get('/pilotes/create_pilote', 'PiloteController@create')->name('create_pilote');
+Route::get('/piloteslycee/create_pilote_lycee', 'PiloteLcController@create')->name('create_pilote_lycee');
+Route::get('/lycees/create_lycee', 'LyceeController@create')->name('create_lycee');
 
 /////besoin par etab ////
-Route::get('/Besoin_mat_par_etab', 'LyceeController@indexbetab');
+Route::get('/etablissements/Besoin_mat_par_etab', 'LyceeController@indexbetab')->name('Besoin_mat_par_etab');
 
-Route::get('/Get_data','LyceeController@gettableb');
-Route::get('/Get_data2','LyceeController@gettableb2');
+Route::get('/lycees/Get_data','LyceeController@gettableb');
+Route::get('/lycees/Get_data2','LyceeController@gettableb2');
 
 //////
-Route::get('/edit/{id}', 'CollegeController@edit')->name('editcollege');
-Route::get('/edit_lycee/{id}', 'LyceeController@edit')->name('editlycee');
+Route::get('/colleges/edit/{id}', 'CollegeController@edit')->name('editcollege');
+Route::get('/lycees/edit_lycee/{id}', 'LyceeController@edit')->name('editlycee');
  
-Route::get('/saisie_classe_lycee', 'LyceeController@saisie');
-Route::get('/saisie_classe_college', 'CollegeController@saisiec');
-Route::get('/saisie_classe_pilotelc', 'PiloteLcController@saisiepl');
-Route::get('/saisie_classe_pilote', 'PiloteController@saisiep');
-//Route::resource('besoin','QovexController@indexbesoin')->name('besoin');
+Route::get('/lycees/saisie_classe_lycee', 'LyceeController@saisie');
+Route::get('/colleges/saisie_classe_college', 'CollegeController@saisiec');
+Route::get('/piloteslycee/saisie_classe_pilotelc', 'PiloteLcController@saisiepl');
+Route::get('/pilotes/saisie_classe_pilote', 'PiloteController@saisiep');
+
 Route::get('/Gestion_Besoin', 'QovexController@indexbesoin')->name('besoin');
-//Route::post('/login', 'QovexController@logout')->name('logout');
-// You can also use auth middleware to prevent unauthenticated users
-Route::group(['middleware' => 'auth'], function () {
-   // Route::get('/home', 'QovexController@indexhome')->name('home');
-    Route::get('/index', 'QovexController@indexbesoin')->name('index');
-    Route::get('{any}', 'QovexController@index');
+//Route::get('logout', 'QovexController@logout');
 });
 
-Auth::routes();
-
-Route::get('/index', 'QovexController@indexbesoin')->name('index');
-Route::get('{any}', 'QovexController@index');
