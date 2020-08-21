@@ -10,8 +10,8 @@
 
             <div class="mt-3">
 
-                <a href="#" class="text-dark font-weight-medium font-size-16">User</a>
-                <p class="text-body mt-1 mb-0 font-size-13">app admin/admininstrateur/enseignant</p>
+                <a href="#" class="text-dark font-weight-medium font-size-16">{{ Auth::user()->name }}</a>
+                <p class="text-body mt-1 mb-0 font-size-13">administrateur</p>
 
             </div>
         </div>
@@ -25,23 +25,24 @@
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="mdi mdi-airplay"></i><span class="badge badge-pill badge-info float-right"></span>
-                        <span>Dashboard</span>
+                    <span>tableau de bord</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="index">Stats</a></li>
+                        <li><a href="index">statistiques</a></li>
                         
                     </ul>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-calendar-check"></i>
-                        <span >Gestion des ecoles<span>
+                        <i class="fas fa-school
+                        "></i>
+                        <span >établissements<span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('piloteslycee.index') }}">Colléges techniques </a></li>
                         <li><a href="{{ route('colleges.index') }}">Colléges</a></li>
-                        <li><a href="{{ route('lycees.index') }}">Lycée</a></li>
+                        <li><a href="{{ route('lycees.index') }}">  Lycée</a></li>
+                        <li><a href="{{ route('piloteslycee.index') }}">Colléges techniques </a></li>
                         <li><a href="{{ route('pilotes.index') }}">Etablissement pilote</a></li>
                     </ul>
                 </li>
@@ -55,7 +56,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="mdi mdi-calendar-check"></i>
-                    <span >Gestion des enseignants<span>
+                    <span > E   nseignants<span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                     <li><a href="{{ route('enseignants.index') }}">Liste des enseignants </a></li>

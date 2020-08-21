@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') Gestion des besoins @endsection
+@section('title') Tableau de bord @endsection
 @section('css')
 
 <!-- DataTables -->
@@ -10,8 +10,8 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') Gestion des besoins  @endslot
-         @slot('li_1') Pages  @endslot
+         @slot('title')  tableau de bord   @endslot
+         @slot('li_1') statistiques @endslot
      @endcomponent
      
     
