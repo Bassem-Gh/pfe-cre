@@ -282,33 +282,56 @@ function myFunction1p() {
                                                     {
                                                     
                                                      $.each(data2, function( idx3,elem3) {
-         
+
+                                                     
+
                                                          $toth=(elem3.nb12*12) + (elem3.nb15*15) + (elem3.nb16*16) +(elem3.nb05 *0.5); 
-                                                         $totp=elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05;
-         
+                                                         $totp=elem3.nb12+elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05;
+                                                        $c=Math.trunc(elem3.tot);
+                                                         //alert($totp);
+                                                      // alert(elem3.tot);
+                                                          ///////////totsd////////////////
                                                          if($totp>0){
-                                                             $totsd=elem3.tot/$totp;
+                                                             $totsd=Math.trunc(elem3.tot)/$totp;
                                                          }
                                                           else {$totsd=0;}
-         
+                                                         ////////////////////////md////////////////
                                                                  if(elem3.nb18>0){                                                 
-                                                                     $md=(elem3.tot-$toth)/elem3.nb18;
+                                                                     $md=(Math.trunc(elem3.tot)-$toth)/elem3.nb18;
                                                                  }
                                                                      else {$md=$totsd;}
+                                                                     ////////////////////////////ad//////////////
                                                                      if($totsd.toFixed(2)>18)
                                                                      {
-                                                                         $ad=(elem3.tot/18-$totp).toFixed(2);
-                                                                     }
-                                                                     else{$ad=0; }  
-         
-                                                                     if($ad+$totp>0){
-                                                                         $mf=(elem3.tot/($ad+$totp)).toFixed(2);
+                                                                         $ad=(parseInt(elem3.tot)/18-$totp).toFixed(2);
+                                                                        
+                                                                         $v=parseFloat($ad%1);
+                                                                       
+                                                                         $n=parseInt($ad);
+                                                                        
+                                                                         if($v<0.5)
+                                                                         { $x=parseFloat($n)+parseFloat(0.5);   }
+
+                                                                         else if($v>0.5)
+                                                                          { $x=parseFloat($n)+parseFloat(1); }
+
+                                                                         else { $x=0.5 ; }
+                                                                         
+                                                                        }
+                                                                    else{$x=0; }  
+                                                                     ///////////////////////////////mf/////////////
+                                                                     if($x+$totp>0){
+                                                                       $g=parseFloat($x)+parseInt($totp);
+                                                                    
+                                                                         $mf=(parseInt(elem3.tot)/$g).toFixed(2);
+                                                                         /////num vergule ////
+                                                                       
                                                                      }
                                                                          else{$mf=0;}
          
                                                                         // elem3.nb18
                                                          //table.append("<tr><td>"+$mf+"</td><td>"+ $ad+"</td><td>"+$totsd.toFixed(2)+"</td><td>"+$md.toFixed(2)+"</td><td>"+(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05)+"</td><td>"+elem3.nb05+"</td><td>"+elem3.nb12+"</td><td>"+elem3.nb15+"</td><td>"+elem3.nb16+"</td><td>"+elem3.nb18+"</td><td>"+Math.trunc(elem3.tot)+"</td><td>"+elem3.libmat+"</td><td>"+elem3.id+"</td></tr>");
-                                                         table.append("<tr><td>"+elem3.id+"</td><td>"+elem3.libmat+"</td><td>"+Math.trunc(elem3.tot)+"</td><td>"+elem3.nb18+"</td><td>"+elem3.nb16+"</td><td>"+elem3.nb15+"</td><td>"+elem3.nb12+"</td><td>"+elem3.nb05+"</td><td>"+(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05)+"</td><td>"+$md.toFixed(2)+"</td><td>"+$totsd.toFixed(2)+"</td><td>"+$ad+"</td><td>"+$mf+"</td></tr>");
+                                                         table.append("<tr><td>"+elem3.id+"</td><td>"+elem3.libmat+"</td><td>"+Math.trunc(elem3.tot)+"</td><td>"+elem3.nb18+"</td><td>"+elem3.nb16+"</td><td>"+elem3.nb15+"</td><td>"+elem3.nb12+"</td><td>"+elem3.nb05+"</td><td>"+(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05)+"</td><td>"+$md.toFixed(2)+"</td><td>"+$totsd.toFixed(2)+"</td><td>"+$x+"</td><td>"+$mf+"</td></tr>");
                                                      });
                                                      
          

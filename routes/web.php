@@ -52,6 +52,7 @@ Route::get('pages-500', 'QovexController@index');
 Route::group(['middleware' => 'auth'], function() {
    Route::get('/home', 'HomeController@index');
    //Route::get('logout', 'HomeController@logout');
+   Route::get('/demande_de_mouvememnt','compteEnseignantController@create');
 });
 
 ////////session admin///////////////
@@ -110,5 +111,6 @@ Route::get('/pilotes/saisie_classe_pilote', 'PiloteController@saisiep');
 
 Route::get('/Gestion_Besoin', 'QovexController@indexbesoin')->name('besoin');
 //Route::get('logout', 'QovexController@logout');
+
 });
 

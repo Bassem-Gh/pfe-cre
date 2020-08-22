@@ -32,7 +32,7 @@ class Admin
         
 
         else*/if (Auth::user()->role !== "admin") 
-           { abort(403, 'Unauthorized action.'); } 
+           { abort(403, 'ليس لديك الحق في الدخول هنا'); } 
         }
 
         return $next($request);

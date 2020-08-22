@@ -24,12 +24,13 @@
                     <div class="row">
                         <div class="col-12">
                         <table   class="col-xs-12 col-sm-12 col-md-12 text-center"  border="0">
-                                <tr><td>
-                                    <button   type="button" class="btn btn-outline-primary  waves-effect waves-light" href="{{ route('create_college') }}" >
-                                         <i class="mdi mdi-domain-plus "></i><br>إضافة مؤسسة جديدة</button>
-                              </td><td>  
+                                <tr>
+                              <td>  
                              
-
+                             <a class="btn btn-outline-primary   waves-effect waves-light" href=" {{  route('create_college')  }}"><i class="mdi mdi-google-classroom"></i><br> إضافة مؤسسة جديدة </a>
+                     </td>
+                              <td>  
+                             
                                     <a class="btn btn-outline-primary   waves-effect waves-light" href=" {{ url('/colleges/saisie_classe_college') }}"><i class="mdi mdi-google-classroom"></i><br> إضافة قسم </a>
                             </td></tr>
                                 </table>
@@ -55,17 +56,15 @@
                                         <tr>
         <td>  {{ $row->libetab }} </td>
             <td> <a  href="{{ route('colleges.show',$row->id) }}">{{ $row->id }}</a></td>
-            <td>  <form action="{{ route('colleges.destroy',$row->id) }}" method="POST">
-   
-                    
+            <td>          
     
    <a class="btn btn-primary" href="{{ route('editcollege',$row->id) }}" >تعديل</a>
 
-   @csrf
-   @method('DELETE')
+ 
+   <button  type="button" class="btn btn-danger waves-effect remove-user" data-id="{{ $row->id }}" data-action="{{  route('colleges.destroy',$row->id) }}">حذف</button>
 
-   <button type="submit" class="btn btn-danger">حذف</button>
-</form></td>
+  <!-- <button type="submit" class="btn btn-danger">حذف</button> -->
+</td>
            
           
         </tr>
