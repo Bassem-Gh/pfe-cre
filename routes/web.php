@@ -35,6 +35,7 @@ Route::get('pages-500', 'QovexController@index');
 //Route::post('login-status', 'QovexController@checkStatus');
 //Route::get('login', 'QovexController@logout');
 
+
 //Route::post('/login', 'QovexController@logout')->name('logout');
 // You can also use auth middleware to prevent unauthenticated users
 /*Route::group(['middleware' => 'auth'], function () {
@@ -65,7 +66,8 @@ Route::get('/lycees/gettable', 'LyceeController@getTable')->name('gettable');
 
 Route::post('/lycees/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
 
-/////// saisie classe college ajax //////////
+
+
 
 Route::get('/colleges/gettablec', 'CollegeController@getTablec')->name('gettablec'); 
 //Route::get('/insertclassec', 'CollegeController@insertclassec')->name('insertclassec');
