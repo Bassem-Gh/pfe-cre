@@ -32,6 +32,7 @@
                                     <a  class="btn btn-outline-primary  waves-effect waves-light" href="{{ route('create_college') }}" >
                                          <i class="mdi mdi-domain-plus "></i><br>إضافة مؤسسة جديدة</a>
                               </td><td>  
+
                              
                                     <a class="btn btn-outline-primary   waves-effect waves-light" href=" {{ url('/colleges/saisie_classe_college') }}"><i class="mdi mdi-google-classroom"></i><br> إضافة قسم </a>
                             </td></tr>
@@ -58,6 +59,7 @@
                                         <tr>
         <td>  {{ $row->libetab }}  </td>
             <td> <a  href="{{ route('colleges.show',$row->id) }}">{{ $row->id }}</a></td>
+<<<<<<< HEAD
             <td> 
            <form id="myForm" action="{{ route('colleges.destroy',$row->id) }}" method="POST">
 
@@ -77,6 +79,8 @@
 
         
 
+    
+          
         </tr>
                    @endforeach                       
                                         </tbody>

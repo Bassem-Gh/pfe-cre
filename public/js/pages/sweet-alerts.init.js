@@ -135,17 +135,29 @@ File: Sweet alerts
       });
     }); //Warning Message
 
-    $('#sa-warning').click(function () {
+    $("body").on("click",".remove-user",function(){
+      var current_object = $(this);
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
         type: "warning",
         showCancelButton: true,
+        dangerMode: true,
         confirmButtonColor: "#34c38f",
         cancelButtonColor: "#f46a6a",
         confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.value) {
+          var action = current_object.attr('data-action');
+          var token = jQuery('meta[name="csrf-token"]').attr('content');
+          var id = current_object.attr('data-id');
+          
+          $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+          $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+          $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+          $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+          $('body').find('.remove-form').submit();
+
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         }
       });
