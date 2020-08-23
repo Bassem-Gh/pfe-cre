@@ -350,9 +350,7 @@ function myFunction1p() {
                                                     url:'/c-enseignant/insertpost',
                                                    
                                                     success:function(data){
-                                                      $("#msg").html("classe has been inserted");
-                                                      $("#msg").fadeOut(2000);
-                                                     
+                                                   
                                                       $('#etab_table').DataTable().ajax.reload();
                                                     } , 
                                                        error:function(data) {
@@ -388,7 +386,48 @@ function myFunction1p() {
          
          
          
-         
+         ///////////////////////compte enseignant afficher les etab disp a partir de matiere choisi par enseignant///////////
 
 
 
+
+
+         function getetab_user() {
+    
+        
+          var ccod = $('#matiere').val();
+        
+     
+    
+          $.ajax({
+                 type: "Get",
+              
+                 url: '/getetab',
+                 data: { 'ccod':ccod },   
+                 dataType:'json', 
+                  success:function(data)
+                    {
+                
+                      if (!$.trim(data)){
+                      $('#postedisp').empty();
+                      $('#postedisp').append('<option value="0" disabled selected>لا يوجد مؤسسة متاحة الآن</option>');
+                    }
+                    else {
+                       $('#postedisp').empty();
+                       $('#postedisp').append('<option value="0" disabled selected>اختر مؤسسة </option>');
+                    
+                       $.each(data, function(idx,elem){
+                        var x=Math.round(elem.nbrpost);
+                        //alert(x);
+                     $('#postedisp').append('<option value='+elem.idetab+'>'+elem.libetab +'  |   '+'   المراكز المتاحة:   '+ x +'</option>');
+                  
+                    });
+                                    
+                     }} , 
+                    error:function() {
+                        alert('error');
+                       // console.log(data);
+                    }
+                 });
+            
+  }

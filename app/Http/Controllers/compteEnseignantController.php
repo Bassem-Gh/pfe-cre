@@ -24,8 +24,41 @@ class compteEnseignantController extends Controller
     
     ->get();
 
-      return view('c-enseignant.create', compact('data'));
+      
+    $data2 = DB::table('matiere')
+    
+    ->select('matiere.codemat','matiere.libmat')->distinct()
+    
+    ->get();
+
+
+
+      return view('c-enseignant.create', compact('data','data2'));
   }
+
+
+
+    public function getetab(Request $request){
+   
+      if(Request()->ajax()) {
+        $id = $request->all();
+    }
+
+    $gg=$id['ccod'];
+$c=0;
+    $data = DB::table('posteetab')
+    ->join('etab', 'etab.codeetab', '=', 'posteetab.idetab')
+    ->join('matiere', 'matiere.codemat', '=', 'posteetab.codemat')
+
+    ->where('posteetab.codemat','=',$gg)
+    ->where('posteetab.nbrpost','>',0)
+    ->select('posteetab.idetab','etab.libetab','posteetab.nbrpost')->distinct()
+    ->get();
+return response ($data);
+
+    }
+
+
   public function insertpost(Request $request)
     { 
       if(Request()->ajax()) {

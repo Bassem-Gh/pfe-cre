@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function() {
    Route::get('/home', 'HomeController@index');
    //Route::get('logout', 'HomeController@logout');
    Route::get('/demande_de_mouvememnt','compteEnseignantController@create');
+   Route::get('/getetab','compteEnseignantController@getetab');
 });
 
 ////////session admin///////////////
