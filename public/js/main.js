@@ -75,11 +75,12 @@ function insertl() {
  
     $("#msg").show();
 
+    var token = $("#token").val();
     var nbc = $('#nbc').val();
     var etab = $('#etab').val();
     var niv = $('#niv').val();
    
-    var token = $("#token").val();
+   
    
     $.ajax({
       type: "post",
@@ -282,7 +283,8 @@ function myFunction1p() {
                                                     {
                                                     
                                                      $.each(data2, function( idx3,elem3) {
-
+                                                      var codemat=elem3.codemat;
+                                                      var idetab=elem3.id;
                                                      
 
                                                          $toth=(elem3.nb12*12) + (elem3.nb15*15) + (elem3.nb16*16) +(elem3.nb05 *0.5); 
@@ -330,9 +332,37 @@ function myFunction1p() {
                                                                          else{$mf=0;}
          
                                                                         // elem3.nb18
-                                                         //table.append("<tr><td>"+$mf+"</td><td>"+ $ad+"</td><td>"+$totsd.toFixed(2)+"</td><td>"+$md.toFixed(2)+"</td><td>"+(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05)+"</td><td>"+elem3.nb05+"</td><td>"+elem3.nb12+"</td><td>"+elem3.nb15+"</td><td>"+elem3.nb16+"</td><td>"+elem3.nb18+"</td><td>"+Math.trunc(elem3.tot)+"</td><td>"+elem3.libmat+"</td><td>"+elem3.id+"</td></tr>");
+                                                        
                                                          table.append("<tr><td>"+elem3.id+"</td><td>"+elem3.libmat+"</td><td>"+Math.trunc(elem3.tot)+"</td><td>"+elem3.nb18+"</td><td>"+elem3.nb16+"</td><td>"+elem3.nb15+"</td><td>"+elem3.nb12+"</td><td>"+elem3.nb05+"</td><td>"+(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05)+"</td><td>"+$md.toFixed(2)+"</td><td>"+$totsd.toFixed(2)+"</td><td>"+$x+"</td><td>"+$mf+"</td></tr>");
-                                                     });
+                                                  
+                                                         ////////////////insert in table post etab //////////
+                                                            var xx=parseFloat($x);
+                                                          // alert(xx);
+                                                      $("#msg").hide();
+                                                    
+                                                        $("#msg").show();
+                                                        
+                                                        var token = $("#token").val();
+                                                  $.ajax({
+                                                     
+                                                    type: "post",
+                                                    data: "nbrposte=" + xx + "&codemat=" + codemat + "&idetab=" + idetab + "&_token=" + token ,
+                                                    url:'/c-enseignant/insertpost',
+                                                   
+                                                    success:function(data){
+                                                      $("#msg").html("classe has been inserted");
+                                                      $("#msg").fadeOut(2000);
+                                                     
+                                                      $('#etab_table').DataTable().ajax.reload();
+                                                    } , 
+                                                       error:function(data) {
+                                                                           alert('error'); 
+                                                                           
+                                                                            console.log(data);
+                                                                         }
+                                                  });
+                                                   ////////////////////////
+                                                        });
                                                      
          
                                                     }

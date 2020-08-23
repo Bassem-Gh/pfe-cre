@@ -111,6 +111,7 @@ Route::get('/pilotes/saisie_classe_pilote', 'PiloteController@saisiep');
 
 Route::get('/Gestion_Besoin', 'QovexController@indexbesoin')->name('besoin');
 //Route::get('logout', 'QovexController@logout');
+Route::post('/c-enseignant/insertpost', 'compteEnseignantController@insertpost')->name('insertpost');
 
 });
 
