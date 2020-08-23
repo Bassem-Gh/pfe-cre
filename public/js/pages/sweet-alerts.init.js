@@ -163,7 +163,8 @@ File: Sweet alerts
       });
     }); //Parameter
 
-    $('#sa-params').click(function () {
+    $('.sa-params').click(function (event) {
+      event.preventDefault();
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -176,6 +177,7 @@ File: Sweet alerts
         buttonsStyling: false
       }).then(function (result) {
         if (result.value) {
+          $("#myForm").submit();
           Swal.fire({
             title: 'Deleted!',
             text: 'Your file has been deleted.',

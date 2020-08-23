@@ -39,7 +39,7 @@
                     @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-danger" oncl>Delete</button>
                 </form>
             </td>
             <td> {{ $row->libetab }}</td>
