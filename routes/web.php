@@ -104,7 +104,8 @@ Route::get('/lycees/Get_data2','LyceeController@gettableb2');
 //////
 Route::get('/colleges/edit/{id}', 'CollegeController@edit')->name('editcollege');
 Route::get('/lycees/edit_lycee/{id}', 'LyceeController@edit')->name('editlycee');
- 
+Route::get('/enseignants/edit_enseignant/{id}', 'EnseignantController@edit')->name('editenseignant');
+
 Route::get('/lycees/saisie_classe_lycee', 'LyceeController@saisie');
 Route::get('/colleges/saisie_classe_college', 'CollegeController@saisiec');
 Route::get('/piloteslycee/saisie_classe_pilotelc', 'PiloteLcController@saisiepl');
@@ -113,6 +114,7 @@ Route::get('/pilotes/saisie_classe_pilote', 'PiloteController@saisiep');
 Route::get('/Gestion_Besoin', 'QovexController@indexbesoin')->name('besoin');
 //Route::get('logout', 'QovexController@logout');
 Route::post('/c-enseignant/insertpost', 'compteEnseignantController@insertpost')->name('insertpost');
-
+Route::get('profile', 'UserController@profile');
+Route::post('profile/update', 'UserController@update_avatar');
 });
 

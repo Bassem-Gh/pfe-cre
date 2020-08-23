@@ -24,7 +24,7 @@ class EnseignantController extends Controller
     ->get();*/
 
     $data = Enseignant:://leftJoin('grade', 'grade.id_ensg', '=', 'enseignant.id')
-    /*->*/select('enseignant.id', 'enseignant.sec_s', 'enseignant.nom', 'enseignant.prenom', 'enseignant.email', 'enseignant.telephone', 'enseignant.sexe', /*'grade.designation'*/)
+    /*->*/select('enseignant.id','enseignant.unique_id', 'enseignant.sec_s', 'enseignant.nom', 'enseignant.prenom', 'enseignant.email', 'enseignant.telephone', 'enseignant.sexe', /*'grade.designation'*/)
    ->get();
    
    
@@ -38,28 +38,37 @@ class EnseignantController extends Controller
 
   protected function store(Request $request ,User $user)
   {
+    $this->validate($request, [
+        'unique_id'    =>  'required',
+        'email'=>  'required',
+        'sec_s' => 'required',
+        
+    ]);
+
       $enseignant2 =$user->create([
+     /*   'unique_id' => $request['unique_id'],
          'sec_s' => $request['sec_s'],
          'situation_f' => $request['situation_f'],
          'nbr_enf' => $request['nbr_enf'],
          'date_r' =>  date('Y-m-d', strtotime(str_replace('-', '/', $request['date_r']))),
          'statu' => $request['statu'],
-          'date_s' =>  date('Y-m-d', strtotime(str_replace('-', '/', $request['date_s']))),
-         'nom' => $request['nom'],
+          'date_s' =>  date('Y-m-d', strtotime(str_replace('-', '/', $request['date_s']))),*/
+         'name' => $request['nom'],
          'prenom' => $request['prenom'],
-          'nom_fr' => $request['nom_fr'],
-          'prenom_fr' => $request['prenom_fr'],
+         // 'nom_fr' => $request['nom_fr'],
+         // 'prenom_fr' => $request['prenom_fr'],
           'email' => $request['email'],
-          'telephone' => $request['telephone'],
-          'adresse' => $request['adresse'],
+          //'telephone' => $request['telephone'],
+          //'adresse' => $request['adresse'],
           'password' => bcrypt($request['password']),
-          'sexe' => $request['sexe'],
-          'date_n' => date('Y-m-d', strtotime(str_replace('-', '/', $request['date_n']))),
-          'lieu_n' => $request['lieu_n'],
+         // 'sexe' => $request['sexe'],
+          //'date_n' => date('Y-m-d', strtotime(str_replace('-', '/', $request['date_n']))),
+         // 'lieu_n' => $request['lieu_n'],
       ]);
       $enseignant2->save();
       
       $enseignant =new Enseignant([
+        'unique_id' => $request['unique_id'],
         'sec_s' => $request['sec_s'],
         'situation_f' => $request['situation_f'],
         'nbr_enf' => $request['nbr_enf'],
@@ -84,10 +93,27 @@ class EnseignantController extends Controller
       //return redirect::to('enseignants/'.$enseignant->id.'/modifier')->with('message', 'تم الاضافة بنجاح');
   }
 
-  public function update(UpdateEnseignantRequest $request ,User $user)
+  public function edit($id)
   {
-      $userupdate = $user->find($request->id);
+      
+    $data = Enseignant:://leftJoin('grade', 'grade.id_ensg', '=', 'enseignant.id')
+    /*->*/select('id','unique_id', 'sec_s', 'nom', 'prenom','nom_fr','prenom_fr', 'cin_f','photo','adresse','email','password', 'telephone', 'sexe', 
+        'date_n','lieu_n','situation_f','nbr_enf','date_r','statu','date_s','fonction','date_f')
+  ->where('id','=',$id)
+        ->get();
+
+     $enseignant = Enseignant::findOrFail($id);
+     //dd($produit);
+     return view('enseignants.modifier', compact('data'));
+
+  }
+
+  public function update(Request $request, $id)
+  {
+      //$userupdate = $user->find($request->id);
+      $userupdate = Enseignant::findOrFail($id);
       $userupdate->fill([
+        'unique_id' => $request['unique_id'],
           'sec_s' => $request['sec_s'],
           'situation_f' => $request['situation_f'],
           'nbr_enf' => $request['nbr_enf'],
@@ -106,7 +132,8 @@ class EnseignantController extends Controller
           'date_n' => date('Y-m-d', strtotime(str_replace('-', '/', $request['date_n']))),
           'lieu_n' => $request['lieu_n'],
       ])->save();
-      return Redirect::back()->with('message', 'تم التعديل بنجاح');
+      return redirect()->route('enseignants.index')->with('success', 'Data Updated'); 
+     // return Redirect::back()->with('message', 'تم التعديل بنجاح');
   }
 
 
