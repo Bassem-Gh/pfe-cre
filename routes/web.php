@@ -93,6 +93,7 @@ Route::get('/colleges/create_college', 'CollegeController@create')->name('create
 Route::get('/pilotes/create_pilote', 'PiloteController@create')->name('create_pilote');
 Route::get('/piloteslycee/create_pilote_lycee', 'PiloteLcController@create')->name('create_pilote_lycee');
 Route::get('/lycees/create_lycee', 'LyceeController@create')->name('create_lycee');
+Route::delete('/colleges/deletecollege/{id}', 'CollegeController@destroy')->name('college.destroy');
 
 /////besoin par etab ////
 Route::get('/etablissements/Besoin_mat_par_etab', 'LyceeController@indexbetab')->name('Besoin_mat_par_etab');
@@ -102,7 +103,9 @@ Route::get('/lycees/Get_data2','LyceeController@gettableb2');
 
 //////
 Route::get('/colleges/edit/{id}', 'CollegeController@edit')->name('editcollege');
+Route::post('/colleges/update/{id}', 'CollegeController@update')->name('updatecollege');
 Route::get('/lycees/edit_lycee/{id}', 'LyceeController@edit')->name('editlycee');
+
  
 Route::get('/lycees/saisie_classe_lycee', 'LyceeController@saisie');
 Route::get('/colleges/saisie_classe_college', 'CollegeController@saisiec');

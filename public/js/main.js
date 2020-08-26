@@ -1,3 +1,4 @@
+//const { data } = require("jquery");
 
 
 
@@ -355,10 +356,154 @@ function myFunction1p() {
              
          
          }
+
+        
          
          
+         /////////////////////////////////////////////////////////////////delete row in table
+         function deleteRow(id,el) {
+         
+          var token = $("#token").val(); 
+          var table = $('#datatable').DataTable(); // replace with your table id
+          var url =$(el).attr("data-url")
+          
+           Swal.fire({
+             title:'هل تريد الإستمرار في حذف:',
+             text: $(el).attr("data-id") ,
+             type: 'warning',
+             showCancelButton: true,
+             confirmButtonText: 'نعم ',
+             cancelButtonText: 'لا!',
+             confirmButtonClass: 'btn btn-success mt-2',
+             cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+             buttonsStyling: false
+           }).then(function (result) {
+             if (result.value) {
+              $.ajax({ 
+                url:url+id, 
+                type: "DELETE", 
+                data : {'_method':'DELETE','_token':token ,'id': id },
+                success:function (response) {
+
+                table.row($(el).parents("tr")).remove().draw();
+
+                 // $("#success").html(response.message)
+                  Swal.fire({
+                    title: 'تم الحذف',
+                    text: '',
+                    type: 'success'
+                  });
+                },
+                    
+                error : function() {
+                 // console.log(data);
+                  Swal.fire({
+                    title: 'ooops?',
+                    text: response,
+                   type: 'error',
+                    timer:'1500'
+                  })
+                  
+                }
+              });
+             
+             } else if ( // Read more about handling dismissals
+             result.dismiss === Swal.DismissReason.cancel) {
+               Swal.fire({
+                 title: 'تم الإلغاء',
+                 text: '',
+                 type: 'error'
+               });
+             }
+           });
+        
+          }
+
+////////////////////////////////////////////////////////////////////////////edit modal
+////////////////////////////////
+
+  function editRow(id,el) {
+         
+    var token = $("#token").val(); 
+    var table = $('#datatable').DataTable(); // replace with your table id
+    var url =$(el).attr("data-url");
+    var nomEtab =$(el).attr("data-name");
+    var a=$(el).closest("tr").find("td:first-child").text();
+    //var table = $('#datatable').DataTable({});
+    Swal.fire({
+      input: 'text',
+      inputValue: a,
+      title: 'تعديل إسم المؤسسة ',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      showLoaderOnConfirm: true,
+      confirmButtonColor: "#3b5de7",
+      cancelButtonColor: "#f46a6a",
+      preConfirm: function (text) {
+          return new Promise(function (resolve, reject) {
+              setTimeout(function () {
+                  if (text === a) {
+                      reject('nothing changed')
+                      Swal.fire({
+                        title: 'ooops?',
+                        text: "nothing changed",
+                       type: 'error',
+                        timer:'2500'
+                      })
+                  } else {
+                      resolve()
+                  }
+              }, 2000)
+          })
+      },
+      allowOutsideClick: false
+  }).then(function (input) {
+    if (input.value){
+       $.ajax({ 
+        url:url+id, 
+        type: "POST", 
+        data : {'_token':token ,'id': id , 'nomEtab':input.value },
+        success:function (response) {
+        
+          $(el).closest("tr").find("td:first-child").html(input.value);
+         
+          console.log(response);
+        },  
+        error : function(error) {
+          console.log(error);
+          /*Swal.fire({
+            title: 'ooops?',
+            text: "response",
+           type: 'error',
+            timer:'2500'
+          })*/
+          
+        }
+      });
+      Swal.fire({
+          type: 'success',
+          title: 'تم تعديل !',
+          html: a +'->' + input.value
+      })
+    }else if ( // Read more about handling dismissals
+      input.dismiss === Swal.DismissReason.cancel) {
+       /* Swal.fire({
+          title: 'تم الإلغاء',
+          text: '',
+          type: 'error'
+        });*/
+    
+  };
+  });
+
+
+  }
+
          
          
 
 
 
+
+
+         

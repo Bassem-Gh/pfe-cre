@@ -178,6 +178,7 @@ class CollegeController extends Controller
        $produit = Etab::findOrFail($id);
        //dd($produit);
        return view('colleges.edit', compact('data'));
+       
 
     }
 
@@ -190,21 +191,27 @@ class CollegeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $college = Etab::findOrFail($id);
+       /*  $college = Etab::findOrFail($id);
         //$produit2 = ProductLang;
 
        
-        $college->libetab = $request->get('nameetab');
+        $college->libetab = $request->get('nomEtab');
        
 
         //$produit->id_supplier = $request->get('namep');
-       
-       
-
-        
               
-              $college->save();
-        return redirect()->route('colleges.index')->with('success', 'Data Updated');  
+              $college->save(); */
+              $update_etab = Etab::findOrFail($id);
+            //  $id= $request->id;
+              $lib=$request->nomEtab; 
+            $update_etab = DB::table("Etab")->where( 'codeetab', $id) 
+            ->update([
+                'libetab'=>$lib,  
+                ]);
+       // return redirect()->route('colleges.index')->with('success', 'Data Updated');  
+       return response()->json([
+        'data' => 'Data deleted successfully!'
+      ]);
     }
 
     /**
@@ -213,10 +220,17 @@ class CollegeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Etab $college)
+    public function destroy($id)
     {
-        $college->delete();
-        return redirect()->route('colleges.index')
-        ->with('success','etablissement deleted successfully');
-    }
+        $etablissement = Etab::find($id);
+      $etablissement->delete();
+      return response()->json([
+        'message' => 'Data deleted successfully!'
+      ]);
+     /* if($etablissement){
+        echo "done";
+      }else{
+        echo "Error";
+      }*/
+}
 }

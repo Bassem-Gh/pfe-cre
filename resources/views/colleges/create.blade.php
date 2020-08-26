@@ -6,8 +6,8 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') Gestion des besoins  @endslot
-         @slot('li_1') Pages  @endslot
+         @slot('title') College  @endslot
+         @slot('li_1') ajouter un collège  @endslot
      @endcomponent
      
     
@@ -39,24 +39,39 @@
     <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong> : اسم المؤسسة</strong>
-                <input type="text" name="nameetab" class="form-control" placeholder="nom">
+            <div class="form-group row">
+                <label for="example-text-input" class="col-md-2 col-form-label">اسم المؤسسة </label>
+                <div class="col-md-10">
+                <input type="text" name="nameetab" class="form-control" placeholder="اسم المؤسسة">
+            </div>
             </div>
         </div>
 
         
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>categorie :</strong>
-                <input type="text" name="categorie" class="form-control" placeholder="categorie">
+            <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">فئة</label>
+                <div class="col-md-10">
+                    <select name="categorie" class="form-control select2">
+                        <option>--الرجاءالتحديد--</option>
+                            <option value="أ">أ </option>
+                            <option value="ب">ب</option>
+                            <option value="ج">ج</option>
+                        </>
+                    </select>
+                </div>
             </div>
         </div>
+        
+      {{--    <label for="example-text-input" class="col-md-2 col-form-label"></label>  --}}
 
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>type etab</strong>
+                <select name='s'>
+                    <label for="example-text-input" class="col-md-2 col-form-label"></label> 
+                </select>
+                <label for="example-text-input" class="col-md-2 col-form-label">نوع المدرسة</label>
                 <input type="text" name="typeetab" class="form-control" placeholder="typeetab">
             </div>
         </div>
