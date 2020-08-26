@@ -53,6 +53,7 @@
                         <li><a href="{{ route('lycees.index') }}">  Lycée</a></li>
                         <li><a href="{{ route('piloteslycee.index') }}">Colléges techniques </a></li>
                         <li><a href="{{ route('pilotes.index') }}">Etablissement pilote</a></li>
+                        <li><a href="{{ url('/lycees/saisie_classe_lycee') }}">Gestion Classe</a></li>
                     </ul>
                 </li>
 
@@ -72,7 +73,9 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                     <li><a href="{{ route('enseignants.index') }}">Liste des enseignants </a></li>
-
+                
+  
+                    <li><a href="{{ route('enseignants.liste_mouvement') }}">Liste des demandes de mouvement</a></li>
                 </ul>
                 </li>
               

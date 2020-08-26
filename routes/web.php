@@ -52,8 +52,15 @@ Route::get('pages-500', 'QovexController@index');
 Route::group(['middleware' => 'auth'], function() {
    Route::get('/home', 'HomeController@index');
    //Route::get('logout', 'HomeController@logout');
+   Route::resource('c-enseignant','compteEnseignantController');
+
+Route::get('/test','compteEnseignantController@test');
+
    Route::get('/demande_de_mouvememnt','compteEnseignantController@create');
    Route::get('/getetab','compteEnseignantController@getetab');
+   
+Route::post('/c-enseignant/insertscore', 'compteEnseignantController@insertscore');
+
 });
 
 ////////session admin///////////////
@@ -79,7 +86,7 @@ Route::get('/piloteslycee/gettablepl', 'PiloteLcController@getTablepl')->name('g
 //Route::post('/insertclassepl', 'PiloteLcController@insertclassepl')->name('insertclassepl');
                            
 ////////////saisie classe pilote ajax ////
-route::get('/pilotes/gettablep', 'PiloteController@getTablep')->name('gettablep'); 
+route::get('/pilotes/gettablep', 'PiloteController@getTableP')->name('gettablep'); 
 
 Route::resource('/lycees/lycees','LyceeController');
 Route::resource('/pilotes/pilotes','PiloteController');
@@ -113,8 +120,19 @@ Route::get('/pilotes/saisie_classe_pilote', 'PiloteController@saisiep');
 
 Route::get('/Gestion_Besoin', 'QovexController@indexbesoin')->name('besoin');
 //Route::get('logout', 'QovexController@logout');
-Route::post('/c-enseignant/insertpost', 'compteEnseignantController@insertpost')->name('insertpost');
+Route::get('/enseignants/Liste des mouvements', 'EnseignantController@listemouvement')->name('mouvement');
+
+
+Route::get('/enseignants/index','EnseignantController@indexuser')->name('enseignants.liste_mouvement');
+Route::post('/c-enseignant/insertpost','compteEnseignantController@insertpost');
+Route::post('/profile/update', 'UserController@update_avatar');
+
 Route::get('profile', 'UserController@profile');
-Route::post('profile/update', 'UserController@update_avatar');
+
+Route::get('/enseignants/updatemv/{id}', 'EnseignantController@etatmv')->name('enseignants.etatmv');
+
+Route::get('/enseignants/annulermv/{id}', 'EnseignantController@annulermv')->name('enseignants.annulermv');
+Route::delete('/enseignants/deletemv/{id}', 'EnseignantController@deletemv')->name('enseignants.deletemv');
+//Route::delete('/colleges/deletecollege/{id}', 'CollegeController@destroy')->name('college.destroy');
 });
 

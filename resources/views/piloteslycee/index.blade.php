@@ -16,12 +16,14 @@
                                 
                                 <table   class="col-xs-12 col-sm-12 col-md-12 text-center"  border="0">
                                 <tr><td>
-                                    <a class="btn btn-success" href="{{ route('create_pilote_lycee') }}"> إضافة مؤسسة جديدة</a>
-                              </td><td>  
                              
-                                    <a class="btn btn-success" href=" {{ url('/piloteslycee/saisie_classe_pilotelc') }}"> إضافة قسم جديدة</a>
-                            </td></tr>
-                                </table>   
+                                    <a  class="btn btn-outline-primary  waves-effect waves-light" href="{{ route('create_pilote_lycee') }}" >
+                                         <i class="mdi mdi-domain-plus "></i><br>إضافة مؤسسة جديدة</a>
+
+                             
+                              </td></tr>
+                                </table> 
+                                <br>  
                         <div class="card">
                                 <div class="card-body">
 

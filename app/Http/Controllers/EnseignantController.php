@@ -8,24 +8,38 @@ use App\Diplome;
 use App\Grade;
 use App\Decision;
 use App\User;
+use App\Mouvement;
+use DB ;
 use Datatables;
 use Redirect;
 //use Auth;
 class EnseignantController extends Controller
 {
     
-   public function index(){
-/*
-    $data = DB::table('enseignant')
-   
-    
-    ->select('etab.codeetab as id','etab.libetab' )
-    ->where('etab.typeetab','=','30')
-    ->get();*/
 
-    $data = Enseignant:://leftJoin('grade', 'grade.id_ensg', '=', 'enseignant.id')
-    /*->*/select('enseignant.id','enseignant.unique_id', 'enseignant.sec_s', 'enseignant.nom', 'enseignant.prenom', 'enseignant.email', 'enseignant.telephone', 'enseignant.sexe', /*'grade.designation'*/)
-   ->get();
+    public function indexuser()
+    {
+        
+        
+        $data = DB::table('scoremv')
+       ->join('mouvement_mariage', 'mouvement_mariage.unique_id', '=', 'scoremv.unique_id')
+      // ->join('enseignant', 'enseignant.id', '=', 'mouvement_mariage.id')
+       
+       ->select('mouvement_mariage.unique_id as id','mouvement_mariage.prenom','mouvement_mariage.nom','mouvement_mariage.gradeact','mouvement_mariage.matiere','mouvement_mariage.etabact' )
+       ->orderBy('score','asc')
+       ->get();
+
+
+  return view('enseignants.liste_mouvement',compact('data'));
+    }
+
+   public function index(){
+
+
+    $data = Enseignant::leftJoin('grade_ens', 'grade_ens.codegrade', '=', 'enseignant.designation_grade')
+->select('enseignant.id','enseignant.unique_id', 'enseignant.sec_s', 'enseignant.nom', 'grade_ens.libgrade','enseignant.prenom', 'enseignant.email', 'enseignant.telephone', 'enseignant.sexe', /*'grade.designation'*/)
+//->where('')   
+->get();
    
    
     return view('enseignants.index', compact('data'));
@@ -176,11 +190,79 @@ class EnseignantController extends Controller
       return redirect()->route('enseignants.index')->with('message', 'تم حذف الحساب بنجاح');
      // return redirect::back()->with('message', 'تم حذف الحساب بنجاح');
   }
-/*
-  public function supprimer(User $user)
-  {
-      $user = $user->delete();
-      return redirect::back()->with('message', 'تم حذف الحساب بنجاح');
-   }*/
+
+public function listemouvement(){
+
+    return view('enseignants.liste_mouvement');
+}
+
+
+
+//etatmv
+
+
+
+public function etatmv(Request $request, $id)
+{
+    //$userupdate = $user->find($request->id);
+    $userupdate = Mouvement::findOrFail($id);
+   // $userupdate->fill([
+    $userupdate->update(['etat' => true]);
+    $userupdate->save();
+        
+  
+    return redirect()->route('enseignants.liste_mouvement'); 
+   // return Redirect::back()->with('message', 'تم التعديل بنجاح');
+}
+
+public function annulermv(Request $request, $id)
+{
+    //$userupdate = $user->find($request->id);
+    $userupdate = Mouvement::findOrFail($id);
+   // $userupdate->fill([
+    $userupdate->update(['etat' => false]);
+    $userupdate->save();
+        
+  
+    return redirect()->route('enseignants.liste_mouvement'); 
+   // return Redirect::back()->with('message', 'تم التعديل بنجاح');
+}
+
+
+public function deletemv($id)
+    {
+
+
+      $data2 = Mouvement::select('etat')->where('unique_id','=',$id)
+     ->get();
+
+foreach($data2 as $row){
+
+  $etat=$row->etat ;
+}
+
+if($etat!="null")
+{
+
+  $etablissement = Mouvement::find($id);
+  $etablissement->delete();
+ /* return response()->json([
+    'message' => 'Data deleted successfully!'
+  ]);*/
+
+    }
+
+    if($etablissement){
+      echo "Data deleted successfully!";
+    }else{
+      echo "Error";
+    }
+}
+
+
 
 }
+
+
+
+

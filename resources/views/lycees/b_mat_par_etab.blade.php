@@ -1,5 +1,4 @@
-
-          @extends('layouts.master')
+@extends('layouts.master')
 
 @section('title') Gestion des besoins @endsection
 @section('css')
