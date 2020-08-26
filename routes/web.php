@@ -113,6 +113,7 @@ Route::get('/lycees/Get_data2','LyceeController@gettableb2');
 Route::get('/colleges/edit/{id}', 'CollegeController@edit')->name('editcollege');
 Route::post('/colleges/update/{id}', 'CollegeController@update')->name('updatecollege');
 Route::get('/lycees/edit_lycee/{id}', 'LyceeController@edit')->name('editlycee');
+Route::post('/lycees/update/{id}', 'LyceeController@update')->name('updatelycee');
 
 Route::get('/enseignants/edit_enseignant/{id}', 'EnseignantController@edit')->name('editenseignant');
 
