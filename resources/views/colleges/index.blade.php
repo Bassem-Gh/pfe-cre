@@ -33,7 +33,6 @@
                               </td><td>  
 
                              
-                                    <a class="btn btn-outline-primary   waves-effect waves-light" href=" {{ url('/colleges/saisie_classe_college') }}"><i class="mdi mdi-google-classroom"></i><br> إضافة قسم </a>
                             </td></tr>
                                 </table>
                                 <br>
@@ -53,6 +52,7 @@
                                         <tbody id="tbody">
                                         @foreach($data ?? '' as $row)
                                         <tr>
+
         <td class="nomcell" >  {{ $row->libetab }}  </td>
             <td> <a  href="{{ route('colleges.show',$row->id) }}">{{ $row->id }}</a></td>
 

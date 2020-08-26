@@ -44,7 +44,20 @@
         <div class="col-xs-12">
                 <div class="row">
 
+                <div class="form-group{{ $errors->has('unique_id') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                <label for="unique_id" class="control-label">المعرف الوحيد</label>
+                                <input id="unique_id" type="text" class="form-control" name="unique_id" value="{{ old('unique_id') }}" autofocus>
+                                @if ($errors->has('unique_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('unique_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-xs-12">
+
 
                         <div class="form-group{{ $errors->has('sec_s') ? ' has-error' : '' }}">
                             <div class="col-md-12">
@@ -229,7 +242,7 @@
                 <div class="form-group">
                     <div class="col-md-12">
                     <label for="datepicker" class="control-label">تاريخ الميلاد</label>
-                  <input type="text" id="datepicker" class="form-control" name="date_n" value="{{ old('date_n') }}" >
+                  <input type="date" id="datepicker" class="form-control" name="date_n" value="{{ old('date_n') }}" >
                 </div>
                 </div>  
           </div>
@@ -242,7 +255,7 @@
                         <div class="form-group{{ $errors->has('date_s') ? ' has-error' : '' }}">
                             <div class="col-md-12">
                                 <label for="datepicker1" class="control-label">تاريخ أول توظيف</label>
-                                <input type="text" id="datepicker1" class="form-control" name="date_s" value="{{ old('date_s') }}" >
+                                <input type="date" id="datepicker1" class="form-control" name="date_s" value="{{ old('date_s') }}" >
                             </div>
                         </div>
                     </div>
@@ -264,7 +277,7 @@
                         <div class="form-group{{ $errors->has('date_r') ? ' has-error' : '' }}">
                             <div class="col-md-12">
                                 <label for="datepicker2" class="control-label"> تاريخ الالتحاق بالمدرسة</label>
-                                <input type="text" id="datepicker2" class="form-control" name="date_r" value="{{ old('date_r') }}" >
+                                <input type="date" id="datepicker2" class="form-control" name="date_r" value="{{ old('date_r') }}" >
                             </div>
                         </div>
                     </div>

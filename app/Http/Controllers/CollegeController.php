@@ -43,10 +43,26 @@ class CollegeController extends Controller
         ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
         ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
         ->where('etab.codeetab', '=', $gg)
-        ->select('niveau.libniv','niveau.codeniv','etab.libetab','classe.nbclasse' )
-        ->get();
+        ->select('niveau.libniv','niveau.codeniv','etab.libetab','classe.nbclasse' ,'matiere.libmat','matiere.nbh')
+        ->distinct()
+        ->get( );
 
- return response ($data);
+        
+        $data2 = DB::table('classe')
+        ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
+       // ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
+        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+        ->where('etab.codeetab', '=', $gg)
+        ->select('niveau.libniv','niveau.codeniv')
+       
+        ->get( );
+
+        $response= [
+            'data' => $data,
+             'data2' => $data2
+         ];
+
+  return response($response);
       //  echo json_encode($data);
        //exit;
     }

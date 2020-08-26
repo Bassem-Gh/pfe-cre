@@ -45,7 +45,7 @@
              <table id="data" class="table table-bordered table-hover" cellspacing="0">
                <thead>
                <tr>
-                 <th>رقم الضمان الاجتماعي</th>
+                 <th>المعرف الوحيد</th>
                  <th>الاسم</th>
                  <th>اللقب</th>
                  <th>البريد الالكتروني</th>
@@ -60,16 +60,16 @@
                </thead>
                @foreach($data as $row)
              <tr>
-             <td>{{$row->sec_s}}</td>
+             <td>{{$row->unique_id}}</td>
              <td>{{$row->nom}}</td>
              <td>{{$row->prenom}}</td>
              <td>{{$row->email}}</td>
              <td>{{$row->telephone}}</td>
              <td>{{$row->sexe}}</td>
-             <td>{{$row->sec_s}}</td>
+             <td>{{$row->libgrade}}</td>
              <td> <form action="{{ route('enseignants.destroy',$row->id) }}" method="POST">
    
-              <a class="btn btn-primary" href="">تعديل</a>
+              <a class="btn btn-primary" href=" {{ route('editenseignant',$row->id) }}">تعديل</a>
 
               @csrf
               @method('DELETE')

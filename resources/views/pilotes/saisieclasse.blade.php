@@ -110,22 +110,22 @@
     <table id="sample_data"     align="center"  dir="rtl" class="table table-bordered table-striped">
      <thead>
           
-                  <tr>
-                               
-                                  <td>
+                  <tr>  <td>
                                   
-                                  <span lang="ar-tn">المؤسسة التربوية</span></td>
+                                  <span >المؤسسة التربوية</span></td>
                                   
                                   <td>
                                   
                                   
-                                  <span lang="ar-tn">المستوى الدراسي</span></td>
+                                  <span >المستوى الدراسي</span></td>
                                   
                                   <td>
                                   
-                                  <span lang="ar-tn">عدد الفصول</span></td>
-                                  <td>									
-                                  <span lang="ar-tn" ></span></td>
+                                  <span >عدد الفصول</span></td>
+                                									
+                                  <td><span >	المادة</span></td>
+                                 <td> <span >	عدد الساعات</span></td>
+                                  <td><span >	عدد الساعات الجملي</span></td>
                                  
                               </tr>
    

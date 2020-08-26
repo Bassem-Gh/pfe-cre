@@ -32,8 +32,7 @@ class PiloteController extends Controller
      return view('pilotes.index', compact('data'));
     }
 
-    
-    public function getTablep(Request $request){
+    public function getTableP(Request $request){
         if(Request()->ajax()) {
             $id = $request->all();
         }
@@ -45,14 +44,28 @@ class PiloteController extends Controller
         ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
         ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
         ->where('etab.codeetab', '=', $gg)
-        ->select('niveau.libniv','niveau.codeniv','etab.libetab','classe.nbclasse' )
-        ->get();
+        ->select('niveau.libniv','niveau.codeniv','etab.libetab','classe.nbclasse' ,'matiere.libmat','matiere.nbh')
+        ->distinct()
+        ->get( );
 
- return response ($data);
+        $data2 = DB::table('classe')
+        ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
+       // ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
+        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+        ->where('etab.codeetab', '=', $gg)
+        ->select('niveau.libniv','niveau.codeniv')
+       
+        ->get( );
+
+     
+        $response= [
+           'data' => $data,
+            'data2' => $data2
+        ];
+ return response ($response);
       //  echo json_encode($data);
        //exit;
     }
-    
     public function saisiep(Request $request)
     {
         $idd=$request->get('nameetab');

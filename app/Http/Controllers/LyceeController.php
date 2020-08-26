@@ -58,7 +58,7 @@ class LyceeController extends Controller
        ->join('delegation', 'delegation.code', '=', 'etab.delegation')
        
        ->select('etab.codeetab as id','etab.libetab' )
-       ->where('etab.typeetab','=','10')
+       //->where('etab.typeetab','=','10')
        ->get();
 
       
@@ -79,7 +79,6 @@ class LyceeController extends Controller
     return view('lycees.saisieclasse', compact('data1','data2'));
     }
 
-
     public function getTable(Request $request){
         if(Request()->ajax()) {
             $id = $request->all();
@@ -92,8 +91,9 @@ class LyceeController extends Controller
         ->join('matiere', 'matiere.codniv', '=', 'niveau.codeniv')
         ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
         ->where('etab.codeetab', '=', $gg)
-        ->select('niveau.libniv','etab.libetab','classe.nbclasse' )
-        ->get();
+        ->select('niveau.libniv','niveau.codeniv','etab.libetab','classe.nbclasse' ,'matiere.libmat','matiere.nbh')
+        ->distinct()
+        ->get( );
 
  return response ($data);
       //  echo json_encode($data);

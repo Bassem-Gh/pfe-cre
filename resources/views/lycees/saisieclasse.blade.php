@@ -132,21 +132,22 @@
      <thead>
           
                   <tr>
-                               
-                                  <td>
+                  <td>
                                   
-                                  <span lang="ar-tn">المؤسسة التربوية</span></td>
-                                  
-                                  <td>
-                                  
-                                  
-                                  <span lang="ar-tn">المستوى الدراسي</span></td>
+                                  <span >المؤسسة التربوية</span></td>
                                   
                                   <td>
                                   
-                                  <span lang="ar-tn">عدد الفصول</span></td>
-                                  <td>									
-                                  <span lang="ar-tn" ></span></td>
+                                  
+                                  <span >المستوى الدراسي</span></td>
+                                  
+                                  <td>
+                                  
+                                  <span >عدد الفصول</span></td>
+                                									
+                                  <td><span >	المادة</span></td>
+                                 <td> <span >	عدد الساعات</span></td>
+                                  <td><span >	عدد الساعات الجملي</span></td>
                                  
                               </tr>
    

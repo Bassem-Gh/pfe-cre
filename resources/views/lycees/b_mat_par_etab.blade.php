@@ -1,5 +1,4 @@
-
-          @extends('layouts.master')
+@extends('layouts.master')
 
 @section('title') Gestion des besoins @endsection
 @section('css')
@@ -22,7 +21,11 @@
             <div class="col-12">
      <div class="card">
             <div class="card-body">
-{!! csrf_field() !!}
+            
+            <p id="msg" class="alert alert-success "></p> 
+            <input type="hidden" value="{{csrf_token()}}" id="token"/>
+
+            {!! csrf_field() !!}
   
           <script src="{{asset('js/main.js')}}" type="text/javascript"></script>
       

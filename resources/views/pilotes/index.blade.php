@@ -10,18 +10,19 @@
      @endcomponent
  
      <div class="row">
+     <table   class="col-xs-12 col-sm-12 col-md-12 text-center"  border="0">
+                                <tr><td>
+                      
+                                    <a  class="btn btn-outline-primary  waves-effect waves-light" href="{{ route('create_pilote') }}" >
+                                         <i class="mdi mdi-domain-plus "></i><br>إضافة مؤسسة جديدة</a>
+
+                              </td></tr>
+                        </table>
+<br>
                         <div class="col-12">
                         <div class="card">
                                 <div class="card-body">
-                                <table   class="col-xs-12 col-sm-12 col-md-12 text-center"  border="0">
-                                <tr><td>
-                                    <a class="btn btn-success" href="{{ route('create_pilote') }}"> إضافة مؤسسة جديدة</a>
-                              </td><td>  
                              
-                                    <a class="btn btn-success" href=" {{ url('/pilotes/saisie_classe_pilote') }}"> إضافة قسم جديدة</a>
-                            </td></tr>
-                        
-
                                    
 
                                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
