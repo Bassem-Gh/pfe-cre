@@ -109,14 +109,13 @@
             </div>
           </div>
       </div>
-        {{--  
+          
         <div class="col-md-2">
           <div class="mt-2 mt-md-0 mx-auto">
             <button  id="insert"  class="btn btn-primary" onclick="insertl()">ok</button>
           </div>
       </div>     
-  --}}
-  <input type="button" id="insert" value="ok" onclick="insertl()"> ok</b></input>
+  
 
       
 

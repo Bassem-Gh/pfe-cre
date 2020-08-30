@@ -73,7 +73,7 @@ function myFunction1() {
 
 
  
-function insertl() {q
+function insertl() {
   
   
   $("#msg").hide();

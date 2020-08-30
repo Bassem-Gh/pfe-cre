@@ -54,7 +54,7 @@
                                         <tr>
 
         <td class="nomcell" >  {{ $row->libetab }}  </td>
-            <td> <a  href="{{ route('lycees.show',$row->id) }}">{{ $row->id }}</a></td>
+            <td> {{ $row->id }}</td>
 
             <td> 
  

@@ -55,6 +55,7 @@
                         <li><a href="{{ route('pilotes.index') }}">Etablissement pilote</a></li>
                         <li><a href="{{ url('/lycees/saisie_classe_lycee') }}"><i class="far fa-users-class"></i>
                             Gestion Classe</a></li>
+                            <li><a href="{{ route('create_college') }}">Ajouter Etablissement </a></li>
                     </ul>
                 </li>
 
