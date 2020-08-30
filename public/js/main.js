@@ -37,8 +37,9 @@ function myFunction3() {
    /////////////////
    
 function myFunction1() {
-          
-       var idetab = $('#etab').val();
+
+      var table = $('#simple_data').DataTable();
+      var idetab = $('#etab').val();
            $.ajax({
                     type: "Get",
                     url: '/lycees/gettable',
@@ -52,7 +53,8 @@ function myFunction1() {
                   
                     $.each(data, function(idx,elem){
                  
-                      $('#tab').append('<tr><td>'+elem.libetab+'</td><td>'+elem.libniv+'</td><td>'+elem.nbclasse+'</td><td>'+elem.libmat+'</td><td>'+elem.nbh+'</td><td>'+(elem.nbh*elem.nbclasse)+'</td></tr>');
+                      table.row.add([ elem.libetab, elem.libniv ,elem.nbclasse, elem.libmat ,elem.nbh,(elem.nbh*elem.nbclasse)]);
+                      table.draw();
                      // $('#niv').append('<option value='+elem.codeniv+'>'+elem.libniv+'</option>');
                       
                  });
@@ -71,7 +73,7 @@ function myFunction1() {
 
 
  
-function insertl() {
+function insertl() {q
   
   
   $("#msg").hide();
@@ -93,7 +95,6 @@ function insertl() {
        $("#msg").html("classe has been inserted");
         $("#msg").fadeOut(2000);
        
-        $('#etab_table').DataTable().ajax.reload();
       } , 
           error:function(data) {
                              alert('error'); 
@@ -263,15 +264,15 @@ function myFunction1p() {
 
 
 
-        function myFunction4() {
-    
+        //function myFunction4() {
+          $('#mat').on('change', function(){
 
  
           var idop = document.getElementById("mat");
               
                  var ccod = $('#mat').val();
                  alert(ccod);
-               
+
          
                 $.ajax({
                       type: "Get",
@@ -281,10 +282,11 @@ function myFunction1p() {
                        success:function(response)
                          {
                             
-                             $('#tab').empty();
-                      
+                             $('#datatable-buttons').DataTable().clear();
+                            
+                       
                                      var x=0;
-                                       var table = $("#tab");
+                                       var table = $("#datatable-buttons").DataTable();
                                       $.each(response['reql'], function( idx,elem2)
                                       {
                                            
@@ -297,6 +299,8 @@ function myFunction1p() {
                                                  dataType:'json', 
                                                   success:function(data2)
                                                     {
+                                                      
+                           
                                                     
                                                      $.each(data2, function( idx3,elem3) {
                                                       var codemat=elem3.codemat;
@@ -349,9 +353,10 @@ function myFunction1p() {
          
                                                                         // elem3.nb18
                                                         
-                                                         table.append("<tr><td>"+elem3.id+"</td><td>"+elem3.libmat+"</td><td>"+Math.trunc(elem3.tot)+"</td><td>"+elem3.nb18+"</td><td>"+elem3.nb16+"</td><td>"+elem3.nb15+"</td><td>"+elem3.nb12+"</td><td>"+elem3.nb05+"</td><td>"+(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05)+"</td><td>"+$md.toFixed(2)+"</td><td>"+$totsd.toFixed(2)+"</td><td>"+$x+"</td><td>"+$mf+"</td></tr>");
-                                                  
-                                                         ////////////////insert in table post etab //////////
+                                                         table.row.add([ elem3.id, elem3.libmat , Math.trunc(elem3.tot) , elem3.nb18 , elem3.nb16 ,elem3.nb15,elem3.nb12,elem3.nb05,(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05) ,$md.toFixed(2),$totsd.toFixed(2) , $x , $mf]);
+                                                         table.draw();
+
+                                                          ////////////////insert in table post etab //////////
                                                             var xx=parseFloat($x);
                                                            //alert(xx);
                                                       $("#msg").hide();
@@ -378,7 +383,6 @@ function myFunction1p() {
                                                   });
                                                    ////////////////////////
                                                         });
-                                                     
          
                                                     }
                                                  });
@@ -387,7 +391,7 @@ function myFunction1p() {
          
          
                                     });
-                                    
+
                                          
                           } , 
                          error:function(response) {
@@ -399,7 +403,7 @@ function myFunction1p() {
                      
              
          
-         }
+         });
 
         
          
@@ -410,10 +414,12 @@ function myFunction1p() {
           var token = $("#token").val(); 
           var table = $('#datatable').DataTable(); // replace with your table id
           var url =$(el).attr("data-url")
+          var a=$(el).closest("tr").find("td:first-child").text();
+
           
            Swal.fire({
              title:'هل تريد الإستمرار في حذف:',
-             text: $(el).attr("data-id") ,
+             text: a,
              type: 'warning',
              showCancelButton: true,
              confirmButtonText: 'نعم ',
@@ -428,9 +434,9 @@ function myFunction1p() {
                 type: "DELETE", 
                 data : {'_method':'DELETE','_token':token ,'id': id },
                 success:function (response) {
-
+               //   alert( table.row($(el).parents("tr")));
                 table.row($(el).parents("tr")).remove().draw();
-
+                  
                  // $("#success").html(response.message)
                   Swal.fire({
                     title: 'تم الحذف',
@@ -690,7 +696,6 @@ var annee2=diffDays2/360;
                   
                     success:function(data){
                   
-                      $('#etab_table').DataTable().ajax.reload();
                     } , 
                       error:function(data) {
                                           alert('error'); 

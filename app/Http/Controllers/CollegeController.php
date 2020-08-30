@@ -139,7 +139,7 @@ class CollegeController extends Controller
         $college =new Etab([
             'codeetab'=>$request->get('codeetab'),
            'libetab'=>$request->get('nameetab'),
-           'dre'=>$request->get('dre'),
+          // 'dre'=>$request->get('dre'),
            'categorie'=>$request->get('categorie'),
            'typeetab'=>$request->get('typeetab'),
            'delegation'=>$request->get('delegation'),
