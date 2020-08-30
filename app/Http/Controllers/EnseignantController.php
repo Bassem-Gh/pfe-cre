@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Enseignant;
 use App\Diplome;
@@ -12,6 +12,9 @@ use App\Mouvement;
 use DB ;
 use Datatables;
 use Redirect;
+use PDF ; 
+use App;
+use Response;
 //use Auth;
 class EnseignantController extends Controller
 {
@@ -23,15 +26,35 @@ class EnseignantController extends Controller
         
         $data = DB::table('scoremv')
        ->join('mouvement_mariage', 'mouvement_mariage.unique_id', '=', 'scoremv.unique_id')
-      // ->join('enseignant', 'enseignant.id', '=', 'mouvement_mariage.id')
+      // ->join('matiere', 'matiere.codemat', '=', 'mouvement_mariage.matiere')
        
-       ->select('mouvement_mariage.unique_id as id','mouvement_mariage.prenom','mouvement_mariage.nom','mouvement_mariage.gradeact','mouvement_mariage.matiere','mouvement_mariage.etabact' )
-       ->orderBy('score','asc')
+       ->select('mouvement_mariage.unique_id as id','mouvement_mariage.prenom','mouvement_mariage.copybid','mouvement_mariage.nom','mouvement_mariage.gradeact','mouvement_mariage.matiere','mouvement_mariage.etabact' )
+       ->orderBy('scoremv.score','desc')
        ->get();
-
+ 
 
   return view('enseignants.liste_mouvement',compact('data'));
     }
+
+
+    public function downloadPDF($id) {
+    
+     
+  $data = DB::table('mouvement_mariage')
+ 
+  ->select('copybid')
+  ->where('unique_id','=',$id)
+  ->get();
+  
+    foreach($data as $row)
+    {
+      return response()->download(storage_path("app/".$row->copybid));
+    }
+            
+   // return Response::download($file, 'filename.pdf', $headers);
+}
+
+
 
    public function index(){
 

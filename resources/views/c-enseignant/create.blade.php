@@ -43,7 +43,7 @@
 
 <div class="card">
 <div class="card-body">
-<form id="f" action="{{ route('c-enseignant.store') }}" method="POST">
+<form id="f" action="{{ route('c-enseignant.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
   
     <div class="row">
@@ -229,7 +229,50 @@
                </select>
             </div>
         </div>
+<!------- -------->
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            <strong>نسخة من آخر تقرير بيداغوجي </strong>
+            <input type="file" id="copybid" name="copybid" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            <strong>نسخة من عقد زواج </strong>
+            <input type="file" id="copymariage" name="copymariage" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            <strong> مظامين ولادة الأطفال في الكفالة  </strong>
+            <input type="file" id="mathmoun" name="mathmoun" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            <strong>تصريح  على الشرف  بالبناء ممضى من قبل المدرس (بالنسبة الى الذين ليس لهم أطفال) </strong>
+            <input type="file" id="tasrih" name="tasrih" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            <strong> شهادة عمل القرين أو نسخة من بطاقة  الانخراط في الصندوق الوطني</strong>
+            <input type="file" id="copysec" name="copysec" placeholder="">
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+            <strong> شهادة اقامة المترشح خلال السنة الدراسية</strong>
+            <input type="file" id="copyikama" name="copyikama" placeholder="">
+            </div>
+        </div>
 
     </div>
    

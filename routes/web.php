@@ -134,6 +134,15 @@ Route::post('/profile/update', 'UserController@update_avatar');
 Route::get('profile', 'UserController@profile');
 
 Route::get('/enseignants/updatemv/{id}', 'EnseignantController@etatmv')->name('enseignants.etatmv');
+//Route::get('/enseignants/takepdf/{id}','EnseignantController@downloadPDF')->name('pdf');
+//Route::get('/enseignants/download/{path}', 'EnseignantController@downloadPDF')->name('path');
+Route::get('/enseignants/download/{id}', 'EnseignantController@downloadPDF')->name('path');
+
+Route::get('/enseignants/{file_name}', function($path= null)
+{
+  
+    return response()->download(storage_path("app/public/".$path));
+})->name('p');
 
 Route::get('/enseignants/annulermv/{id}', 'EnseignantController@annulermv')->name('enseignants.annulermv');
 Route::delete('/enseignants/deletemv/{id}', 'EnseignantController@deletemv')->name('enseignants.deletemv');

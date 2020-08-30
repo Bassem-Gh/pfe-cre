@@ -11,7 +11,8 @@ class Mouvement extends Model
     protected $table="mouvement_mariage";
     protected $fillable = [
         'unique_id', 'prenom','nom','gradeact','date_mr','etabact','residencey','nomp_f','professionf','residencetf','datetf','daterecrutement',
-        'year','month','day','notebid','datenotebid','nbrenfant','datedebut','matiere','etab_post_dis','created_at','updated_at','etat'
+        'year','month','day','notebid','datenotebid','nbrenfant','datedebut','matiere','etab_post_dis','created_at','updated_at','etat',
+        'copybid','copymariage','mathmoun','tasrih','copysec','copyikama'
     ];
 
 

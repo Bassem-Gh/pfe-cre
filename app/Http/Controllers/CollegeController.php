@@ -136,6 +136,19 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
+      
+      $this->validate($request, [
+        'name' => ['required', 'string', 'max:255'],
+        'codeetab' => ['required'],
+        'libetab' => ['required'],
+        'dre' => ['required'],
+        'categorie' => ['required'],
+        'typeetab' => ['required'],
+        'delegation' => ['required'],
+       // 'email' => ['required', 'string', 'email', 'max:255', 'unique:etab'],
+        //'password' => ['required', 'string', 'min:8', 'confirmed'],
+    ]);
+
         $college =new Etab([
             'codeetab'=>$request->get('codeetab'),
            'libetab'=>$request->get('nameetab'),
