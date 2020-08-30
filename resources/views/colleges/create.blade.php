@@ -67,36 +67,72 @@
 
 
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <select name='s'>
-                    <label for="example-text-input" class="col-md-2 col-form-label"></label> 
-                </select>
-                <label for="example-text-input" class="col-md-2 col-form-label">نوع المدرسة</label>
-                <input type="text" name="typeetab" class="form-control" placeholder="typeetab">
+            <div class="form-group row">
+            
+                    <label for="example-text-input" class="col-md-2 col-form-label">نوع المؤسسة</label> 
+               
+                    <div class="col-md-10">
+                    <select name="typeetab" class="form-control select2">
+                        <option>--الرجاءالتحديد--</option>
+                            <option value="10">معهد</option>
+                            <option value="20">مدرسة إعدادية </option>
+                            <option value="30">مدرسة إعدادية تقنية</option>
+                            <option value="40">مدرسة إعدادية نموذجية</option>
+                            <option value="50">معهد نموذجي</option>
+                       
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>delegation etab</strong>
-                <input type="text" name="delegation" class="form-control" placeholder="delegation">
+            <div class="form-group row">
+            
+                    <label for="example-text-input" class="col-md-2 col-form-label">المعتمدية</label> 
+               
+                    <div class="col-md-10">
+                    <select name="delegation" class="form-control select2">
+                        <option>--الرجاءالتحديد--</option>
+                            <option value="911">نابل</option>
+                            <option value="912">دار شعبان الفهري </option>
+                            <option value="913">قربة</option>
+                            <option value="914">بني خلاد</option>
+                            <option value="915">الميدة</option>
+                            <option value="916">منزل تميم</option>
+                            <option value="917">قليبية</option>
+                            <option value="918">حمام الغزاز</option>
+                            <option value="919">الهوارية</option>
+                            <option value="920">منزل بوزلفة</option>
+                            <option value="921">سليمان</option>
+                            <option value="922">تاكلسة</option>
+                            <option value="923">قرمبالية</option>
+                            <option value="924">بوعرقوب</option>
+                            <option value="925">بني خيار</option>
+                            <option value="926">الحمامات</option>
+                    </select>
+                </div>
             </div>
         </div>
+    
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+       {{--   <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>dre etab</strong>
                 <input type="text" name="dre" class="form-control" placeholder="dre">
             </div>
-        </div>
+        </div>  --}}
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>code etab</strong>
-                <input type="text" name="codeetab" class="form-control" placeholder="codeetab">
+      
+        
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-md-2 col-form-label">رمز المؤسسة </label>
+                    <div class="col-md-10">
+                    <input type="number" name="codeetab" class="form-control" placeholder="رمز المؤسسة">
+                </div>
+                </div>
             </div>
-        </div>
-
        
 
 
