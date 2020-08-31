@@ -10,7 +10,7 @@ use App\Score;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use pdf;
 
 class compteEnseignantController extends Controller
 {
@@ -144,6 +144,8 @@ return response ($data);
        'matiere'=>$request->get('matiere'),
        'etab_post_dis'=>$request->get('etab_post_dis'),
        'datedebut'=>$request->get('datedebut'),
+       'copybid'=>$request->file('copybid')->store('public/uploads'),
+      
        
 
       

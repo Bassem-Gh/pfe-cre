@@ -42,6 +42,7 @@
                        <th> الرتبة الحالية</th>
                        <th>  المادة المطلوبة   </th>
                        <th> المؤسسة التربوية التي يعمل بها المدرس  </th>
+                       <th>  الوثائق المطلوبة </th>
                        <th><i class="dripicons-toggles"></i></th>
                     </tr>
                 </thead>
@@ -53,9 +54,10 @@
                         <td> {{  $row->prenom}} </td>
                         <td> {{  $row->nom}} </td>
                         <td>{{  $row->gradeact}}  </td>
-                        <td> {{  $row->matiere}} </td>
+                        <td>{{$row->matiere}} </td>
                         <td> {{  $row->etabact}} </td>
-                        <td> 
+                       <td><a href="{{ route('path',$row->id) }}"> <button>Download PDF</button> </a></td>
+                        <td> <!-- ['id' => $row->id, 'path' => $row->copybid] -->
            
             
             <a class="btn btn-primary" href="{{ route('enseignants.etatmv',$row->id) }}" >مقبول  <i class="bx bx-edit-alt" ></i> </a>
