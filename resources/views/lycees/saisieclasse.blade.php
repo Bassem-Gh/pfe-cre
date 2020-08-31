@@ -36,17 +36,19 @@
 	
 	
 
-              <form name="insertion"  methode="POST" >
+            <form name="insertion"  methode="POST" >
                 
                 <!----------- jdida ------>
                 <p id="msg" class="alert alert-success "></p> 
+                
                 <input type="hidden" value="{{csrf_token()}}" id="token"/>
+
                 {!! csrf_field() !!}
                 <div class="col-xs-12 col-sm-12 col-md-12">
                   <div class="form-group row">
                   <label for="example-text-input" class="col-md-2 col-form-label">المؤسسة التربوية</label>
                       <div class="col-md-10">
-                          <select id='etab' name="etab"  onchange='myFunction1()'class="form-control select2">
+                          <select id='etab' name="etab"  onchange='myFunction1()'class="form-control select2 form-control">
                               <option>--الرجاءالتحديد--</option>
                               @foreach($data1 as $row1)
                               <option value="{{ $row1->id}}" > {{ $row1->libetab }} </option>
@@ -104,19 +106,19 @@
               <label for="example-text-input" class="col-md-2 col-form-label">عدد الفصول </label>
               <div class="col-md-10"> 
               <div class="form-group">
-                <input  id="nbc" type="number"  name="nbc"   data-toggle="touchspin" type="text">
+                <input  id="nbc" type="number"  name="nbc" class="form-control"  data-toggle="touchspin" type="text">
             </div>
             </div>
           </div>
       </div>
-        {{--  
+      
         <div class="col-md-2">
           <div class="mt-2 mt-md-0 mx-auto">
             <button  id="insert"  class="btn btn-primary" onclick="insertl()">ok</button>
           </div>
       </div>     
-  --}}
-  <input type="button" id="insert" value="ok" onclick="insertl()"> ok</b></input>
+ 
+ 
 
       
 
