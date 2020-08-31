@@ -111,19 +111,21 @@
             </div>
           </div>
       </div>
-      
-        <div class="col-md-2">
-          <div class="mt-2 mt-md-0 mx-auto">
-            <button  id="insert"  class="btn btn-primary" onclick="insertl()">ok</button>
-          </div>
-      </div>     
- 
- 
+          
+           
 
+ 
+       
+   
+
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center"> 
+          <input   id="insert"  type="button" class="btn btn-primary inner" onclick="insertl()" value="      OK      ">
+  </div>
+    
       
 
 </form>
-
+<br>
   
    <div class="table-responsive">
    

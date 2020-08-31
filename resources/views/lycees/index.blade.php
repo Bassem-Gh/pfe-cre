@@ -13,7 +13,7 @@
 
     @component('common-components.breadcrumb')
          @slot('title') établissements  @endslot
-         @slot('li_1') College  @endslot
+         @slot('li_1') Lycée @endslot
          
      @endcomponent
  
