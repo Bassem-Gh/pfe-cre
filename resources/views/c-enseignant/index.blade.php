@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master-layouts')
 
 @section('title') Tableau de bord @endsection
 @section('css')
@@ -9,10 +9,6 @@
 @endsection
 @section('content')
 
-    @component('common-components.breadcrumb')
-         @slot('title')  tableau de bord   @endslot
-         @slot('li_1') statistiques @endslot
-     @endcomponent
      
     
 

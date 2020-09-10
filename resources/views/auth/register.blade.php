@@ -21,7 +21,7 @@
                             <div class="bg-login-overlay"></div>
                             <div class="position-relative">
                                 <h5 class="text-white font-size-20">Free {{ __('Register') }}</h5>
-                                <p class="text-white-50 mb-0">Get your free Qovex account now</p>
+                                <p class="text-white-50 mb-0">Get your free  account now</p>
                                 <a href="index" class="logo logo-admin mt-4">
                                     <img src="/images/logo-sm-dark.png" alt="" height="30">
                                 </a>
@@ -65,6 +65,16 @@
                                     <div class="form-group">
                                         <label for="userpassword">{{ __('Confirm Password') }}</label>
                                         <input type="password" name="password_confirmation" class="form-control" id="userconfirmpassword" placeholder="Confirm password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="uniqueid">{{ __('Unique Identifiant') }}</label>
+                                        <input type="text" name="unique_id" class="form-control" id="unique_id" placeholder="Unique Identifiant">
+                                        @error('unique_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
 
                                     <div class="mt-4">

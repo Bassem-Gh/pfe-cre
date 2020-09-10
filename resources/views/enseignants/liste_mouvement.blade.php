@@ -41,7 +41,7 @@
                         <th>اللقب</th>
                        <th> الرتبة الحالية</th>
                        <th>  المادة المطلوبة   </th>
-                       <th> المؤسسة التربوية التي يعمل بها المدرس  </th>
+                       <th> المؤسسة التربوية التي يعمل بها المدرس </th>
                        <th>  الوثائق المطلوبة </th>
                        <th><i class="dripicons-toggles"></i></th>
                     </tr>
@@ -56,8 +56,43 @@
                         <td>{{  $row->gradeact}}  </td>
                         <td>{{$row->matiere}} </td>
                         <td> {{  $row->etabact}} </td>
-                       <td><a href="{{ route('path',$row->id) }}"> <button>Download PDF</button> </a></td>
-                        <td> <!-- ['id' => $row->id, 'path' => $row->copybid] -->
+                       <td> 
+                            <table boeder="0"> <tr><td>
+                                    <a href="{{ route('path',$row->id) }}">
+    
+                                  <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i>   نسخة من آخر تقرير بيداغوجي
+                    </button></a>
+                                    </td></tr>
+
+                                    <tr><td> <a href="{{ route('copyikama',$row->id) }}">  <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> نسخة من شهادة الإقامة 
+  </button> </a></td></tr>
+
+                                    <tr><td> <a href="{{ route('pathm',$row->id) }}">
+                                     <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> نسخة من عقد الزواج</button>
+                                      </a></td></tr>
+
+                                    <tr><td> <a href="{{ route('mathmoun',$row->id) }}"> 
+                                  
+                                    <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> مضامين</button> 
+                                    </a></td></tr>
+
+                                    <tr><td> <a href="{{ route('tasrih',$row->id) }}"> 
+                                    <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> تصريح على الشرف بالبناء</button> 
+                                    </a></td></tr>
+
+                                    <tr><td> <a href="{{ route('copysec',$row->id) }}"> 
+                        
+                                    <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> شهادة عمل القرين أو نسخة من بطاقة الانخراط في الصندوق الوطني</button>
+                                     </a></td></tr>
+                            </table>
+                       </td>
+                        <td> 
            
             
             <a class="btn btn-primary" href="{{ route('enseignants.etatmv',$row->id) }}" >مقبول  <i class="bx bx-edit-alt" ></i> </a>
@@ -65,6 +100,70 @@
             @csrf
             @method('DELETE')
             <button  type="button" class="btn btn-danger waves-effect remove-user sa-params"  onclick="deletemvv({{ $row->id }},this)" data-url= "/enseignants/deletemv/" data-id="{{ $row->prenom }}" ><i class="far fa-trash-alt"></i></button>
+          <!--   <button type="submit"   class="btn btn-danger waves-effect waves-light sa-params">حذف </button> -->
+
+          
+
+            </td>
+
+            </tr>
+                @endforeach                 
+                </tbody>
+                
+                 
+                <tbody>
+            @foreach($data2 as $row2)
+                                <tr>
+                        <td>{{  $row2->id}}    </td>
+                        <td> {{  $row2->prenom}} </td>
+                        <td> {{  $row2->nom}} </td>
+                        <td>{{  $row2->gradeact}}  </td>
+                        <td>{{$row2->matiere}} </td>
+                        <td> {{  $row2->etabact}} </td>
+                       <td> 
+                            <table boeder="0"> <tr><td>
+                                    <a href="{{ route('path2',$row2->id) }}">
+    
+                                  <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i>   نسخة من آخر تقرير بيداغوجي
+                    </button></a>
+                                    </td></tr>
+
+                                    <tr><td> <a href="{{ route('copyikama2',$row2->id) }}">  <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> نسخة من شهادة الإقامة 
+  </button> </a></td></tr>
+
+                                    <tr><td> <a href="{{ route('pathm2',$row2->id) }}">
+                                     <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> نسخة من عقد الزواج</button>
+                                      </a></td></tr>
+
+                                    <tr><td> <a href="{{ route('mathmoun2',$row2->id) }}"> 
+                                  
+                                    <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> مضامين</button> 
+                                    </a></td></tr>
+
+                                    <tr><td> <a href="{{ route('tasrih2',$row2->id) }}"> 
+                                    <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> تصريح على الشرف بالبناء</button> 
+                                    </a></td></tr>
+
+                                    <tr><td> <a href="{{ route('copysec2',$row2->id) }}"> 
+                        
+                                    <button type="button" class="btn btn-light waves-effect">
+                        <i class="fas fa-file-download fa-lg"></i> شهادة عمل القرين أو نسخة من بطاقة الانخراط في الصندوق الوطني</button>
+                                     </a></td></tr>
+                            </table>
+                       </td>
+                        <td> 
+           
+            
+            <a class="btn btn-primary" href="{{ route('enseignants.etatmv2',$row2->id) }}" >مقبول  <i class="bx bx-edit-alt" ></i> </a>
+            <a class="btn btn-danger waves-effect waves-light sa-params" href="{{ route('enseignants.annulermv2',$row2->id) }}" >مرفوض  <i class="bx bx-edit-alt" ></i> </a>
+            @csrf
+            @method('DELETE')
+            <button  type="button" class="btn btn-danger waves-effect remove-user sa-params"  onclick="deletemvv({{ $row2->id }},this)" data-url= "/enseignants/deletemv2/" data-id="{{ $row2->prenom }}" ><i class="far fa-trash-alt"></i></button>
           <!--   <button type="submit"   class="btn btn-danger waves-effect waves-light sa-params">حذف </button> -->
 
           

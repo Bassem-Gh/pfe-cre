@@ -6,6 +6,8 @@ use App\Etab ;
 use App\PosteEtab ;
 use App\Grade;
 use App\Mouvement;
+use App\MouvementN;
+use App\Enseignant;
 use App\Score;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -16,6 +18,25 @@ class compteEnseignantController extends Controller
 {
 
 
+  public function index()
+  {
+
+    $user = auth()->user();
+
+    $uid=$user->unique_id;
+
+    $data = Enseignant::leftJoin('grade_ens', 'grade_ens.codegrade', '=', 'enseignant.designation_grade')
+    ->leftJoin('matiere', 'matiere.codemat', '=', 'enseignant.matiere')
+->select( 'enseignant.nom', 'grade_ens.libgrade','enseignant.prenom','enseignant.nbr_enf','matiere.libmat','matiere.codemat' )
+->distinct()   
+->where('enseignant.unique_id','=',$uid)
+->get();
+
+       
+    return view('home', compact('data'));
+  }
+
+
 
 public function show(){
 
@@ -23,12 +44,16 @@ public function show(){
 }
   public function create()
   {
+    $user = auth()->user();
+
+    $uid=$user->unique_id;
+
+
+
     $data = DB::table('etab')
     ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
     ->join('delegation', 'delegation.code', '=', 'etab.delegation')
-    
     ->select('etab.codeetab as id','etab.libetab' )
-    
     ->get();
 
       
@@ -45,11 +70,63 @@ public function show(){
     
     ->get();
 
+    $data4 = Enseignant::leftJoin('grade_ens', 'grade_ens.codegrade', '=', 'enseignant.designation_grade')
+    ->leftJoin('matiere', 'matiere.codemat', '=', 'enseignant.matiere')
+->select( 'enseignant.nom', 'grade_ens.libgrade','enseignant.prenom','enseignant.nbr_enf','matiere.libmat','matiere.codemat' )
+->distinct()   
+->where('enseignant.unique_id','=',$uid)
+->get();
 
 
 
-      return view('c-enseignant.create', compact('data','data2','data3'));
+  return view('c-enseignant.create', compact('data','data2','data3','data4'));
   }
+
+//////////////////////
+
+public function create2()
+{
+  $user = auth()->user();
+
+    $uid=$user->unique_id;
+
+  $data = DB::table('etab')
+  ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
+  ->join('delegation', 'delegation.code', '=', 'etab.delegation')
+  
+  ->select('etab.codeetab as id','etab.libetab' )
+  
+  ->get();
+
+    
+  $data2 = DB::table('matiere')
+  
+  ->select('matiere.codemat','matiere.libmat')->distinct()
+  
+  ->get();
+
+  
+  $data3 = DB::table('grade_ens')
+  
+  ->select('codegrade','libgrade')
+  
+  ->get();
+
+
+    $data4 = Enseignant::leftJoin('grade_ens', 'grade_ens.codegrade', '=', 'enseignant.designation_grade')
+    ->leftJoin('matiere', 'matiere.codemat', '=', 'enseignant.matiere')
+->select( 'enseignant.nom', 'grade_ens.libgrade','enseignant.prenom','enseignant.nbr_enf','matiere.libmat','matiere.codemat' )
+->distinct()   
+->where('enseignant.unique_id','=',$uid)
+->get();
+
+
+    return view('c-enseignant.mouvement', compact('data','data2','data3','data4'));
+}
+
+
+
+
 
 
 
@@ -121,6 +198,45 @@ return response ($data);
     
     public function store(Request $request)
     {
+      $this->validate($request, [
+     
+        'prenom' => ['required'],
+       'nom' => ['required'],
+       'gradeact' => ['required'],
+        'date_mr' => ['required'],
+        'etabact' => ['required'],
+        'residencey' => ['required'],
+       'nomp_f' => ['required'],
+       'professionf' => ['required'],
+        'residencetf' => ['required'],
+        'datetf' => ['required'],
+         'daterecrutement' => ['required'],
+        'year' => ['required'],
+       'month' => ['required'],
+       'day' => ['required'],
+        'residencetf' => ['required'],
+        'notebid' => ['required'],
+        'datenotebid' => ['required'],
+        'nbrenfant' => ['required'],
+       'matiere' => ['required'],
+       'etab_post_dis' => ['required'],
+        'datedebut' => ['required'],
+        'copybid' => ['required'],
+
+        'datenotebid' => ['required'],
+        'nbrenfant' => ['required'],
+       'copymariage' => ['required'],
+
+       'copyikama' => ['required'],
+        'datedebut' => ['required'],
+        'mathmoun' => ['required'],
+        'copysec' => ['required'],
+        
+        
+      
+    ]);
+
+      
       $mouvement =new Mouvement([
        
        'unique_id'=>$request->get('unique_id'),
@@ -145,8 +261,11 @@ return response ($data);
        'etab_post_dis'=>$request->get('etab_post_dis'),
        'datedebut'=>$request->get('datedebut'),
        'copybid'=>$request->file('copybid')->store('public/uploads'),
-      
-       
+      'copymariage'=>$request->file('copymariage')->store('public/uploads'),
+       'mathmoun'=>$request->file('mathmoun')->store('public/uploads'),
+       'tasrih'=>$request->file('tasrih')->store('public/uploads'),
+       'copysec'=>$request->file('copysec')->store('public/uploads'),
+       'copyikama'=>$request->file('copyikama')->store('public/uploads'),
 
       
    ]);
@@ -157,6 +276,97 @@ return response ($data);
     ->with('success','etablissement created successfully.');*/
     }
     
+
+    /////////ajouter dans la table mouvement normal/////////
+    
+    public function store2(Request $request)
+    {
+      $this->validate($request, [
+     
+        'prenom' => ['required'],
+       'nom' => ['required'],
+       'gradeact' => ['required'],
+        'date_mr' => ['required'],
+        'etabact' => ['required'],
+        'residencey' => ['required'],
+       'nomp_f' => ['required'],
+       'professionf' => ['required'],
+        'residencetf' => ['required'],
+        'datetf' => ['required'],
+         'daterecrutement' => ['required'],
+        'year' => ['required'],
+       'month' => ['required'],
+       'day' => ['required'],
+        'residencetf' => ['required'],
+        'notebid' => ['required'],
+        'datenotebid' => ['required'],
+        'nbrenfant' => ['required'],
+       'matiere' => ['required'],
+       'etab_post_dis' => ['required'],
+        'datedebut' => ['required'],
+        'copybid' => ['required'],
+
+        'datenotebid' => ['required'],
+        'nbrenfant' => ['required'],
+       'copymariage' => ['required'],
+
+       'copyikama' => ['required'],
+        'datedebut' => ['required'],
+        'mathmoun' => ['required'],
+        'copysec' => ['required'],
+        'gouvernorat' => ['required'],
+        'obstructionp' => ['required'],
+        'datedemarcation' => ['required'],
+        'etats' => ['required'],
+        
+      
+    ]);
+
+
+      $mouvement =new MouvementN([
+       
+       'unique_id2'=>$request->get('unique_id'),
+       'matiere'=>$request->get('matiere'),
+       'prenom'=>$request->get('prenom'),
+       'nom'=>$request->get('nom'),
+       'date_ns'=>$request->get('date_ns'),
+       'lieu'=>$request->get('lieu'),
+       'gouvernorat'=>$request->get('gouvernorat'),
+       'tel'=>$request->get('tel'),
+       'residencey'=>$request->get('residencey'),
+       'etatm'=>$request->get('etatm'),
+       'nomp_f'=>$request->get('nomp_f'),
+       'professionf'=>$request->get('professionf'),
+       'residencetf'=>$request->get('residencetf'),
+       'etab_post_dis'=>$request->get('etab_post_dis'),
+       'nbrenfant'=>$request->get('nbrenfant'),
+       'obstructionenf'=>$request->get('obstructionenf'),
+       'obstructionp'=>$request->get('obstructionp'),
+       'daterecrutement'=>$request->get('daterecrutement'),
+       'datedemarcation'=>$request->get('datedemarcation'),
+       'etats'=>$request->get('etats'),
+       'etabact'=>$request->get('etabact'),
+       'datedebut'=>$request->get('datedebut'),
+       'gradeact'=>$request->get('gradeact'),
+       'notebid'=>$request->get('notebid'),  
+       'datenotebid'=>$request->get('datenotebid'),
+       'decription'=>$request->get('decription'),
+       'copybid'=>$request->file('copybid')->store('public/uploads'),
+      'copymariage'=>$request->file('copymariage')->store('public/uploads'),
+       'mathmoun'=>$request->file('mathmoun')->store('public/uploads'),
+       'tasrih'=>$request->file('tasrih')->store('public/uploads'),
+       'copysec'=>$request->file('copysec')->store('public/uploads'),
+       'copyikama'=>$request->file('copyikama')->store('public/uploads')
+
+      
+   ]);
+   $mouvement->save();
+  //dd($mouvement);
+  return view('c-enseignant.index');
+  /*  return redirect()->route('c-enseignant.create')
+    ->with('success','etablissement created successfully.');*/
+    }
+
 
     public function test(Request $request)
 {
@@ -209,5 +419,24 @@ $response = array(
 }
 
 
+
+
+public function seting(){
+  $user = auth()->user();
+
+  $uid=$user->unique_id;
+
+  $data = Enseignant::leftJoin('grade_ens', 'grade_ens.codegrade', '=', 'enseignant.designation_grade')
+  ->leftJoin('matiere', 'matiere.codemat', '=', 'enseignant.matiere')
+  ->select( 'enseignant.nom','enseignant.nom_fr','enseignant.telephone','enseignant.situation_f','enseignant.nbr_enf','enseignant.sexe','enseignant.sec_s','enseignant.lieu_n','enseignant.date_n','enseignant.adresse', 'grade_ens.libgrade','enseignant.prenom','enseignant.prenom_fr','enseignant.nbr_enf','matiere.libmat','matiere.codemat' )
+  ->distinct()   
+  ->where('enseignant.unique_id','=',$uid)
+  ->get();
+
+     
+  return view('c-enseignant.seting', compact('data'));
+
+
+}
 
 }

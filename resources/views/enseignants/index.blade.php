@@ -48,7 +48,7 @@
                  <th>المعرف الوحيد</th>
                  <th>الاسم</th>
                  <th>اللقب</th>
-                 <th>البريد الالكتروني</th>
+                 <th> المادة التي يدرسها الأستاذ</th>
                  <th>رقم الهاتف</th>
                  <th>الجنس</th>
                    <th>الرتبة</th>
@@ -63,7 +63,7 @@
              <td>{{$row->unique_id}}</td>
              <td>{{$row->nom}}</td>
              <td>{{$row->prenom}}</td>
-             <td>{{$row->email}}</td>
+             <td>{{$row->libmat}}</td>
              <td>{{$row->telephone}}</td>
              <td>{{$row->sexe}}</td>
              <td>{{$row->libgrade}}</td>

@@ -35,7 +35,7 @@
     <!-- END wrapper -->
 </div>
 <!-- Right Sidebar -->
-@include('layouts.right-sidebar')
+
 <!-- END Right Sidebar -->
 
 @include('layouts.footer-script')

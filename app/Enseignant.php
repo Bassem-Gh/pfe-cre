@@ -11,7 +11,7 @@ class Enseignant extends Model
     protected $table="enseignant";
     protected $fillable = [
         'id','unique_id', 'sec_s', 'nom', 'prenom','nom_fr','prenom_fr', 'cin_f','photo','adresse','email','password', 'telephone', 'sexe', 
-        'date_n','lieu_n','situation_f','nbr_enf','date_r','statu','date_s','fonction','date_f',
+        'date_n','lieu_n','situation_f','nbr_enf','date_r','statu','date_s','fonction','date_f','designation_grade','matiere'
     ];
 
 }

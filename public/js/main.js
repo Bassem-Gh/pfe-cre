@@ -92,7 +92,7 @@ function insertl() {
       data: "nbc=" + nbc + "&etab=" + etab + "&niv=" + niv + "&_token=" + token ,
       url:'/lycees/insertclasse',
       success:function(data){
-       $("#msg").html("classe has been inserted");
+       $("#msg").html("تم تعديل عدد الأقسام بنجاح");
         $("#msg").fadeOut(2000);
        
       } , 
@@ -229,7 +229,7 @@ function myFunction1p() {
   //var id = document.getElementById('sect');
       
        var idetab = $('#etab').val();
-      alert(idetab);
+     // alert(idetab);
   
   
        $.ajax({
@@ -271,7 +271,7 @@ function myFunction1p() {
           var idop = document.getElementById("mat");
               
                  var ccod = $('#mat').val();
-                 alert(ccod);
+                // alert(ccod);
 
          
                 $.ajax({
@@ -595,20 +595,60 @@ function myFunction1p() {
                  });
             
   }
+/////////////////test register ///////////////
+function testregister(){
+  var id =$('#unique_id').val();
+
+$.ajax({
+  type: "Get",
+
+  url: '/registerE',
+  data: { 'id':id },   
+  dataType:'json', 
+  success:function(data)
+    {
+      if (!$.trim(data)){
+        alert('المعرف الوحيد خاطئ');
+      }
+else
+
+    $('#f').submit();
+  }
+  
+  });
 
 
-
+  }
   /////////////////test unique id mouvement ///////////////////
+  function testm2() {
+    var id =$('#unique_id').val();
+    $.ajax({
+      type: "Get",
 
+      url: '/test',
+      data: { 'id':id },   
+      dataType:'json', 
+      success:function(data)
+        {
+          if (!$.trim(data)){
+            alert('المعرف الوحيد خاطئ');
+          }
+   /* else
 
+        $('#f').submit();*/
+        }
+      });
+   }
+/////////////////////////////////////
   function testm() { 
-
+    var etat =$('#etat').val();
     var id =$('#unique_id').val();
     var token = $("#token").val();
-    var nbr =$('#nbrenfant').val();
+    var nbr =$('#nbrenfant').val(); 
     var datedebut =$('#datedebut').val();
     var daterecrutement =$('#daterecrutement').val();
     var notebid =$('#notebid').val();
+   // alert(etat);
 $dt=0;
     $nbrr=0;
 
