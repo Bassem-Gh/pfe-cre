@@ -1,13 +1,13 @@
 
 @extends('layouts.master')
 
-@section('title') Gestion des besoins @endsection
+@section('title') Demande de mouvement @endsection
 
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') Gestion des besoins  @endslot
-         @slot('li_1') Pages  @endslot
+         @slot('title') enseignant  @endslot
+         @slot('li_1')  Demande de mouvement   @endslot
      @endcomponent
      
     

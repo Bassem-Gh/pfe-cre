@@ -25,8 +25,8 @@
                         {!! csrf_field() !!}
 
                         
-                          <div class="col-12">
-                        <table   class="col-xs-12 col-sm-12 col-md-12 text-center"  border="0">
+                       <div class="col-12">
+                       {{--      <table   class="col-xs-12 col-sm-12 col-md-12 text-center"  border="0">
                                 <tr><td>
                                     <a  class="btn btn-outline-primary  waves-effect waves-light" href="{{ route('create_college') }}" >
                                          <i class="mdi mdi-domain-plus "></i><br>إضافة مؤسسة جديدة</a>
@@ -34,7 +34,7 @@
 
                              
                             </td></tr>
-                                </table>
+                                </table>  --}}
                                 <br>
                         <div class="card">
                                 <div class="card-body">

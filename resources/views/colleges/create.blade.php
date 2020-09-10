@@ -1,13 +1,13 @@
 
 @extends('layouts.master')
 
-@section('title') Gestion des besoins @endsection
+@section('title') etablissement  @endsection
 
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') College  @endslot
-         @slot('li_1') ajouter un collège  @endslot
+         @slot('title') etablissement   @endslot
+         @slot('li_1') ajouter un etablissement  @endslot
      @endcomponent
      
     

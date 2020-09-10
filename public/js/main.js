@@ -56,7 +56,7 @@ function myFunction1() {
                       table.row.add([ elem.libetab, elem.libniv ,elem.nbclasse, elem.libmat ,elem.nbh,(elem.nbh*elem.nbclasse)]);
                       table.draw();
                      // $('#niv').append('<option value='+elem.codeniv+'>'+elem.libniv+'</option>');
-                      
+
                  });
                
                   } , 
@@ -480,6 +480,7 @@ function myFunction1p() {
     var nomEtab =$(el).attr("data-name");
     var a=$(el).closest("tr").find("td:first-child").text();
     //var table = $('#datatable').DataTable({});
+    alert(id);
     Swal.fire({
       input: 'text',
       inputValue: a,

@@ -112,16 +112,7 @@
           </div>
       </div>
           
-<<<<<<< HEAD
            
-=======
-        <div class="col-md-2">
-          <div class="mt-2 mt-md-0 mx-auto">
-            <button  id="insert"  class="btn btn-primary" onclick="insertl()">ok</button>
-          </div>
-      </div>     
-  
->>>>>>> a2fc2955dee53bd7febd292f83e17e70e0953ea0
 
  
        
