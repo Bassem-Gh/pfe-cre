@@ -51,7 +51,7 @@
                 <div class="form-group{{ $errors->has('unique_id') ? ' has-error' : '' }}">
                             <div class="col-md-12">
                                 <label for="unique_id" class="control-label">المعرف الوحيد</label>
-                                <input id="unique_id" type="text" class="form-control" name="unique_id" value="{{ $row->unique_id }}" autofocus>
+                                <input id="unique_id" type="number" max="9999999999" class="form-control" name="unique_id" value="{{ $row->unique_id }}" autofocus>
                                 @if ($errors->has('unique_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('unique_id') }}</strong>
@@ -66,7 +66,7 @@
                         <div class="form-group{{ $errors->has('sec_s') ? ' has-error' : '' }}">
                             <div class="col-md-12">
                                 <label for="sec_s" class="control-label">رقم الضمان الاجتماعي</label>
-                                <input id="sec_s" type="text" class="form-control" name="sec_s" value="{{ $row->sec_s }}" autofocus>
+                                <input id="sec_s" type="number" class="form-control" name="sec_s" value="{{ $row->sec_s }}" autofocus>
                                 @if ($errors->has('sec_s'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('sec_s') }}</strong>
@@ -101,38 +101,12 @@
                             </div>
                         </div> 
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-
-                            <div class="col-md-12">
-                            <label for="email" class="control-label">البريد الالكتروني</label>
-                             <input id="email" type="email" class="form-control" name="email" value="{{ $row->email }}" >
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                         </div>
-
-                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-
-                            <div class="col-md-12">
-                            <label for="password" class="control-label"> كلمة السر</label>
-                            <input id="password" type="password" class="form-control" name="password" value="{{ $row->password }}" >
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            </div>
+                       
 
                         <div class="form-group{{ $errors->has('nbr_enf') ? ' has-error' : '' }}">
                             <div class="col-md-12">
                                 <label for="nbr_enf" class="control-label">عدد الاطفال</label>
-                                <input id="nbr_enf" type="text" class="form-control" name="nbr_enf" value="{{ $row->nbr_enf }}"  autofocus>
+                                <input id="nbr_enf" type="number" class="form-control" name="nbr_enf" value="{{ $row->nbr_enf }}"  autofocus>
                                 @if ($errors->has('nbr_enf'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nbr_enf') }}</strong>
@@ -172,7 +146,7 @@
                         <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
                             <div class="col-md-12">
                                 <label for="telephone" class="control-label">رقم الهاتف</label>
-                                <input id="telephone" type="text" class="form-control" name="telephone" value="{{ $row->telephone }}"  autofocus>
+                                <input id="telephone" type="number" class="form-control" name="telephone" value="{{ $row->telephone }}"  autofocus>
                                 @if ($errors->has('telephone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('telephone') }}</strong>
@@ -220,16 +194,51 @@
 
             <div class="col-xs-4">
 
-
                        <div class="form-group">
                             <div class="col-md-12">
                             <label for="sexe" class="control-label">الجنس</label>
                             <input id="sexe" type="text" class="form-control" name="sexe" value="{{ $row->sexe  }}"  autofocus>
                             
+                            
                             </div>
                          </div>
 
                 </div>  
+
+                <div class="col-xs-4">
+                       <div class="form-group">
+                            <div class="col-md-12">
+                            <label for="designation_grade" class="control-label">الرتبة</label>
+                           
+                            <select class="form-control" name="designation_grade">
+                            <option value="{{ $row->codegrade }}" selected>{{ $row->libgrade }} </option>
+                              @foreach($data2 as $row2)
+                              <option value="{{ $row2->codegrade }}">{{ $row2->libgrade }} </option>
+                              @endforeach
+                            </select>
+                            </div>
+                        </div>
+                 </div>  
+
+                 <div class="col-xs-4">
+                       <div class="form-group">
+                            <div class="col-md-12">
+                            <label for="matiere" class="control-label"> المادة التي يدرسها الأستاذ</label>
+
+                            <select class="form-control" name="matiere">
+                            <option value="{{ $row->codelibmat }}" selected>{{ $row->libmat }} </option>
+                              @foreach($data3 as $row3)
+                              <option value="{{ $row3->codemat }}">{{ $row3->libmat }} </option>
+                              @endforeach
+                            </select>
+
+                            </div>
+                        </div>
+                 </div> 
+                       
+
+
+
                 <div class="col-xs-4">
 
                        <div class="form-group{{ $errors->has('lieu_n') ? ' has-error' : '' }}">

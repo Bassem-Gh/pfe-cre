@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Enseignant;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use DB ;
+use Redirect;
 class RegisterController extends Controller
 {
     /*
@@ -53,6 +55,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+           'unique_id' => ['required', 'unique:users'],
         ]);
     }
 
@@ -64,10 +67,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $id= $data['unique_id'];
+/* dd($id); */
+       // $p= Enseignant::findOrFail($id);
+
+        $d = DB::table('enseignant')
+       ->select('unique_id as id' )
+       ->where('unique_id','=',$id)
+       ->count();
+  
+if($d >0 ){
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'unique_id' =>$data['unique_id'],
         ]);
     }
+  /*  else
+    {
+
+       // return view('auth.register');
+       //return redirect()->route('dashboard');
+      //  return back()->with('error','Message could not be sent.');
+        return Redirect::back()->withErrors($id);
+    }*/
+       
+        
+
+    }
+    
 }

@@ -20,6 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('logout', 'QovexController@logout');
 
+Route::post('registerE','Auth.RegisterController@test')->name('rg');
+
 //Route::get('pages-login', 'QovexController@index');
 //Route::get('pages-login-2', 'QovexController@index');
 Route::get('pages-register', 'QovexController@index');
@@ -53,15 +55,24 @@ Route::group(['middleware' => 'auth'], function() {
    Route::get('/home', 'HomeController@index');
    //Route::get('logout', 'HomeController@logout');
    Route::resource('c-enseignant','compteEnseignantController');
-
+   Route::post('/insert_mouvement','compteEnseignantController@store2');
+   
 Route::get('/test','compteEnseignantController@test');
 
    Route::get('/demande_de_mouvememnt','compteEnseignantController@create');
+   Route::get('/demande_de_mouvememnt2','compteEnseignantController@create2');
+   Route::get('/seting','compteEnseignantController@seting');
+   
+
    Route::get('/getetab','compteEnseignantController@getetab');
    
 Route::post('/c-enseignant/insertscore', 'compteEnseignantController@insertscore');
 
 });
+
+
+
+
 
 ////////session admin///////////////
 Route::group(['middleware' =>['auth', 'admin'] ], function() {
@@ -134,18 +145,35 @@ Route::post('/profile/update', 'UserController@update_avatar');
 Route::get('profile', 'UserController@profile');
 
 Route::get('/enseignants/updatemv/{id}', 'EnseignantController@etatmv')->name('enseignants.etatmv');
-//Route::get('/enseignants/takepdf/{id}','EnseignantController@downloadPDF')->name('pdf');
-//Route::get('/enseignants/download/{path}', 'EnseignantController@downloadPDF')->name('path');
-Route::get('/enseignants/download/{id}', 'EnseignantController@downloadPDF')->name('path');
+Route::get('/enseignants/updatemv2/{id}', 'EnseignantController@etatmv2')->name('enseignants.etatmv2');
 
+Route::get('/enseignants/download/{id}', 'EnseignantController@downloadPDF')->name('path');
+Route::get('/enseignants/downloadm/{id}', 'EnseignantController@downloadPDFm')->name('pathm');
+Route::get('/enseignants/downloadmth/{id}', 'EnseignantController@downloadPDFmth')->name('mathmoun');
+Route::get('/enseignants/downloadtasrih/{id}', 'EnseignantController@downloadPDFtasrih')->name('tasrih');
+Route::get('/enseignants/downloadcopysec/{id}', 'EnseignantController@downloadPDFcopysec')->name('copysec');
+Route::get('/enseignants/downloadcopyikama/{id}', 'EnseignantController@downloadPDFcopyikama')->name('copyikama');
+
+
+Route::get('/enseignants/download2/{id}', 'EnseignantController@downloadPDF2')->name('path2');
+Route::get('/enseignants/downloadm2/{id}', 'EnseignantController@downloadPDFm2')->name('pathm2');
+Route::get('/enseignants/downloadmth2/{id}', 'EnseignantController@downloadPDFmth2')->name('mathmoun2');
+Route::get('/enseignants/downloadtasrih2/{id}', 'EnseignantController@downloadPDFtasrih2')->name('tasrih2');
+Route::get('/enseignants/downloadcopysec2/{id}', 'EnseignantController@downloadPDFcopysec2')->name('copysec2');
+Route::get('/enseignants/downloadcopyikama2/{id}', 'EnseignantController@downloadPDFcopyikama2')->name('copyikama2');
+/*
 Route::get('/enseignants/{file_name}', function($path= null)
 {
   
     return response()->download(storage_path("app/public/".$path));
-})->name('p');
+})->name('p');*/
 
 Route::get('/enseignants/annulermv/{id}', 'EnseignantController@annulermv')->name('enseignants.annulermv');
+Route::get('/enseignants/annulermv2/{id}', 'EnseignantController@annulermv2')->name('enseignants.annulermv2');
+
 Route::delete('/enseignants/deletemv/{id}', 'EnseignantController@deletemv')->name('enseignants.deletemv');
+
+Route::delete('/enseignants/deletemv2/{id}', 'EnseignantController@deletemv2')->name('enseignants.deletemv2');
 //Route::delete('/colleges/deletecollege/{id}', 'CollegeController@destroy')->name('college.destroy');
 });
 

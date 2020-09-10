@@ -7,6 +7,8 @@ use App\Classe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+
 class CollegeController extends Controller
 {
     /**
@@ -137,22 +139,21 @@ class CollegeController extends Controller
     public function store(Request $request)
     {
       
-     /* $this->validate($request, [
-       // 'name' => ['required', 'string', 'max:255'],
+      $this->validate($request, [
+     
         'codeetab' => ['required'],
-        'libetab' => ['required'],
-       // 'dre' => ['required'],
-        'categorie' => ['required'],
+       'nameetab' => ['required'],
+       
+       'categorie' => ['required'],
         'typeetab' => ['required'],
         'delegation' => ['required'],
-       // 'email' => ['required', 'string', 'email', 'max:255', 'unique:etab'],
-        //'password' => ['required', 'string', 'min:8', 'confirmed'],
-    ]);*/
+      
+    ]);
 
         $college =new Etab([
             'codeetab'=>$request->get('codeetab'),
            'libetab'=>$request->get('nameetab'),
-          'dre'=>'91',
+           'dre'=>'91',
            'categorie'=>$request->get('categorie'),
            'typeetab'=>$request->get('typeetab'),
            'delegation'=>$request->get('delegation'),
@@ -167,8 +168,8 @@ class CollegeController extends Controller
      
         
            
-        return redirect()->route('colleges.index')
-        ->with('success','etablissement created successfully.');
+        return redirect()->route('colleges.create')
+        ->with('message','تم إضافة المؤسسة بنجاح');
     }
 
     /**

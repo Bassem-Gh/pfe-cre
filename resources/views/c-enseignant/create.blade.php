@@ -1,5 +1,5 @@
 
-@extends('layouts.master')
+@extends('layouts.master-layouts')
 
 @section('title') Demande de mouvement @endsection
 
@@ -10,6 +10,11 @@
          @slot('li_1')  Demande de mouvement   @endslot
      @endcomponent
      
+
+     @section('css')
+   <link href="{{URL::asset('/libs/dropzone/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
+@endsection
+
     
      
 
@@ -21,6 +26,7 @@
 
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
+        <br><br><br>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center"> <h2> مطلب نقلة في نطاق تقريب الأزواج</h2></div>
         </div>
        
@@ -30,12 +36,8 @@
    
 @if ($errors->any())
     <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        <strong>خطأ!</strong> يرجى تعمير كل الخانات.<br><br>
+      
     </div>
 @endif
 
@@ -51,7 +53,9 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong> المعرف الوحيد</strong>
-                <input type="text" id="unique_id" name="unique_id" class="form-control" placeholder="">
+               
+                <input type="number" id="unique_id" name="unique_id" value="{{ Auth::user()->unique_id }}" class="form-control" readonly>
+        
             </div>
         </div>  
 
@@ -74,13 +78,15 @@
             <div class="form-group">
            
                 <strong>الرتبة الحالية </strong>
-             
-                <select id='gradeact' name='gradeact' >
+                @foreach($data4 as $row4)
+                <input type="text" name="nom" class="form-control" value="{{ $row4->libgrade }}" readonly>
+                @endforeach
+              <!--   <select id='gradeact' name='gradeact' >
                 <option value="0" selected="true"> اختر الرتبة   </option>
                 @foreach($data3 as $row3)
                 <option value=" {{ $row3->libgrade }}  ">  {{ $row3->libgrade }} </option>
                 @endforeach
-               </select>
+               </select> -->
             </div>
         </div>
 
@@ -96,8 +102,8 @@
             <div class="form-group">
                 <strong> المؤسسة التربوية التي يعمل بها المدرس  </strong>
 
-                <select id="etabact" name="etabact">
-                <option value="0" selected="true"> المؤسسة التربوية التي يعمل بها المدرس </option>
+                <select id="etabact" name="etabact" class="form-control select2">
+                <option value="0" selected="true">-- المؤسسة التربوية التي يعمل بها المدرس -- </option>
                 @foreach($data as $row)
                
                 <option value='{{ $row->libetab }} ' > {{ $row->libetab }} </option>
@@ -194,7 +200,9 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>عدد الأطفال في الكفالة   </strong>
-            <input type="text" id="nbrenfant" name="nbrenfant" class="form-control" placeholder="">
+            @foreach($data4 as $row4)
+            <input type="number" id="nbrenfant" name="nbrenfant" class="form-control" value="{{ $row4->nbr_enf}}" readonly>
+            @endforeach
             </div>
         </div>
 
@@ -202,7 +210,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>تاريخ المباشرة بالمؤسسة التربوية الحالية   </strong>
-            <input type="date" id="datedebut" name="datedebut" class="form-control" placeholder="">
+            <input type="date" id="datedebut" name="datedebut" class="form-control" placeholder=""  onchange='getetab_user()'>
             </div>
         </div>
 
@@ -210,12 +218,13 @@
             <div class="form-group">
             <strong>المادة المطلوبة   </strong>
             
-            <select id='matiere' name='matiere' onchange='getetab_user()'>
-                <option value="0" selected="true"> اختر المادة   </option>
-                @foreach($data2 as $row2)
-                <option value=" {{ $row2->codemat }} ">  {{ $row2->libmat }} </option>
-                @endforeach
-               </select>
+         
+            <select id='matiere' name='matiere' class="form-control select2" >
+               @foreach($data4 as $row4)
+               <option value=" {{ $row4->codemat }} ">  {{ $row4->libmat }} </option>
+              @endforeach
+              </select>
+               
             </div>
         </div>
 
@@ -223,13 +232,19 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong>المراكز المطلوبة داخل المندوبية الجهوية للتربية  </strong>
-            <select id='etab_post_dis' name='etab_post_dis'>
+            <select id='etab_post_dis' name='etab_post_dis' class="form-control select2">
                
                
                </select>
             </div>
         </div>
 <!------- -------->
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+       <br><br>
+       <strong> الوثائق المطلوبة </strong>
+<br><br>
+            </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -270,21 +285,29 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
             <strong> شهادة اقامة المترشح خلال السنة الدراسية</strong>
-            <input type="file" id="copyikama" name="copyikama" placeholder="">
+
+      
+            <input type="file" id="copyikama" name="copyikama" >
+           
+
             </div>
         </div>
 
     </div>
    
 </form>
+                  
+              
 
-        
+
+        <br><br>
 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button onclick="testm()" class="btn btn-primary">إضافة</button>  
         </div>
 
 </div>
     </div>
+   
 @endsection
 @section('script')
 
@@ -294,4 +317,7 @@
 <script src="{{asset('js/main.js')}}" type="text/javascript"></script>
 <script src="{{ URL::asset('/js/pages/table-editable.int.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="http://qovex-v-rtl.laravel.themesbrand.com/libs/dropzone/dropzone.min.js"></script>
+<script src="{{URL::asset('/libs/dropzone/dropzone.min.js')}}"></script>
+
 @endsection
