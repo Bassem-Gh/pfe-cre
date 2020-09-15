@@ -1,10 +1,15 @@
 
 @extends('layouts.master-layouts')
 
-@section('title') Gestion des besoins @endsection
+@section('title') Demande de mouvement @endsection
 
 @section('content')
 
+    @component('common-components.breadcrumb')
+         @slot('title') enseignant  @endslot
+         @slot('li_1')  Demande de mouvement   @endslot
+     @endcomponent
+     
 
      @section('css')
    <link href="{{URL::asset('/libs/dropzone/dropzone.min.css')}}" rel="stylesheet" type="text/css" />

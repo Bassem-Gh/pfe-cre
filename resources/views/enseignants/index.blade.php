@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') Gestion des besoins @endsection
+@section('title') Enseignants @endsection
 @section('css')
 
 <!-- DataTables -->
