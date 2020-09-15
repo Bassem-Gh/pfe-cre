@@ -20,7 +20,7 @@
                         <div class="bg-login text-center">
                             <div class="bg-login-overlay"></div>
                             <div class="position-relative">
-                                <h5 class="text-white font-size-20">Security !</h5>
+                                <h5 class="text-white font-size-20">Securité  !</h5>
                                 <p class="text-white-50 mb-0">{{ __('Reset Password') }}</p>
                                 <a href="index" class="logo logo-admin mt-4">
                                     <img src="images/logo-sm-dark.png" alt="" height="30">

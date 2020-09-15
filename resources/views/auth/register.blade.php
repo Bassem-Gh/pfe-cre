@@ -20,8 +20,8 @@
                         <div class="bg-login text-center">
                             <div class="bg-login-overlay"></div>
                             <div class="position-relative">
-                                <h5 class="text-white font-size-20">Free {{ __('Register') }}</h5>
-                                <p class="text-white-50 mb-0">Get your free  account now</p>
+                                <h5 class="text-white font-size-20"> {{ __('تسجيل الدخول') }}</h5>
+                                {{-- <p class="text-white-50 mb-0">Get your free  account now</p> --}}
                                 <a href="index" class="logo logo-admin mt-4">
                                     <img src="/images/logo-sm-dark.png" alt="" height="30">
                                 </a>
@@ -33,8 +33,8 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="useremail">{{ __('E-Mail Address') }}</label>
-                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="useremail" placeholder="Enter email" autocomplete="email">
+                                        <label for="useremail">{{ __('البريد الإلكتروني') }}</label>
+                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="useremail" placeholder="أدخل البريد الإلكتروني" autocomplete="email">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -43,8 +43,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="name">{{ __('Name') }}</label>
-                                        <input type="text" name="name" value="{{ old('name') }}" required autocomplete="name" class="form-control @error('name') is-invalid @enderror" autofocus id="name" placeholder="Enter name">
+                                        <label for="name">{{ __('الاسم') }}</label>
+                                        <input type="text" name="name" value="{{ old('name') }}" required autocomplete="name" class="form-control @error('name') is-invalid @enderror" autofocus id="name" placeholder="أدخل الاسم">
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -53,8 +53,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="userpassword">{{ __('Password') }}</label>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" id="userpassword" placeholder="Enter password">
+                                        <label for="userpassword">{{ __('أدخل كلمة المرور') }}</label>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" id="userpassword" placeholder="أدخل كلمة المرور  ">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -63,13 +63,27 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="userpassword">{{ __('Confirm Password') }}</label>
-                                        <input type="password" name="password_confirmation" class="form-control" id="userconfirmpassword" placeholder="Confirm password">
+                                        <label for="userpassword">{{ __('تأكيد كلمة المرور') }}</label>
+                                        <input type="password" name="password_confirmation" class="form-control" id="userconfirmpassword" placeholder="تأكيد كلمة المرور">
                                     </div>
 
+                                  {{--   <div class="form-group">
+                                        <label for="uniqueid">{{ __('المعرف الوحيد ') }}</label>
+                                        <input type="number" name="unique_id" class="form-control" id="unique_id"  placeholder="المعرف الوحيد ">
+                                        @error('unique_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div> --}}
                                     <div class="form-group">
+<<<<<<< HEAD
+                                        <label for="uniqueid">{{ __('المعرف الوحيد') }}</label>
+                                        <input type="text" name="unique_id" class="form-control @error('unique_id') is-invalid @enderror" required autocomplete="new-unique_id" id="userunique_id" placeholder="المعرف الوحيد">
+=======
                                         <label for="uniqueid">{{ __('Unique Identifiant') }}</label>
                                         <input type="text" name="unique_id" class="form-control @error('unique_id') is-invalid @enderror" required autocomplete="new-unique_id" id="userunique_id" placeholder="Entrer Unique Identifiant">
+>>>>>>> b4b1dcc0daa9a74fe73d7726e91d471fba309820
                                         @error('unique_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -78,11 +92,11 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="btn btn-primary btn-block waves-effect waves-light" id="register" type="submit"> {{ __('Register') }}</button>
+                                        <button class="btn btn-primary btn-block waves-effect waves-light" id="register" type="submit"> {{ __('تسجيل') }}</button>
                                     </div>
 
                                     <div class="mt-4 text-center">
-                                        <p class="mb-0">By registering you agree to the Skote <a href="#" class="text-primary">Terms of Use</a></p>
+                                        <p class="mb-0">بالتسجيل فإنك توافق على  <a href="#" class="text-danger">الشروط العامة للإستخدام</a></p>
                                     </div>
                                 </form>
                             </div>
@@ -90,9 +104,8 @@
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <p>Already have an account ? <a href="login" class="font-weight-medium text-primary"> Login</a> </p>
-                        <p>© <script> document.write(new Date().getFullYear()) </script> Qovex. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
-                    </div>
+                        <p>هل لديك حساب ؟  <a href="login" class="font-weight-medium text-primary"> تسجيل الدخول</a> </p>
+                        <p><script> document.write(new Date().getFullYear())</script> المندوبية الجهوية للتربية بنابل</i> ©   </p>                    </div>
 
                 </div>
             </div>

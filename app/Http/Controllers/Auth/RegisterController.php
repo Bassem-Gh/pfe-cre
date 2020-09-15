@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use DB ;
 use Redirect;
+use Illuminate\Http\Request;
+
+use Illuminate\Auth\Events\Registered;
 class RegisterController extends Controller
 {
     /*
@@ -84,6 +87,8 @@ if($d >0 ){
             'password' => Hash::make($data['password']),
             'unique_id' =>$data['unique_id'],
         ]);
+        
+     
     }
   /*  else
     {
@@ -97,5 +102,19 @@ if($d >0 ){
         
 
     }
+    /**
+ * Handle a registration request for the application.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function register(Request $request)
+{
+    $this->validator($request->all())->validate();
+
+    event(new Registered($user = $this->create($request->all())));
+
+    return redirect($this->redirectPath())->with('message', '! تم تسجيل بنجاح ');
+}
     
 }
