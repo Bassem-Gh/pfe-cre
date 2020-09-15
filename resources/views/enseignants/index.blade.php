@@ -10,8 +10,8 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') Enseignants  @endslot
-         @slot('li_1') Gestion des enseignants  @endslot
+         @slot('title') الأساتذة  @endslot
+         @slot('li_1') قائمة الأساتذة   @endslot
      @endcomponent
      
     

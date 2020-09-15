@@ -77,8 +77,13 @@
                                         @enderror
                                     </div> --}}
                                     <div class="form-group">
+<<<<<<< HEAD
                                         <label for="uniqueid">{{ __('المعرف الوحيد') }}</label>
                                         <input type="text" name="unique_id" class="form-control @error('unique_id') is-invalid @enderror" required autocomplete="new-unique_id" id="userunique_id" placeholder="المعرف الوحيد">
+=======
+                                        <label for="uniqueid">{{ __('Unique Identifiant') }}</label>
+                                        <input type="text" name="unique_id" class="form-control @error('unique_id') is-invalid @enderror" required autocomplete="new-unique_id" id="userunique_id" placeholder="Entrer Unique Identifiant">
+>>>>>>> b4b1dcc0daa9a74fe73d7726e91d471fba309820
                                         @error('unique_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

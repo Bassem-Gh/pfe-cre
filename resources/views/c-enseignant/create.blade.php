@@ -78,15 +78,12 @@
             <div class="form-group">
            
                 <strong>الرتبة الحالية </strong>
-                @foreach($data4 as $row4)
-                <input type="text" name="nom" class="form-control" value="{{ $row4->libgrade }}" readonly>
-                @endforeach
-              <!--   <select id='gradeact' name='gradeact' >
-                <option value="0" selected="true"> اختر الرتبة   </option>
-                @foreach($data3 as $row3)
-                <option value=" {{ $row3->libgrade }}  ">  {{ $row3->libgrade }} </option>
-                @endforeach
-               </select> -->
+              
+                <select id='gradeact' name='gradeact' class="form-control select2" >
+                                    @foreach($data4 as $row4)
+                                    <option value=" {{ $row4->libgrade }} ">  {{ $row4->libgrade }} </option>
+                                    @endforeach
+                                    </select>
             </div>
         </div>
 

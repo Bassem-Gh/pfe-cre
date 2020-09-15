@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+Use App\User;
+Use App\Enseignant;
+Use DB;
 class QovexController extends Controller
 {
     /**
@@ -20,10 +22,37 @@ class QovexController extends Controller
         return view('pages-404');
     }*/
 
+    public function getens(Request $request)
+    {
+       $data = Enseignant::where('sexe','=','ذكر')
+    ->count(); 
+    /* $data = DB::table('Enseignant')
+    ->where('id', '=','17')
+    ->select('sexe' )
+    ->get(); */
+    $data2 = Enseignant::where('sexe','=','أنثى')
+    ->count(); 
+  
+    $response= [
+        'data2' => $data2,
+        'data' => $data
+    ];
+      
+            return response()->json($response);
+        //return($data);
+       
+    }
+
     public function indexbesoin(Request $request)
     {
+        $data = User::where('role','=','user')
+    ->count();
+
+    
+    $data2 = Enseignant::count();
+
         if(view()->exists($request->path())){
-            return view('besoin');
+            return view('besoin', compact('data','data2'));
         }
         return view('pages-404');
     }

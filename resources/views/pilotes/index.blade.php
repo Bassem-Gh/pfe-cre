@@ -12,8 +12,8 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') établissements  @endslot
-         @slot('li_1') établissement pilote @endslot
+         @slot('title') المؤسسات  @endslot
+         @slot('li_1') المؤسسات النموذجية   @endslot
          
      @endcomponent
  

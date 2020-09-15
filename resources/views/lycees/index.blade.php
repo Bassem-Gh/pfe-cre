@@ -12,8 +12,9 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') établissements  @endslot
-         @slot('li_1') Lycée @endslot
+    @slot('title') المؤسسات  @endslot
+  @endslot
+         @slot('li_1') معهد  @endslot
          
      @endcomponent
  

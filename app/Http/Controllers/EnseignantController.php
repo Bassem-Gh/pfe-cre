@@ -237,7 +237,7 @@ public function downloadPDFcopysec($id) {
 
 }
 
-
+/////////
 
 public function downloadPDFcopysec2($id) {
     
@@ -250,6 +250,7 @@ public function downloadPDFcopysec2($id) {
   
     foreach($data2 as $row2)
     {
+       dd($data2);
       return response()->download(storage_path("app/".$row2->copysec));
     }
 

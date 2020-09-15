@@ -19,8 +19,8 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') Gestion des besoins  @endslot
-         @slot('li_1') Pages  @endslot
+    @slot('title')المؤسسات  @endslot
+         @slot('li_1') إدارة الأقسام  @endslot
      @endcomponent
      
  

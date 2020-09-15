@@ -6,8 +6,8 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') etablissement   @endslot
-         @slot('li_1') ajouter un etablissement  @endslot
+         @slot('title') المؤسسات  @endslot
+         @slot('li_1') إضافة مؤسسة  @endslot
      @endcomponent
      
     
