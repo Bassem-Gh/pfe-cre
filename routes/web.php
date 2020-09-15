@@ -52,17 +52,25 @@ Route::get('pages-500', 'QovexController@index');
 
 
 Route::group(['middleware' => 'auth'], function() {
-   Route::get('/home', 'HomeController@index');
+   Route::get('/home', 'HomeController@index')->name('home');
    //Route::get('logout', 'HomeController@logout');
    Route::resource('c-enseignant','compteEnseignantController');
    Route::post('/insert_mouvement','compteEnseignantController@store2');
    
 Route::get('/test','compteEnseignantController@test');
 
-   Route::get('/demande_de_mouvememnt','compteEnseignantController@create');
-   Route::get('/demande_de_mouvememnt2','compteEnseignantController@create2');
-   Route::get('/seting','compteEnseignantController@seting');
-   
+//Route::get('/c','compteEnseignantController@c');
+
+   //Route::get('/mv','compteEnseignantController@create');
+  // Route::get('/mv2','compteEnseignantController@create2');
+   Route::get('/seting','compteEnseignantController@seting')->name('seting');
+
+   Route::post('/update/{id}', 'compteEnseignantController@upd')->name('update');
+   //////test wizard///
+   //////show formulaire mouvement/////
+   Route::get('/demande_de_mouvememnt','compteEnseignantController@create')->name('create');
+   Route::get('/demande_de_mouvememnt2','compteEnseignantController@create2')->name('create2');
+   ////
 
    Route::get('/getetab','compteEnseignantController@getetab');
    
@@ -84,6 +92,9 @@ Route::group(['middleware' =>['auth', 'admin'] ], function() {
 Route::get('/lycees/getNiveau', 'LyceeController@getNiveau')->name('getNiveau');
 Route::get('/lycees/gettable', 'LyceeController@getTable')->name('gettable'); 
 
+////////////ajac apex charset 
+Route::get('/index/stat', 'QovexController@getens')->name('getens');
+////////
 Route::post('/lycees/insertclasse', 'LyceeController@insertclasse')->name('insertclasse');
 
 

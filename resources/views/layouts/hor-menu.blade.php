@@ -33,17 +33,17 @@
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                demande de mouvement <div class="arrow-down"></div>
+                                مطلب نقلة<div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
-                                    <a href="{{url('/demande_de_mouvememnt')}}" class="dropdown-item"> mariée</a>
-                                    <a href="{{url('/demande_de_mouvememnt2')}}" class="dropdown-item"> Cas humanitaires</a>
+                                    <a href="{{url('/demande_de_mouvememnt')}}" class="dropdown-item">    في نطاق تقريب الأزواج</a>
+                                    <a href="{{url('/demande_de_mouvememnt2')}}" class="dropdown-item"> في نطاق الحالات الإنسانية</a>
                                 </div>
                             </li>
 
                             <li class="nav-item ">
                                 <a class="nav-link arrow-none" href="#" id="topnav-dashboard" role="button"  >
-                                 historique des demandes 
+                                تاريخ طلبات الحركة
                                 </a>
                               
                             </li>
@@ -79,32 +79,19 @@
             </div>
 
             <div class="dropdown d-none d-sm-inline-block">
-                <button type="button" class="btn header-item waves-effect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="" src="images/flags/us.jpg" alt="Header Language" height="16">
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
+                    <button type="button" class="btn header-item waves-effect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="" src="/images/flags/tn.png" alt="Header Language" height="20">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="images/flags/spain.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Spanish</span>
-                    </a>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <img src="/images/flags/fr.png" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Français</span>
+                        </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="images/flags/germany.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">German</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="images/flags/italy.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Italian</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="images/flags/russia.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Russian</span>
-                    </a>
+                        
+                    </div>
                 </div>
-            </div>
 
             <div class="dropdown d-none d-lg-inline-block ml-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
@@ -115,7 +102,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="mdi mdi-bell-outline"></i>
-                    <span class="badge badge-danger badge-pill">3</span>
+                    <span class="badge badge-danger badge-pill">0</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-3">
@@ -123,75 +110,10 @@
                             <div class="col">
                                 <h6 class="m-0"> Notifications </h6>
                             </div>
-                            <div class="col-auto">
-                                <a href="#!" class="small"> View All</a>
-                            </div>
+                           
                         </div>
                     </div>
-                    <div data-simplebar style="max-height: 230px;">
-                        <a href="" class="text-reset notification-item">
-                            <div class="media">
-                                <div class="avatar-xs mr-3">
-                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                        <i class="bx bx-cart"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Your order is placed</h6>
-                                    <div class="font-size-12 text-muted">
-                                        <p class="mb-1">If several languages coalesce the grammar</p>
-                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="" class="text-reset notification-item">
-                            <div class="media">
-                                <img src="images/users/avatar-3.jpg" class="mr-3 rounded-circle avatar-xs" alt="user-pic">
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">James Lemire</h6>
-                                    <div class="font-size-12 text-muted">
-                                        <p class="mb-1">It will seem like simplified English.</p>
-                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="" class="text-reset notification-item">
-                            <div class="media">
-                                <div class="avatar-xs mr-3">
-                                    <span class="avatar-title bg-success rounded-circle font-size-16">
-                                        <i class="bx bx-badge-check"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Your item is shipped</h6>
-                                    <div class="font-size-12 text-muted">
-                                        <p class="mb-1">If several languages coalesce the grammar</p>
-                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="" class="text-reset notification-item">
-                            <div class="media">
-                                <img src="images/users/avatar-4.jpg" class="mr-3 rounded-circle avatar-xs" alt="user-pic">
-                                <div class="media-body">
-                                    <h6 class="mt-0 mb-1">Salena Layfield</h6>
-                                    <div class="font-size-12 text-muted">
-                                        <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
-                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-2 border-top">
-                        <a class="btn btn-sm btn-link font-size-14 btn-block text-center" href="javascript:void(0)">
-                            <i class="mdi mdi-arrow-right-circle mr-1"></i> View More..
-                        </a>
-                    </div>
+                   
                 </div>
             </div>
 
@@ -203,10 +125,10 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="{{ url('/home') }}"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
-                    <a class="dropdown-item d-block" href="{{ url('/seting') }}"><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                    <a class="dropdown-item" href="{{ url('/home') }}"><i class="bx bx-user font-size-16 align-middle mr-1"></i> الملف الشخصي</a>
+                    <a class="dropdown-item d-block" href="{{ url('/seting') }}"><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> الإعدادات</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> تسجيل خروج</a>
                 </div>
             </div>
 

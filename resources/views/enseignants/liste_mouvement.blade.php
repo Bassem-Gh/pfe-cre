@@ -12,8 +12,8 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title')  tableau de bord   @endslot
-         @slot('li_1') statistiques @endslot
+         @slot('title')الأساتذة   @endslot
+         @slot('li_1')قائمة طلبات النقلة @endslot
      @endcomponent
      
     

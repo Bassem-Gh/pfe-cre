@@ -100,11 +100,27 @@ Website: https://themesbrand.com/
 Contact: themesbrand@gmail.com
 File: Form wizard
 */
+
 $(function () {
   $("#form-horizontal").steps({
     headerTag: "h3",
     bodyTag: "fieldset",
-    transitionEffect: "slide"
+    transitionEffect: "slide",
+    onFinished: function (event, currentIndex) {
+      $("#form-horizontal").submit();
+    }
+  });
+});
+
+
+$(function () {
+  $("#form-horizontal2").steps({
+    headerTag: "h3",
+    bodyTag: "fieldset",
+    transitionEffect: "slide",
+    onFinished: function (event, currentIndex) {
+      $("#form-horizontal2").submit();
+    }
   });
 });
 

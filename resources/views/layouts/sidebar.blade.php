@@ -11,7 +11,7 @@
             <div class="mt-3">
 
                 <a href="#" class="text-dark font-weight-medium font-size-16">{{ Auth::user()->name }}</a>
-                <p class="text-body mt-1 mb-0 font-size-13">administrateur</p>
+                <p class="text-body mt-1 mb-0 font-size-13">المدير</p>
 
             </div>
         </div>
@@ -20,16 +20,16 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
+                <li class="menu-title">القائمة</li>
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="mdi mdi-airplay"></i><span class="badge badge-pill badge-info float-right"></span>
-                    <span>tableau de bord</span>
+                    <span>لوحة القيادة</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
 
-                        <li><a href=" {{ route ('index') }}">Stats</a></li>
+                        <li><a href=" {{ route ('index') }}">الإحصائيات</a></li>
 
                         
                     </ul>
@@ -46,24 +46,24 @@
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fas fa-school
                         "></i>
-                        <span >établissements<span>
+                        <span >المؤسسات<span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('colleges.index') }}">Colléges</a></li>
-                        <li><a href="{{ route('lycees.index') }}">  Lycée</a></li>
-                        <li><a href="{{ route('piloteslycee.index') }}">Colléges techniques </a></li>
-                        <li><a href="{{ route('pilotes.index') }}">Etablissement pilote</a></li>
+                        <li><a href="{{ route('colleges.index') }}">المدرسة الإعدادية</a></li>
+                        <li><a href="{{ route('lycees.index') }}">  معهد</a></li>
+                        <li><a href="{{ route('piloteslycee.index') }}">المدرسة الإعدادية التقنية </a></li>
+                        <li><a href="{{ route('pilotes.index') }}">المؤسسات النموذجية</a></li>
                        
-                            <li><a href="{{ route('create_college') }}">Ajouter Etablissement </a></li>
+                            <li><a href="{{ route('create_college') }}">إضافة مؤسسة </a></li>
                     </ul>
                 </li>
                 <li><a href="{{ url('/lycees/saisie_classe_lycee') }}"><i class="far fa-users-class"></i>
-                            Gestion Classe</a></li>
+                إدارة الأقسام</a></li>
                 <li>
             
                     <a href=" {{ route('Besoin_mat_par_etab') }}" class=" waves-effect">
                         <i class="mdi mdi-calendar-text"></i>
-                        <span>Gestion des besoins</span>
+                        <span>إدارة الاحتياجات</span>
                     </a>
                 </li>
                 <li> 
@@ -71,13 +71,13 @@
                 
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="mdi mdi-calendar-check"></i>
-                    <span > Enseignants<span>
+                    <span > الأساتذة<span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="{{ route('enseignants.index') }}">Liste des enseignants </a></li>
+                    <li><a href="{{ route('enseignants.index') }}">قائمة الأساتذة </a></li>
                 
   
-                    <li><a href="{{ route('enseignants.liste_mouvement') }}">Liste des demandes de mouvement</a></li>
+                    <li><a href="{{ route('enseignants.liste_mouvement') }}">قائمة طلبات النقلة</a></li>
                 </ul>
                 </li>
               

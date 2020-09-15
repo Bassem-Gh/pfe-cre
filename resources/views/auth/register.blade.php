@@ -69,7 +69,7 @@
 
                                     <div class="form-group">
                                         <label for="uniqueid">{{ __('Unique Identifiant') }}</label>
-                                        <input type="text" name="unique_id" class="form-control" id="unique_id" placeholder="Unique Identifiant">
+                                        <input type="text" name="unique_id" class="form-control @error('unique_id') is-invalid @enderror" required autocomplete="new-unique_id" id="userunique_id" placeholder="Entrer Unique Identifiant">
                                         @error('unique_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -9,42 +9,33 @@ use App\Mouvement;
 use App\MouvementN;
 use App\Enseignant;
 use App\Score;
+use App\User;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use pdf;
-
+use Illuminate\Support\Facades\Hash;
 class compteEnseignantController extends Controller
 {
-
-
-  public function index()
+/*
+  public function c()
   {
-
     $user = auth()->user();
 
     $uid=$user->unique_id;
 
     $data = Enseignant::leftJoin('grade_ens', 'grade_ens.codegrade', '=', 'enseignant.designation_grade')
     ->leftJoin('matiere', 'matiere.codemat', '=', 'enseignant.matiere')
-->select( 'enseignant.nom', 'grade_ens.libgrade','enseignant.prenom','enseignant.nbr_enf','matiere.libmat','matiere.codemat' )
+    ->select( 'enseignant.nom','enseignant.nom_fr','enseignant.telephone','enseignant.situation_f','enseignant.nbr_enf','enseignant.sexe','enseignant.sec_s','enseignant.lieu_n','enseignant.date_n','enseignant.adresse', 'grade_ens.libgrade','enseignant.prenom','enseignant.prenom_fr','enseignant.nbr_enf','matiere.libmat','matiere.codemat' )
 ->distinct()   
 ->where('enseignant.unique_id','=',$uid)
 ->get();
+    return view('c-enseignant.index', compact('data'));
+  }*/
 
-       
-    return view('home', compact('data'));
-  }
-
-
-
-public function show(){
-
-
-}
+  //////create mouvement mariage //////
   public function create()
-  {
-    $user = auth()->user();
+  { $user = auth()->user();
 
     $uid=$user->unique_id;
 
@@ -63,7 +54,7 @@ public function show(){
     
     ->get();
 
-    
+   
     $data3 = DB::table('grade_ens')
     
     ->select('codegrade','libgrade')
@@ -79,11 +70,14 @@ public function show(){
 
 
 
-  return view('c-enseignant.create', compact('data','data2','data3','data4'));
+  return view('c-enseignant.mv', compact('data','data2','data3','data4'));
+
   }
 
-//////////////////////
 
+
+
+/////////create mouvement normal //////////
 public function create2()
 {
   $user = auth()->user();
@@ -121,10 +115,14 @@ public function create2()
 ->get();
 
 
-    return view('c-enseignant.mouvement', compact('data','data2','data3','data4'));
+    return view('c-enseignant.mv2', compact('data','data2','data3','data4'));
 }
 
 
+
+
+
+///////////////////
 
 
 
@@ -160,9 +158,6 @@ return response ($data);
     $idetab =$id['idetab'];
     $codemat = $id['codemat'];
     
-    //$nbr = $request->nbr;
-    //$idetab = $request->idetab;
-    //$codemat = $request->codemat;
 
       
     $data = DB::table('posteetab')
@@ -271,9 +266,9 @@ return response ($data);
    ]);
    $mouvement->save();
   //dd($produit);
-  return view('c-enseignant.index');
-  /*  return redirect()->route('c-enseignant.create')
-    ->with('success','etablissement created successfully.');*/
+  //return view('c-enseignant.mv');
+  return redirect()->route('create')
+    ->with('success','تم تعمير النقلة بنجاح');
     }
     
 
@@ -282,43 +277,11 @@ return response ($data);
     public function store2(Request $request)
     {
       $this->validate($request, [
-     
-        'prenom' => ['required'],
-       'nom' => ['required'],
-       'gradeact' => ['required'],
-        'date_mr' => ['required'],
-        'etabact' => ['required'],
-        'residencey' => ['required'],
-       'nomp_f' => ['required'],
-       'professionf' => ['required'],
-        'residencetf' => ['required'],
-        'datetf' => ['required'],
-         'daterecrutement' => ['required'],
-        'year' => ['required'],
-       'month' => ['required'],
-       'day' => ['required'],
-        'residencetf' => ['required'],
-        'notebid' => ['required'],
-        'datenotebid' => ['required'],
-        'nbrenfant' => ['required'],
-       'matiere' => ['required'],
-       'etab_post_dis' => ['required'],
-        'datedebut' => ['required'],
-        'copybid' => ['required'],
-
-        'datenotebid' => ['required'],
-        'nbrenfant' => ['required'],
-       'copymariage' => ['required'],
-
-       'copyikama' => ['required'],
-        'datedebut' => ['required'],
-        'mathmoun' => ['required'],
-        'copysec' => ['required'],
-        'gouvernorat' => ['required'],
-        'obstructionp' => ['required'],
-        'datedemarcation' => ['required'],
-        'etats' => ['required'],
-        
+    
+        'prenom' => ['required'], 'nom' => ['required'],'date_ns' => ['required'],'lieu' => ['required'],'gouvernorat' => ['required'],'tel' => ['required'],'residencey' => ['required'],
+        'nomp_f' => ['required'],'professionf' => ['required'],'residencetf' => ['required'],'etab_post_dis' => ['required'],'obstructionenf' => ['required'],'obstructionp' => ['required'],
+        'daterecrutement' => ['required'],'datedemarcation' => ['required'],'etats' => ['required'],'etabact' => ['required'],'datedebut' => ['required'],'gradeact' => ['required'],'notebid' => ['required'],  'datenotebid' => ['required'],'decription' => ['required'],
+        'copybid' => ['required'],'copymariage' => ['required'], 'mathmoun' => ['required'], 'tasrih' => ['required'], 'copysec' => ['required'], 'copyikama' => ['required'],
       
     ]);
 
@@ -362,9 +325,9 @@ return response ($data);
    ]);
    $mouvement->save();
   //dd($mouvement);
-  return view('c-enseignant.index');
-  /*  return redirect()->route('c-enseignant.create')
-    ->with('success','etablissement created successfully.');*/
+  //return view('home');
+   return redirect()->route('create2')
+    ->with('success','تم تعمير النقلة بنجاح');
     }
 
 
@@ -428,7 +391,7 @@ public function seting(){
 
   $data = Enseignant::leftJoin('grade_ens', 'grade_ens.codegrade', '=', 'enseignant.designation_grade')
   ->leftJoin('matiere', 'matiere.codemat', '=', 'enseignant.matiere')
-  ->select( 'enseignant.nom','enseignant.nom_fr','enseignant.telephone','enseignant.situation_f','enseignant.nbr_enf','enseignant.sexe','enseignant.sec_s','enseignant.lieu_n','enseignant.date_n','enseignant.adresse', 'grade_ens.libgrade','enseignant.prenom','enseignant.prenom_fr','enseignant.nbr_enf','matiere.libmat','matiere.codemat' )
+  ->select( 'enseignant.id','enseignant.unique_id','enseignant.nom','enseignant.nom_fr','enseignant.telephone','enseignant.situation_f','enseignant.nbr_enf','enseignant.sexe','enseignant.sec_s','enseignant.lieu_n','enseignant.date_n','enseignant.adresse', 'grade_ens.libgrade','enseignant.prenom','enseignant.prenom_fr','enseignant.nbr_enf','matiere.libmat','matiere.codemat' )
   ->distinct()   
   ->where('enseignant.unique_id','=',$uid)
   ->get();
@@ -438,5 +401,40 @@ public function seting(){
 
 
 }
+
+public function upd(Request $request, $id)
+{
+  $user = auth()->user();
+
+  $uid=$user->unique_id;
+
+  $user = User::where('unique_id', $uid)->firstOrFail();
+
+    $user->email = $request->get('email');
+    $user->password =Hash::make($request->get('password'));
+
+    $user->save();
+
+$mv = Enseignant::findOrFail($id);
+    
+    $mv->nom= $request->get('nom');
+    $mv->nom_fr= $request->get('nom_fr');
+    $mv->telephone= $request->get('telephone');
+    $mv->situation_f= $request->get('situation_f');
+    $mv->nbr_enf= $request->get('nbr_enf');
+    $mv->sexe= $request->get('sexe');
+    $mv->lieu_n= $request->get('lieu_n');
+    $mv->date_n= $request->get('date_n');
+    $mv->adresse= $request->get('adresse');
+    $mv->prenom= $request->get('prenom');
+    $mv->prenom_fr= $request->get('prenom_fr');
+  
+          $mv->save();
+          
+    //return view('c-enseignant.seting')->with('success', 'Data Updated');  
+    return redirect()->route('seting')
+    ->with('success','تم التعديل بنجاح');
+}
+
 
 }
