@@ -1,6 +1,6 @@
 @extends('layouts.master-without-nav')
 
-@section('title') Register @endsection
+@section('title') تسجيل @endsection
 
 @section('body')
 
@@ -20,8 +20,11 @@
                         <div class="bg-login text-center">
                             <div class="bg-login-overlay"></div>
                             <div class="position-relative">
-                                <h5 class="text-white font-size-20">Security !</h5>
-                                <p class="text-white-50 mb-0">{{ __('Reset Password') }}</p>
+                                <h5 class="text-white font-size-20"> إعادة تعيين كلمة المرور
+
+                                </h5>
+                            {{--     <p class="text-white-50 mb-0">{{ __('إعادة تعيين كلمة المرور
+                                    ') }}</p> --}}
                                 <a href="index" class="logo logo-admin mt-4">
                                     <img src="/images/logo-sm-dark.png" alt="" height="30">
                                 </a>
@@ -33,8 +36,8 @@
                             <form method="POST" action="{{ route('password.email') }}">
                                 @csrf
                                     <div class="form-group">
-                                        <label for="useremail">{{ __('E-Mail Address') }}</label>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter email">
+                                        <label for="useremail">{{ __('البريد الإلكتروني ') }}</label>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="أدخل البريد الإلكتروني ">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -43,21 +46,21 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="btn btn-primary btn-block waves-effect waves-light" id="register" type="submit"> {{ __('Send Password Reset Link') }}</button>
+                                        <button class="btn btn-primary btn-block waves-effect waves-light" id="register" type="submit"> {{ __('إرسال رابط إعادة تعيين كلمة السر') }}</button>
                                     </div>
 
-                                    <div class="mt-4 text-center">
+                                    {{-- <div class="mt-4 text-center">
                                         <p class="mb-0">By registering you agree to the Skote <a href="#" class="text-primary">Terms of Use</a></p>
-                                    </div>
+                                    </div> --}}
                                 </form>
                             </div>
 
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <p>Already have an account ? <a href="/login" class="font-weight-medium text-primary"> Login</a> </p>
-                        <p>© <script> document.write(new Date().getFullYear()) </script> Qovex. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
-                    </div>
+                        <p>هل لديك حساب ؟  <a href="login" class="font-weight-medium text-primary"> تسجيل الدخول</a> </p> 
+                            <p><script> document.write(new Date().getFullYear())</script> المندوبية الجهوية للتربية بنابل</i> ©   </p>
+                    </div> 
 
                 </div>
             </div>
