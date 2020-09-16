@@ -266,9 +266,9 @@
             <label for="txtAddress2Billing" class="col-lg-3 col-form-label"> الصفة</label>
             <div class="col-lg-9">
             مترسم<input type="radio" name="etats" value="مترسم">
-            مترسم/1 س<input type="radio" name="etats" value="متربص/1 س">
-            مترسم/2 س<input type="radio" name="etats" value="متربص/2 س">
-            مترسم/3 س<input type="radio" name="etats" value="متربص/3 س">
+            متربص/1 س<input type="radio" name="etats" value="متربص/1 س">
+            متربص/2 س<input type="radio" name="etats" value="متربص/2 س">
+            متربص/3 س<input type="radio" name="etats" value="متربص/3 س">
             </div>
         </div>
     </div>

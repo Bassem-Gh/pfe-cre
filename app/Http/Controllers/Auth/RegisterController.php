@@ -116,5 +116,5 @@ public function register(Request $request)
 
     return redirect($this->redirectPath())->with('message', '! تم تسجيل بنجاح ');
 }
-    
+     
 }
