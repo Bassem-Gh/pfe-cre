@@ -20,7 +20,7 @@
           <div class="card-body">
      <section class="content-header">
      <h1>
-     <a class="btn btn-success" href="{{ route('create_enseignant') }}"> إضافة أستاذ جديد</a>
+     <a class="btn btn-success text-center " href="{{ route('create_enseignant') }}"> إضافة أستاذ جديد</a>
      </h1>
    
    </section>

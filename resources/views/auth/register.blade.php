@@ -67,15 +67,6 @@
                                         <input type="password" name="password_confirmation" class="form-control" id="userconfirmpassword" placeholder="تأكيد كلمة المرور">
                                     </div>
 
-                                  {{--   <div class="form-group">
-                                        <label for="uniqueid">{{ __('المعرف الوحيد ') }}</label>
-                                        <input type="number" name="unique_id" class="form-control" id="unique_id"  placeholder="المعرف الوحيد ">
-                                        @error('unique_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div> --}}
                                     <div class="form-group">
                                         <label for="uniqueid">{{ __('المعرف الوحيد') }}</label>
                                         <input type="text" name="unique_id" class="form-control @error('unique_id') is-invalid @enderror" required autocomplete="new-unique_id" id="userunique_id" placeholder="المعرف الوحيد">

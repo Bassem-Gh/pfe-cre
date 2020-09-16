@@ -51,6 +51,7 @@ Route::get('pages-500', 'QovexController@index');
 //Route::get('{any}', 'HomecontrollerController@index');
 
 
+
 Route::group(['middleware' => 'auth'], function() {
    Route::get('/home', 'HomeController@index')->name('home');
    //Route::get('logout', 'HomeController@logout');

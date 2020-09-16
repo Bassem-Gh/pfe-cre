@@ -642,14 +642,14 @@ else
    }
 /////////////////////////////////////
   function testm() { 
-    var etat =$('#etat').val();
+    //var etat =$('#etat').val();
     var id =$('#unique_id').val();
     var token = $("#token").val();
     var nbr =$('#nbrenfant').val(); 
     var datedebut =$('#datedebut').val();
     var daterecrutement =$('#daterecrutement').val();
     var notebid =$('#notebid').val();
-   // alert(etat);
+   // alert(id);
 $dt=0;
     $nbrr=0;
 
@@ -684,6 +684,7 @@ var annee2=diffDays2/360;
         
           }
         }
+        
 ////////////////
 
         if(annee1<=2)
@@ -711,8 +712,8 @@ var annee2=diffDays2/360;
           $dt+=3;
         }
 
-        $score=$nbrr + annee2 + notebid + $dt;
-//lert($score);
+        $score=parseFloat($nbrr) + parseFloat(annee2) + parseFloat(notebid) + parseFloat($dt);
+   alert($score);
             $.ajax({
               type: "Get",
 
@@ -726,7 +727,7 @@ var annee2=diffDays2/360;
                   }
             else
 
-                $('#f').submit();
+              //  $('#form-horizontal').submit();
 /////////////////////////////////////
 
                   $.ajax({
@@ -736,7 +737,19 @@ var annee2=diffDays2/360;
                     url:'/c-enseignant/insertscore',
                   
                     success:function(data){
-                  
+                    
+                     // $('#s').append('<option value="0" disabled selected>selectioner niveau</option>');
+                     
+            // $ss=$score.toFixed(2);
+             //alert($score);
+           /*  if ( parseFloat($score)=NaN)
+
+                 $('#s').val('0'); 
+
+             else  */
+
+                     $('#s').val( $score );
+                    
                     } , 
                       error:function(data) {
                                           alert('error'); 

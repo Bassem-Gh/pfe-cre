@@ -33,6 +33,7 @@
                 {!! csrf_field() !!}
                 <form id="form-horizontal" class="form-horizontal form-wizard-wrapper" action="{{ route('c-enseignant.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" value="{{csrf_token()}}" id="token"/>
                     <h3>المعلومات الشخصية</h3>
                     <fieldset>
                         <div class="row">
@@ -86,9 +87,9 @@
                                 <div class="form-group row">
                                     <label for="txtFaxBilling" class="col-lg-3 col-form-label">عدد الأطفال في الكفالة </label>
                                     <div class="col-lg-9">
-                                    @foreach($data4 as $row4)
-                                    <input type="number" id="nbrenfant" name="nbrenfant" class="form-control" value="{{ $row4->nbr_enf}}" readonly>
-                                    @endforeach
+                                    
+                                    <input type="number" id="nbrenfant" name="nbrenfant" class="form-control" value="" >
+                                  
                                     </div>
                                 </div>
                             </div>
@@ -308,7 +309,18 @@
 
        
 </table>  
-
+<div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group row">
+                                    <button type="button" class="btn btn-primary" onclick="testm()">مجموع النقاط </button>
+                                    <div class="col-lg-9">
+                                    <input type="text" class="form-control" id="s" name="s"  value="">
+                                         
+                                    </div>
+                                </div>
+                            </div>
+<br><br><br>
+                        </div>
 
 
                     </fieldset>
