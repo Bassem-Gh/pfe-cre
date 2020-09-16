@@ -268,7 +268,7 @@ return response ($data);
   //dd($produit);
   //return view('c-enseignant.mv');
   return redirect()->route('create')
-    ->with('success','تم تعمير النقلة بنجاح');
+    ->with('success','تم إيداع مطلبك بنجاح ... الرجاء انتظار الرد عن طريق مدير مؤسستك');
     }
     
 
@@ -327,7 +327,7 @@ return response ($data);
   //dd($mouvement);
   //return view('home');
    return redirect()->route('create2')
-    ->with('success','تم تعمير النقلة بنجاح');
+    ->with('success','تم إيداع مطلبك بنجاح ... الرجاء انتظار الرد عن طريق مدير مؤسستك');
     }
 
 

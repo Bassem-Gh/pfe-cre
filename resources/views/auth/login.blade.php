@@ -28,6 +28,12 @@
                         </div>
                         <div class="card-body pt-5">
                             <div class="p-2">
+                        
+                            @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="form-group">

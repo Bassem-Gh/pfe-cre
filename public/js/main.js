@@ -684,6 +684,7 @@ var annee2=diffDays2/360;
         
           }
         }
+        
 ////////////////
 
         if(annee1<=2)
@@ -711,8 +712,8 @@ var annee2=diffDays2/360;
           $dt+=3;
         }
 
-        $score=$nbrr + annee2 + notebid + $dt;
-//lert($score);
+        $score=parseFloat($nbrr) + parseFloat(annee2) + parseFloat(notebid) + parseFloat($dt);
+   alert($score);
             $.ajax({
               type: "Get",
 
@@ -747,7 +748,7 @@ var annee2=diffDays2/360;
 
              else  */
 
-                     $('#s').val( parseFloat($score) );
+                     $('#s').val( $score );
                     
                     } , 
                       error:function(data) {

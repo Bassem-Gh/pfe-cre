@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Enseignant;
+use DB ;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use DB ;
+
 use Redirect;
 use Illuminate\Http\Request;
 
@@ -72,8 +73,7 @@ class RegisterController extends Controller
     {
 
         $id= $data['unique_id'];
-/* dd($id); */
-       // $p= Enseignant::findOrFail($id);
+
 
         $d = DB::table('enseignant')
        ->select('unique_id as id' )
@@ -90,24 +90,26 @@ if($d >0 ){
         
      
     }
-  /*  else
+  /* else
     {
-
-       // return view('auth.register');
-       //return redirect()->route('dashboard');
+        //return redirect($this->redirectPath())->with('message', '! هذا المعرف  ليس موجود في قاعدة البيانات');
+      // return  redirect()->view('auth.register');
+     
       //  return back()->with('error','Message could not be sent.');
-        return Redirect::back()->withErrors($id);
+      //  return Redirect::back()->withErrors('! هذا المعرف  ليس موجود في قاعدة البيانات');
+      
+     
     }*/
-       
-        
 
     }
+
     /**
  * Handle a registration request for the application.
  *
  * @param  \Illuminate\Http\Request  $request
  * @return \Illuminate\Http\Response
  */
+/*
 public function register(Request $request)
 {
     $this->validator($request->all())->validate();
@@ -115,6 +117,6 @@ public function register(Request $request)
     event(new Registered($user = $this->create($request->all())));
 
     return redirect($this->redirectPath())->with('message', '! تم تسجيل بنجاح ');
-}
+}*/
     
 }
