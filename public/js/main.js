@@ -480,7 +480,7 @@ function myFunction1p() {
     var nomEtab =$(el).attr("data-name");
     var a=$(el).closest("tr").find("td:first-child").text();
     //var table = $('#datatable').DataTable({});
-    alert(id);
+    //alert(id);
     Swal.fire({
       input: 'text',
       inputValue: a,

@@ -57,16 +57,22 @@
                             <li><a href="{{ route('create_college') }}">إضافة مؤسسة </a></li>
                     </ul>
                 </li>
+
+                
                 <li><a href="{{ url('/lycees/saisie_classe_lycee') }}"><i class="far fa-users-class"></i>
                 إدارة الأقسام</a></li>
+              
                 <li>
-            
-                    <a href=" {{ route('Besoin_mat_par_etab') }}" class=" waves-effect">
-                        <i class="mdi mdi-calendar-text"></i>
-                        <span>إدارة الاحتياجات</span>
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="mdi mdi-calendar-text"></i><span class="badge badge-pill badge-info float-right"></span>
+                    <span>حساب الحاجيات </span>
                     </a>
-                </li>
-                <li> 
+                    <ul class="sub-menu" aria-expanded="false">
+
+                        <li><a href="  {{ route('Besoin_mat_par_etab') }}">حسب المؤسسة </a></li>
+                    </ul>
+               
+            
                  
                 
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
