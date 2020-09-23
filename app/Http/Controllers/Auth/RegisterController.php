@@ -90,17 +90,16 @@ if($d >0 ){
         
      
     }
-  /* else
+  else
     {
         //return redirect($this->redirectPath())->with('message', '! هذا المعرف  ليس موجود في قاعدة البيانات');
-      // return  redirect()->view('auth.register');
+      return /*  redirect()-> */view('auth.register');
      
       //  return back()->with('error','Message could not be sent.');
       //  return Redirect::back()->withErrors('! هذا المعرف  ليس موجود في قاعدة البيانات');
       
      
-    }*/
-
+    }
     }
 
     /**

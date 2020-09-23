@@ -340,5 +340,86 @@ $response= [
        return    response()->json($data2);
 
     }
+    /////////////
+    
+    public function gettableb3(Request $request)
+    {
+     
+       $reql = DB::table('classe') 
+      
+        ->join('matiere', 'matiere.codniv', '=', 'classe.codeniv')
+        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+       
+       ->select( 'etab.libetab','etab.codeetab')
+       ->distinct()
+     
+      ->where('matiere.codemat','=',$request->get('ccod')) 
+       ->get();
+
+    
+                $data = DB::table('classe') 
+                ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
+                ->join('matiere', 'matiere.codniv', '=', 'classe.codeniv')
+                ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+                ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
+                ->join('delegation', 'delegation.code', '=', 'etab.delegation')
+                ->join("effectif",function($join){
+                    $join->on("effectif.codeetab","=","etab.codeetab")
+                        ->on("effectif.codemat","=","matiere.codemat");
+                })
+                ->where('matiere.codemat','=',$request->get('ccod')) 
+               ->select('effectif.nb12','effectif.nb15','effectif.nb16','effectif.nb18','effectif.nb05','matiere.libmat','matiere.codemat','matiere.nbh','etab.codeetab as id','etab.libetab','classe.nbclasse')
+               ->distinct()
+         
+               ->get();
+            
+              
+      
+
+     
+$response= [
+    'reql' => $reql,
+    'data' => $data
+];
+
+    
+       return    response()->json($response);
+    }
+
+    public function gettableb4(Request $request)
+    {
+        
+        $data2 = DB::table('classe') 
+        ->join('niveau', 'niveau.codeniv', '=', 'classe.codeniv')
+        ->join('matiere', 'matiere.codniv', '=', 'classe.codeniv')
+        ->join('etab', 'etab.codeetab', '=', 'classe.codetab')
+        ->join('typeetab', 'typeetab.codetype', '=', 'etab.typeetab')
+        ->join('delegation', 'delegation.code', '=', 'etab.delegation')
+        ->join("effectif",function($join){
+            $join->on("effectif.codeetab","=","etab.codeetab")
+                ->on("effectif.codemat","=","matiere.codemat");
+        })
+        ->where('matiere.codemat','=',$request->get('ccod')) 
+        ->where('etab.codeetab','=',$request->get('codeetab')) 
+       ->select(DB::raw("SUM(matiere.nbh*classe.nbclasse)as tot"),'effectif.nb12','effectif.nb15','effectif.nb16','effectif.nb18','effectif.nb05','matiere.libmat','matiere.codemat','matiere.nbh','etab.codeetab as id','etab.libetab','classe.nbclasse')
+       
+       ->distinct()
+
+     
+     
+       ->get();
+       return    response()->json($data2);
+
+    }
+    ////////
+    public function getmat(){
+        $data = DB::table('matiere') 
+        ->select( 'matiere.libmat','matiere.codemat')
+        ->distinct()
+    
+        ->get();
+        return view('lycees.b_mat_par_mat', compact('data'));
+
+    }
 
 }

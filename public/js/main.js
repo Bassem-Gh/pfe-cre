@@ -835,3 +835,142 @@ var annee2=diffDays2/360;
 
 
   //////////////////////////////
+  $('#mat2').on('change', function(){
+
+ 
+    var idop = document.getElementById("mat2");
+        
+           var ccod = $('#mat2').val();
+           alert(ccod);
+
+   
+          $.ajax({
+                type: "Get",
+                url: '/lycees/Get_data3',
+                data: { 'ccod':ccod },   
+                dataType:'json', 
+                 success:function(response)
+                   {
+                      
+                       $('#datatable-buttons2').DataTable().clear();
+                      
+                 
+                               var x=0;
+                                 var table = $("#datatable-buttons2").DataTable();
+                                $.each(response['reql'], function( idx,elem2)
+                                {
+                                     
+                                   
+                                          $.ajax({
+                                           type: "Get",
+                                           url: '/lycees/Get_data4',
+                                           data: { 'codeetab':elem2.codeetab,
+                                       'ccod':ccod },   
+                                           dataType:'json', 
+                                            success:function(data2)
+                                              {
+                                                
+                     
+                                              
+                                               $.each(data2, function( idx3,elem3) {
+                                                var codemat=elem3.codemat;
+                                                var idetab=elem3.id;
+                                               
+
+                                                   $toth=(elem3.nb12*12) + (elem3.nb15*15) + (elem3.nb16*16) +(elem3.nb05 *0.5); 
+                                                   $totp=elem3.nb12+elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05;
+                                                  $c=Math.trunc(elem3.tot);
+                                                   //alert($totp);
+                                                // alert(elem3.tot);
+                                                    ///////////totsd////////////////
+                                                   if($totp>0){
+                                                       $totsd=Math.trunc(elem3.tot)/$totp;
+                                                   }
+                                                    else {$totsd=0;}
+                                                   ////////////////////////md////////////////
+                                                           if(elem3.nb18>0){                                                 
+                                                               $md=(Math.trunc(elem3.tot)-$toth)/elem3.nb18;
+                                                           }
+                                                               else {$md=$totsd;}
+                                                               ////////////////////////////ad//////////////
+                                                               if($totsd.toFixed(2)>18)
+                                                               {
+                                                                   $ad=(parseInt(elem3.tot)/18-$totp).toFixed(2);
+                                                                  
+                                                                   $v=parseFloat($ad%1);
+                                                                 
+                                                                   $n=parseInt($ad);
+                                                                  
+                                                                   if($v<0.5)
+                                                                   { $x=parseFloat($n)+parseFloat(0.5);   }
+
+                                                                   else if($v>0.5)
+                                                                    { $x=parseFloat($n)+parseFloat(1); }
+
+                                                                   else { $x=0.5 ; }
+                                                                   
+                                                                  }
+                                                              else{$x=0; }  
+                                                               ///////////////////////////////mf/////////////
+                                                               if($x+$totp>0){
+                                                                 $g=parseFloat($x)+parseInt($totp);
+                                                              
+                                                                   $mf=(parseInt(elem3.tot)/$g).toFixed(2);
+                                                                   /////num vergule ////
+                                                                 
+                                                               }
+                                                                   else{$mf=0;}
+   
+                                                                  // elem3.nb18
+                                                  
+                                                   table.row.add([ elem3.libetab, Math.trunc(elem3.tot) , elem3.nb18 , elem3.nb16 ,elem3.nb15,elem3.nb12,elem3.nb05,(elem3.nb12 + elem3.nb15+elem3.nb16+elem3.nb18+elem3.nb05) ,$md.toFixed(2),$totsd.toFixed(2) , $x , $mf]);
+                                                   table.draw();
+
+                                                    ////////////////insert in table post etab //////////
+                                                      var xx=parseFloat($x);
+                                                    // alert(xx);
+                                                $("#msg").hide();
+                                              
+                                                  $("#msg").show();
+                                                  
+                                                  var token = $("#token").val();
+                                                 // alert(token);
+                                            $.ajax({
+                                               
+                                              type: "POST",
+                                              data: "nbrposte=" + xx + "&codemat=" + codemat + "&idetab=" + idetab + "&_token=" + token ,
+                                              url:'/c-enseignant/insertpost',
+                                             
+                                              success:function(data){
+                                             
+                                                $('#etab_table').DataTable().ajax.reload();
+                                              } , 
+                                                 error:function(data) {
+                                                                     alert('error'); 
+                                                                     
+                                                                      console.log(data);
+                                                                   }
+                                            });
+                                             ////////////////////////
+                                                  });
+   
+                                              }
+                                           });
+                 
+                               
+   
+   
+                              });
+
+                                   
+                    } , 
+                   error:function(response) {
+                       alert('error');
+                       console.log(response);
+                   }
+                });
+           
+               
+       
+   
+   });
