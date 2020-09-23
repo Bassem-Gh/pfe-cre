@@ -128,10 +128,13 @@ Route::delete('/colleges/deletecollege/{id}', 'CollegeController@destroy')->name
 
 /////besoin par etab ////
 Route::get('/etablissements/Besoin_mat_par_etab', 'LyceeController@indexbetab')->name('Besoin_mat_par_etab');
+Route::get('/etablissements/Besoin_mat_par_mat', 'LyceeController@getmat')->name('Besoin_mat_par_mat');
+
 
 Route::get('/lycees/Get_data','LyceeController@gettableb');
 Route::get('/lycees/Get_data2','LyceeController@gettableb2');
-
+Route::get('/lycees/Get_data3','LyceeController@gettableb3');
+Route::get('/lycees/Get_data4','LyceeController@gettableb4');
 //////
 Route::get('/colleges/edit/{id}', 'CollegeController@edit')->name('editcollege');
 Route::post('/colleges/update/{id}', 'CollegeController@update')->name('updatecollege');
