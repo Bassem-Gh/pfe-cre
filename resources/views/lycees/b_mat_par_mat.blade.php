@@ -23,7 +23,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-              <div class="col-xs-12 col-sm-12 col-md-12 text-center"> <h2>حساب حاجيات كل مادة للمدرسين حسب المادة</h2></div>
+              <div class="col-xs-12 col-sm-12 col-md-12 text-center"> <h2>حساب حاجيات كل مادة للمدرسين </h2></div>
             <br><br><br>
             <input type="hidden" value="{{csrf_token()}}" id="token"/>
 

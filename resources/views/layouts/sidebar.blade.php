@@ -71,6 +71,10 @@
 
                         <li><a href="  {{ route('Besoin_mat_par_etab') }}">حسب المؤسسة </a></li>
                     </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+
+                        <li><a href="  {{ route('Besoin_mat_par_mat') }}">حسب المادة </a></li>
+                    </ul>
                
             
                  
