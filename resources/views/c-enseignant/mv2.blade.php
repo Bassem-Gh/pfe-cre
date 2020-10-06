@@ -9,6 +9,19 @@
 
      @section('css')
    <link href="{{URL::asset('/libs/dropzone/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
+   <style>
+    .vue-form-wizard .wizard-progress-bar {
+        float: right;
+      }
+    
+      .vue-form-wizard .wizard-card-footer .wizard-footer-left {
+        float: right;
+      }
+    
+      .vue-form-wizard .wizard-card-footer .wizard-footer-right {
+        float: left;
+      }
+   </style>
   
 @endsection
 

@@ -30,7 +30,7 @@
             {!! csrf_field() !!}
             <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="form-group row">
-              <label for="example-text-input" class="col-md-2 col-form-label">المؤسسة التربوية</label>
+              <label for="example-text-input" class="col-md-2 col-form-label"> المادة </label>
                   <div class="col-md-10">
                       <select id="mat2" class="form-control  select3">
                           <option>--الرجاءالتحديد--</option>
@@ -53,7 +53,7 @@
         <div class="table-responsive">  --}}
          
           
-          <table id="datatable-buttons2" class="table-sm table-striped table-responsive table-bordered dtr-colum dt-respnsive "   >
+          <table id="datatable-buttons" class="table-sm table-striped table-responsive table-bordered dtr-colum dt-respnsive "   >
 
             <thead>
               <tr >                                   

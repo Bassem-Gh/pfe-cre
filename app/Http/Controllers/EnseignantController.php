@@ -29,7 +29,7 @@ class EnseignantController extends Controller
        ->join('mouvement_mariage', 'mouvement_mariage.unique_id', '=', 'scoremv.unique_id')
       // ->join('matiere', 'matiere.codemat', '=', 'mouvement_mariage.matiere')
        
-       ->select('mouvement_mariage.unique_id as id','mouvement_mariage.prenom','mouvement_mariage.copybid','mouvement_mariage.nom','mouvement_mariage.gradeact','mouvement_mariage.matiere','mouvement_mariage.etabact' )
+       ->select('mouvement_mariage.unique_id as id','mouvement_mariage.prenom','mouvement_mariage.etat','mouvement_mariage.etab_post_dis','mouvement_mariage.copybid','mouvement_mariage.nom','mouvement_mariage.gradeact','mouvement_mariage.matiere','mouvement_mariage.etabact','scoremv.score' )
        ->distinct()
        ->orderBy('scoremv.score','desc')
        ->get();
@@ -39,7 +39,7 @@ class EnseignantController extends Controller
       // ->join('mouvement_mariage', 'mouvement_mariage.unique_id', '=', 'scoremv.unique_id')
       // ->join('matiere', 'matiere.codemat', '=', 'mouvement_mariage.matiere')
        
-       ->select('mouvement.unique_id2 as id','mouvement.prenom','mouvement.copybid','mouvement.nom','mouvement.gradeact','mouvement.matiere','mouvement.etabact' )
+       ->select('mouvement.unique_id2 as id','mouvement.prenom','mouvement.copybid','mouvement.etat','mouvement.etab_post_dis','mouvement.nom','mouvement.gradeact','mouvement.matiere','mouvement.etabact' )
        ->distinct()
        ->get();
  

@@ -147,9 +147,9 @@
                                   
                                   <span >عدد الفصول</span></td>
                                 									
-                                  <td><span >	المادة</span></td>
+{{--                                    <td><span >	المادة</span></td>
                                  <td> <span >	عدد الساعات</span></td>
-                                  <td><span >	عدد الساعات الجملي</span></td>
+                                  <td><span >	عدد الساعات الجملي</span></td>--}}  
                                  
                               </tr>
    
@@ -199,7 +199,7 @@ var id=$('#sect').val();
    console.log(response);
 
      $('#niv').empty();
-     $('#niv').append('<option value="0" disabled selected>selectioner niveau</option>');
+     $('#niv').append('<option value="0" disabled selected>   </option>');
   
   response.foreach(element =>{
    $('#niv').append('<option value="${element['codeniv']}" >${element['libniv']}</option>');

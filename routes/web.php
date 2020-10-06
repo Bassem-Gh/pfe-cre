@@ -53,29 +53,36 @@ Route::get('pages-500', 'QovexController@index');
 
 
 Route::group(['middleware' => 'auth'], function() {
-   Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
    //Route::get('logout', 'HomeController@logout');
-   Route::resource('c-enseignant','compteEnseignantController');
-   Route::post('/insert_mouvement','compteEnseignantController@store2');
+    Route::resource('c-enseignant','compteEnseignantController');
+
+   //redirect to print page of demand
+    Route::get('/print', 'compteEnseignantController@print')->name('print2'); 
+
+    Route::post('/insert_mouvement','compteEnseignantController@store2');
    
-Route::get('/test','compteEnseignantController@test');
 
-//Route::get('/c','compteEnseignantController@c');
+    Route::get('/test','compteEnseignantController@test');
 
-   //Route::get('/mv','compteEnseignantController@create');
-  // Route::get('/mv2','compteEnseignantController@create2');
-   Route::get('/seting','compteEnseignantController@seting')->name('seting');
+    //Route::get('/c','compteEnseignantController@c');
 
-   Route::post('/update/{id}', 'compteEnseignantController@upd')->name('update');
-   //////test wizard///
-   //////show formulaire mouvement/////
-   Route::get('/demande_de_mouvememnt','compteEnseignantController@create')->name('create');
-   Route::get('/demande_de_mouvememnt2','compteEnseignantController@create2')->name('create2');
+    //Route::get('/mv','compteEnseignantController@create');
+    // Route::get('/mv2','compteEnseignantController@create2');
+    Route::get('/seting','compteEnseignantController@seting')->name('seting');
+
+    Route::post('/update/{id}', 'compteEnseignantController@upd')->name('update');
+    //////test wizard///
+    //////show formulaire mouvement/////
+    Route::get('/demande_de_mouvememnt','compteEnseignantController@create')->name('create');
+    Route::get('/demande_de_mouvememnt2','compteEnseignantController@create2')->name('create2');
    ////
 
    Route::get('/getetab','compteEnseignantController@getetab');
    
-Route::post('/c-enseignant/insertscore', 'compteEnseignantController@insertscore');
+    Route::post('/c-enseignant/insertscore', 'compteEnseignantController@insertscore');
+
+
 
 });
 
@@ -152,6 +159,9 @@ Route::get('/Gestion_Besoin', 'QovexController@indexbesoin')->name('besoin');
 //Route::get('logout', 'QovexController@logout');
 Route::get('/enseignants/Liste des mouvements', 'EnseignantController@listemouvement')->name('mouvement');
 
+
+
+/* Route::get('/home', 'HomeController@home')->name('home');  */
 
 Route::get('/enseignants/index','EnseignantController@indexuser')->name('enseignants.liste_mouvement');
 Route::post('/c-enseignant/insertpost','compteEnseignantController@insertpost');

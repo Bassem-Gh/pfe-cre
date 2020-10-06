@@ -31,7 +31,7 @@
     </div>
 @endif
                 {!! csrf_field() !!}
-                <form id="form-horizontal" class="form-horizontal form-wizard-wrapper" action="{{ route('c-enseignant.store') }}" method="POST" enctype="multipart/form-data">
+                <form id="form-horizontal2" class="form-horizontal form-wizard-wrapper " action="{{ route('c-enseignant.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" value="{{csrf_token()}}" id="token"/>
                     <h3>المعلومات الشخصية</h3>
@@ -228,7 +228,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="txtExpirationDate" class="col-lg-3 col-form-label">المادة المطلوبة  </label>
+                                    <label for="txtExpirationDate" class="col-lg-3 col-form-label">المادة   </label>
                                     <div class="col-lg-9">
                                  
                                     <select id='matiere' name='matiere' class="form-control select2" >
@@ -247,83 +247,92 @@
                                     <label for="txtExpirationDate" class="col-lg-3 col-form-label">المراكز المطلوبة داخل المندوبية الجهوية للتربية  </label>
                                     <div class="col-lg-9">
                                  
-                                           <select id='etab_post_dis' name='etab_post_dis' class="form-control select2">
+                                           <select id='etab_post_dis' name='etab_post_dis' dir="rtl" class="form-control select2">
                
                                            </select>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
+                           
+       
                     </fieldset>
                     <h3>الوثائق المطلوبة</h3>
                     <fieldset>
-                         <table class="table table-striped" border="0"> 
-                        <tr><td>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <strong>نسخة من آخر تقرير بيداغوجي </strong></td><td>
-            <input type="file" id="copybid" name="copybid" placeholder="">
-            </div>
-        </div></td></tr>
-<tr><td>
-<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <strong>نسخة من عقد زواج </strong></td><td><input type="file" id="copymariage" name="copymariage" placeholder="">
-            </div>
-        </div></td></tr>
-
-
-<tr><td>
+          
+                        <div class="row">
+                            <table class="table table-striped" border="0"> 
+                                <tr><td>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                    <strong>نسخة من آخر تقرير بيداغوجي </strong></td><td>
+                    <input type="file" id="copybid" name="copybid" placeholder="">
+                    </div>
+                </div></td></tr>
+        <tr><td>
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <strong> مظامين ولادة الأطفال في الكفالة  </strong></td>
-<td>    <input type="file" id="mathmoun" name="mathmoun" placeholder="">
-            </div>
-        </div></td></tr>
+                    <div class="form-group">
+                    <strong>نسخة من عقد زواج </strong></td><td><input type="file" id="copymariage" name="copymariage" placeholder="">
+                    </div>
+                </div></td></tr>
+        
+        
+        <tr><td>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                    <strong> مظامين ولادة الأطفال في الكفالة  </strong></td>
+        <td>    <input type="file" id="mathmoun" name="mathmoun" placeholder="">
+                    </div>
+                </div></td></tr>
+        
+        
+                <tr><td>  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                    <strong>تصريح  على الشرف  بالبناء ممضى من قبل المدرس (بالنسبة الى الذين ليس لهم أطفال) </strong></td>
+                <td>
+                    <input type="file" id="tasrih" name="tasrih" placeholder="">
+                    </div>
+                </div></td></tr>
+        
+                <tr><td>  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                    <strong> شهادة عمل القرين أو نسخة من بطاقة  الانخراط في الصندوق الوطني</strong></td>
+                <td>
+               <input type="file" id="copysec" name="copysec" placeholder="">
+              </div>
+          </div>
+        </td></tr>
+        
+                <tr><td>  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                    <strong> شهادة اقامة المترشح خلال السنة الدراسية</strong></td>
+                <td> <input type="file" id="copyikama" name="copyikama" >
+                    </div>
+                </div></td></tr>
+        
+               
+        </table>  
+                       
+                                                <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <button type="button" class="btn btn-primary" onclick="testm()">مجموع النقاط </button>
+                                                            <div class="col-lg-9">
+                                                            <input type="text" class="form-control" id="s" name="s"  value="" readonly>
 
-
-        <tr><td>  <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <strong>تصريح  على الشرف  بالبناء ممضى من قبل المدرس (بالنسبة الى الذين ليس لهم أطفال) </strong></td>
-        <td>
-            <input type="file" id="tasrih" name="tasrih" placeholder="">
-            </div>
-        </div></td></tr>
-
-        <tr><td>  <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <strong> شهادة عمل القرين أو نسخة من بطاقة  الانخراط في الصندوق الوطني</strong></td>
-        <td>
-       <input type="file" id="copysec" name="copysec" placeholder="">
-      </div>
-  </div>
-</td></tr>
-
-        <tr><td>  <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <strong> شهادة اقامة المترشح خلال السنة الدراسية</strong></td>
-        <td> <input type="file" id="copyikama" name="copyikama" >
-            </div>
-        </div></td></tr>
-
-       
-</table>  
-<div class="row">
-                        <div class="col-md-6">
-                                <div class="form-group row">
-                                    <button type="button" class="btn btn-primary" onclick="testm()">مجموع النقاط </button>
-                                    <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="s" name="s"  value="">
-                                         
-                                    </div>
-                                </div>
-                            </div>
-<br><br><br>
-                        </div>
-
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                       {{--   <button type="button" class="btn btn-secondary" onclick="testm()"> طباعة المطلب  </button>  --}}
+                                                       {{--  <a href="{{ URL::route('print'); }}" class="btn btn-xs btn-info pull-right"> طباعةالمطلب</a>    --}}
+                                                    </div></div>
+                        <br><br><br>
+                                                </div>
+                                                
+                 
+                                        </div>
+                                      
 
                     </fieldset>
+
                     
                 </form>
 
@@ -345,7 +354,9 @@
 <!-- Required datatable js -->
 <script src="{{ URL::asset('/libs/datatables/datatables.min.js')}}"></script>
 <script src="{{ URL::asset('/libs/bootstrap-editable/bootstrap-editable.min.js')}}"></script> 
+
 <script src="{{asset('js/main.js')}}" type="text/javascript"></script>
+
 <script src="{{ URL::asset('/js/pages/table-editable.int.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="http://qovex-v-rtl.laravel.themesbrand.com/libs/dropzone/dropzone.min.js"></script>

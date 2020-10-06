@@ -202,7 +202,7 @@
                                     <label for="txtExpirationDate" class="col-lg-3 col-form-label">كلمة السر</label>
                                     <div class="col-lg-9">
                                     @foreach ($data as $row)
-                                <input type="text" id="password" name="password" class="form-control" value="{{ Auth::user()->password }}" >
+                                <input type="password" id="password" name="password" class="form-control"  >
                                 @endforeach
                                     </div>
                                 </div>

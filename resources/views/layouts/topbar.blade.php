@@ -57,7 +57,6 @@
                              
                             </div>
                         </div>
-<<<<<<< HEAD
                         <div data-simplebar style="max-height: 230px;">
                             
                            
@@ -85,9 +84,6 @@
                                 <i class="mdi mdi-arrow-right-circle mr-1"></i> View More..
                             </a>
                         </div>
-=======
-                        
->>>>>>> b4b1dcc0daa9a74fe73d7726e91d471fba309820
                     </div>
                 </div>
 
@@ -120,7 +116,7 @@
                             <img src="/images/logo-sm.png" alt="" height="20">
                         </span>
                         <span class="logo-lg">
-                            <img src="/images/Cre.png" alt="Cre logo" height="45" >
+                            <img src="/images/logo (1).png" alt="Cre logo" height="25"  >
                         </span>
                     </a>
                 </div>

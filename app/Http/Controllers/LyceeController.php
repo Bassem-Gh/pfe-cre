@@ -156,7 +156,7 @@ class LyceeController extends Controller
     $nbc = $request->nbc;
     $etab = $request->etab;
     $niv = $request->niv;
-
+    $n=0;
     $fetch = DB::table('classe')
     ->where('codetab',$etab)->where('codeniv',$niv)
     ->select('nbclasse')->get();
@@ -165,7 +165,7 @@ class LyceeController extends Controller
     {
         $n=$raw->nbclasse;
     }
- 
+    $n;
     $add_product = DB::table("classe")->where( 'codetab', $etab) 
     ->where('codeniv',$niv)
     ->update([

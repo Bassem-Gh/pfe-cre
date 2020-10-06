@@ -32,7 +32,7 @@
         
 <!--         <table id="datatable"     class="table table-bordered table-hover" cellspacing="0">
  -->
-            <table id="datatable" name="datatable"    class="table table-bordered table-hover" cellspacing="0" >
+            <table id="datatable" name="datatable"    class="table table-bordered table-responsive table-hover" cellspacing="0" >
                 
                 <thead>
                     <tr>
@@ -40,9 +40,12 @@
                         <th>الإسم </th>
                         <th>اللقب</th>
                        <th> الرتبة الحالية</th>
-                       <th>  المادة المطلوبة   </th>
                        <th> المؤسسة التربوية التي يعمل بها المدرس </th>
-                       <th>  الوثائق المطلوبة </th>
+                       <th>  المؤسسة المطلوبة   </th>
+                       <th>   مجموع النقاط    </th>
+                       <th>  الوثائق المرفقة  </th>
+                       <th>   الحالة   </th>
+
                        <th><i class="dripicons-toggles"></i></th>
                     </tr>
                 </thead>
@@ -54,8 +57,11 @@
                         <td> {{  $row->prenom}} </td>
                         <td> {{  $row->nom}} </td>
                         <td>{{  $row->gradeact}}  </td>
-                        <td>{{$row->matiere}} </td>
-                        <td> {{  $row->etabact}} </td>
+                        <td>{{$row->etabact}} </td>
+                        <td> {{  $row->etab_post_dis}} </td>
+                         <td>{{  $row->score}}</td>           
+                      
+
                        <td> 
                             <table boeder="0"> <tr><td>
                                     <a href="{{ route('path',$row->id) }}">
@@ -92,6 +98,13 @@
                                      </a></td></tr>
                             </table>
                        </td>
+                       <td>    @if ( $row->etat=="1")
+                        <p> مقبول </p>
+                       @elseif  ( $row->etat=="0")
+                       <p>مرفوض</p> 
+                       @else 
+                      <p>في طور الدراسة</p>  
+                       @endif </td>
                         <td> 
            
             
@@ -108,18 +121,22 @@
 
             </tr>
                 @endforeach                 
-                </tbody>
+               {{--   </tbody>
                 
                  
-                <tbody>
+                <tbody>  --}}
             @foreach($data2 as $row2)
                                 <tr>
-                        <td>{{  $row2->id}}    </td>
-                        <td> {{  $row2->prenom}} </td>
-                        <td> {{  $row2->nom}} </td>
-                        <td>{{  $row2->gradeact}}  </td>
-                        <td>{{$row2->matiere}} </td>
-                        <td> {{  $row2->etabact}} </td>
+                                    <td>{{  $row2->id}}    </td>
+                                    <td> {{  $row2->prenom}} </td>
+                                    <td> {{  $row2->nom}} </td>
+                                    <td>{{  $row2->gradeact}}  </td>
+                                    <td>{{$row2->etabact}} </td>
+                                    <td> {{  $row2->etab_post_dis}} </td>
+                                     <td>-</td>           
+                                  
+            
+                        
                        <td> 
                             <table boeder="0"> <tr><td>
                                     <a href="{{ route('path2',$row2->id) }}">
@@ -153,9 +170,17 @@
                         
                                     <button type="button" class="btn btn-light waves-effect">
                         <i class="fas fa-file-download fa-lg"></i> شهادة عمل القرين أو نسخة من بطاقة الانخراط في الصندوق الوطني</button>
-                                     </a></td></tr>
+                                     </a></td>
+                                    </tr>
                             </table>
                        </td>
+                       <td>    @if ( $row2->etat=="1")
+                        <p> مقبول </p>
+                       @elseif  ( $row2->etat=="0")
+                       <p>مرفوض</p> 
+                       @else 
+                      <p>في طور الدراسة</p>  
+                       @endif </td>
                         <td> 
            
             

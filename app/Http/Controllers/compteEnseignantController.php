@@ -135,7 +135,7 @@ public function create2()
     }
     $gg=$id['ccod'];
      
-$c=0;
+    $c=0;
     $data = DB::table('posteetab')
     ->join('etab', 'etab.codeetab', '=', 'posteetab.idetab')
     ->join('matiere', 'matiere.codemat', '=', 'posteetab.codemat')
@@ -265,10 +265,38 @@ return response ($data);
       
    ]);
    $mouvement->save();
+
+   $unique_id=$request->get('unique_id');
+   $prenom=$request->get('prenom');
+   $nom=$request->get('nom');
+   $gradeact=$request->get('gradeact');
+   $date_mr=$request->get('date_mr');
+   $etabact=$request->get('etabact');
+   $residencey=$request->get('residencey');
+   $nomp_f=$request->get('nomp_f');
+   $professionf=$request->get('professionf');
+   $residencetf=$request->get('residencetf');
+   $datetf=$request->get('datetf');
+   $daterecrutement=$request->get('daterecrutement');
+   $year=$request->get('year');
+   $month=$request->get('month');
+   $day=$request->get('day');
+   $notebid=$request->get('notebid');
+   $datenotebid=$request->get('datenotebid');
+   $nbrenfant=$request->get('nbrenfant');
+   $matiere=$request->get('matiere');
+   $etab_post_dis=$request->get('etab_post_dis');
+   $datedebut=$request->get('datedebut');
+   $scoree=$request->get('s');
+   $score=round($scoree,2);
+  
+  return view('c-enseignant.print' ,compact('unique_id','prenom','nom','gradeact','etabact','date_mr','etab_post_dis','residencey','nomp_f','professionf','residencetf','datetf','daterecrutement',
+  'datenotebid','nbrenfant','matiere','notebid','etab_post_dis','datedebut','score','year','month','day'))
+  ->with('success','تم إيداع مطلبك بنجاح ... الرجاء انتظار الرد عن طريق مدير مؤسستك');
+ // return redirect()->route('create')
+   // ->with('success','تم إيداع مطلبك بنجاح ... الرجاء انتظار الرد عن طريق مدير مؤسستك');
+    //$data = $request->all();
   //dd($produit);
-  //return view('c-enseignant.mv');
-  return redirect()->route('create')
-    ->with('success','تم إيداع مطلبك بنجاح ... الرجاء انتظار الرد عن طريق مدير مؤسستك');
     }
     
 
@@ -324,11 +352,52 @@ return response ($data);
       
    ]);
    $mouvement->save();
+
+   $unique_id2=$request->get('unique_id');
+   $prenom=$request->get('prenom');
+   $nom=$request->get('nom');
+   $gradeact=$request->get('gradeact');
+   $etabact=$request->get('etabact');
+   $residencey=$request->get('residencey');
+   $nomp_f=$request->get('nomp_f');
+   $professionf=$request->get('professionf');
+   $residencetf=$request->get('residencetf');
+   $daterecrutement=$request->get('daterecrutement');
+   $notebid=$request->get('notebid');
+   $datenotebid=$request->get('datenotebid');
+   $nbrenfant=$request->get('nbrenfant');
+   $matiere=$request->get('matiere');
+   $etab_post_dis=$request->get('etab_post_dis');
+   $datedebut=$request->get('datedebut');
+   $date_ns=$request->get('date_ns');
+   $lieu=$request->get('lieu');
+   $gouvernorat=$request->get('gouvernorat');
+   $etatm=$request->get('etatm');
+   $obstructionenf=$request->get('obstructionenf');
+   $obstructionp=$request->get('obstructionp');
+   $etats=$request->get('etats');
+   $decription=$request->get('decription');
+   $datedemarcation=$request->get('datedemarcation');
+
+
+
+
+
+  
   //dd($mouvement);
-  //return view('home');
-   return redirect()->route('create2')
+  //return view('c-enseignant.print',compact('mouvement'))
+  // return redirect()->route('print')
+  return view('c-enseignant.print2' ,compact('unique_id2','prenom','nom','gradeact','etabact','etab_post_dis','residencey','nomp_f','professionf','residencetf','daterecrutement',
+  'datenotebid','nbrenfant','matiere','notebid','etab_post_dis','datedebut','date_ns','lieu','gouvernorat','etatm','obstructionenf','etats','decription','datedemarcation'))
     ->with('success','تم إيداع مطلبك بنجاح ... الرجاء انتظار الرد عن طريق مدير مؤسستك');
     }
+
+
+ 
+  public function print()
+  {
+    return view('c-enseignant.print2');
+  }
 
 
     public function test(Request $request)

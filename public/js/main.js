@@ -19,7 +19,7 @@ function myFunction3() {
                    {
                    
                       $('#niv').empty();
-                      $('#niv').append('<option value="0" disabled selected>selectioner niveau</option>');
+                      $('#niv').append('<option value="0" disabled selected>--الرجاءالتحديد--</option>');
                    
                       $.each(data, function(idx,elem){
                     $('#niv').append('<option value='+elem.codeniv+'>'+elem.libniv+'</option>');
@@ -49,11 +49,12 @@ function myFunction1() {
                  {
                   $('#tab').empty();
                   $('#niv').empty();
-                  $('#niv').append('<option value="0" disabled selected>selectioner niveau</option>');
+                  $('#niv').append('<option value="0" disabled selected>--الرجاءالتحديد--</option>');
                   
                     $.each(data, function(idx,elem){
                  
-                      table.row.add([ elem.libetab, elem.libniv ,elem.nbclasse, elem.libmat ,elem.nbh,(elem.nbh*elem.nbclasse)]);
+                      table.row.add([ elem.libetab, elem.libniv ,elem.nbclasse]);
+                      //"table.row.add([ elem.libetab, elem.libniv ,elem.nbclasse, elem.libmat ,elem.nbh,(elem.nbh*elem.nbclasse)]);"
                       table.draw();
                      // $('#niv').append('<option value='+elem.codeniv+'>'+elem.libniv+'</option>');
 
@@ -93,11 +94,14 @@ function insertl() {
       url:'/lycees/insertclasse',
       success:function(data){
        $("#msg").html("تم تعديل عدد الأقسام بنجاح");
+      
+      //  location.reload();
+        $( "#mytable" ).load( "#simple_data" );
         $("#msg").fadeOut(2000);
-       
+
       } , 
           error:function(data) {
-                             alert('error'); 
+                             alert('الرجاء تعمير كافة البيانات'); 
                              
                               console.log(data);
                            }
@@ -138,10 +142,10 @@ function myFunction1c() {
                 alert('success');
                 $('#tab').empty();
                 $('#niv').empty();
-                $('#niv').append('<option value="0" disabled selected>selectioner niveau</option>');
+                $('#niv').append('<option value="0" disabled selected>--الرجاءالتحديد--</option>');
                   $.each(response['data'], function(idx,elem){
                
-                $('#tab').append('<tr><td>'+elem.libetab+'</td><td>'+elem.libniv+'</td><td>'+elem.nbclasse+'</td><td>'+elem.libmat+'</td><td>'+elem.nbh+'</td><td>'+(elem.nbh*elem.nbclasse)+'</td></tr>');
+                $('#tab').append('<tr><td>'+elem.libetab+'</td><td>'+elem.libniv+'</td><td>'+elem.nbclasse/*+'</td><td>'+elem.libmat+'</td><td>'+elem.nbh+'</td><td>'+(elem.nbh*elem.nbclasse)*/+'</td></tr>');
               /*  i+=1;
                 if(i<=3)*/
              //    { $('#niv').append('<option value='+elem.codeniv+'>'+elem.libniv+'</option>'); }
@@ -190,7 +194,7 @@ function myFunction1p() {
                 alert('success');
                 $('#tab').empty();
                 $('#niv').empty();
-                $('#niv').append('<option value="0" disabled selected>selectioner niveau</option>');
+                $('#niv').append('<option value="0" disabled selected>--الرجاءالتحديد--</option>');
                   $.each(response['data'], function(idx,elem){ 
                
                 $('#tab').append('<tr><td>'+elem.libetab+'</td><td>'+elem.libniv+'</td><td>'+elem.nbclasse+'</td><td>'+elem.libmat+'</td><td>'+elem.nbh+'</td><td>'+(elem.nbh*elem.nbclasse)+'</td></tr>');
@@ -243,7 +247,7 @@ function myFunction1p() {
                   alert('success');
                   $('#tab').empty();
                   $('#niv').empty();
-                  $('#niv').append('<option value="0" disabled selected>selectioner niveau</option>');
+                  $('#niv').append('<option value="0" disabled selected>--الرجاءالتحديد--</option>');
                     $.each(data, function(idx,elem){
                  
                   $('#tab').append('<tr><td>'+elem.libetab+'</td><td>'+elem.libniv+'</td><td>'+elem.nbclasse+'</td></tr>');
@@ -266,8 +270,6 @@ function myFunction1p() {
 
         //function myFunction4() {
           $('#mat').on('change', function(){
-
- 
           var idop = document.getElementById("mat");
               
                  var ccod = $('#mat').val();
@@ -580,11 +582,10 @@ function myFunction1p() {
                     else {
                        $('#etab_post_dis').empty();
                        $('#etab_post_dis').append('<option value="0" disabled selected>اختر مؤسسة </option>');
-                    
                        $.each(data, function(idx,elem){
                         var x=Math.round(elem.nbrpost);
                         //alert(x);
-                     $('#etab_post_dis').append('<option value='+elem.idetab+'>'+elem.libetab +'  |   '+'   المراكز المتاحة:   '+ x +'</option>');
+                     $('#etab_post_dis').append('<option value=  "'+ elem.libetab + '" >'+elem.libetab +'  |   '+'   المراكز المتاحة:   '+ x +'</option>');
                   $('#mat').append('<option value='+elem.idetab+'>');
                     });
                                     
@@ -649,6 +650,7 @@ else
     var datedebut =$('#datedebut').val();
     var daterecrutement =$('#daterecrutement').val();
     var notebid =$('#notebid').val();
+    var score =$('#s').val();
    // alert(id);
 $dt=0;
     $nbrr=0;
@@ -777,7 +779,7 @@ var annee2=diffDays2/360;
   function deletemvv(id,el) {
          
     var token = $("#token").val(); 
-    var table = $('#datatable').DataTable(); // replace with your table id
+    var table = $('#datatable').DataTable(); 
     var url =$(el).attr("data-url")
     
      Swal.fire({
@@ -852,11 +854,11 @@ var annee2=diffDays2/360;
                  success:function(response)
                    {
                       
-                       $('#datatable-buttons2').DataTable().clear();
+                       $('#datatable-buttons').DataTable().clear();
                       
                  
                                var x=0;
-                                 var table = $("#datatable-buttons2").DataTable();
+                                 var table = $("#datatable-buttons").DataTable();
                                 $.each(response['reql'], function( idx,elem2)
                                 {
                                      

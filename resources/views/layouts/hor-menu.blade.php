@@ -17,7 +17,7 @@
                         <img src="images/logo-sm-dark.png" alt="" height="20">
                     </span>
                     <span class="logo-lg">
-                        <img src="/images/Cre.png" alt="" height="45">
+                        <img src="/images/logo.png" alt="" height="30">
                     </span>
                 </a>
             </div>
@@ -42,7 +42,7 @@
                             </li>
 
                             <li class="nav-item ">
-                                <a class="nav-link arrow-none" href="#" id="topnav-dashboard" role="button"  >
+                                <a class="nav-link arrow-none" href="{{ route('print2') }}" id="topnav-dashboard" role="button"  >
                                 تاريخ طلبات الحركة
                                 </a>
                               
@@ -120,7 +120,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="/images/users/avatar.png" alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ml-1">{{ Auth::user()->name }}</span>
+                    <span class="d-none d-xl-inline-block ml-1">{{ Auth::user()->name}}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
