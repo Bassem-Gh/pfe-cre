@@ -15,6 +15,7 @@ use Datatables;
 use Redirect;
 use PDF ; 
 use App;
+use App\Score;
 use Response;
 //use Auth;
 class EnseignantController extends Controller
@@ -29,7 +30,7 @@ class EnseignantController extends Controller
        ->join('mouvement_mariage', 'mouvement_mariage.unique_id', '=', 'scoremv.unique_id')
       // ->join('matiere', 'matiere.codemat', '=', 'mouvement_mariage.matiere')
        
-       ->select('mouvement_mariage.unique_id as id','mouvement_mariage.prenom','mouvement_mariage.etat','mouvement_mariage.etab_post_dis','mouvement_mariage.copybid','mouvement_mariage.nom','mouvement_mariage.gradeact','mouvement_mariage.matiere','mouvement_mariage.etabact','scoremv.score' )
+       ->select('mouvement_mariage.unique_id as id','mouvement_mariage.prenom','scoremv.score','mouvement_mariage.etab_post_dis','mouvement_mariage.etat','mouvement_mariage.copybid','mouvement_mariage.nom','mouvement_mariage.gradeact','mouvement_mariage.matiere','mouvement_mariage.etabact' )
        ->distinct()
        ->orderBy('scoremv.score','desc')
        ->get();
@@ -39,7 +40,7 @@ class EnseignantController extends Controller
       // ->join('mouvement_mariage', 'mouvement_mariage.unique_id', '=', 'scoremv.unique_id')
       // ->join('matiere', 'matiere.codemat', '=', 'mouvement_mariage.matiere')
        
-       ->select('mouvement.unique_id2 as id','mouvement.prenom','mouvement.copybid','mouvement.etat','mouvement.etab_post_dis','mouvement.nom','mouvement.gradeact','mouvement.matiere','mouvement.etabact' )
+       ->select('mouvement.unique_id2 as id','mouvement.prenom','mouvement.copybid','mouvement.nom','mouvement.gradeact','mouvement.matiere','mouvement.etabact','mouvement.etab_post_dis','mouvement.etat' )
        ->distinct()
        ->get();
  
@@ -502,33 +503,35 @@ public function annulermv2(Request $request, $id)
 
 
 public function deletemv($id)
-    {
+{
 
 
-      $data2 = Mouvement::select('etat')->where('unique_id','=',$id)
-     ->get();
+  $data2 = Mouvement::select('etat')->where('unique_id','=',$id)
+ ->get();
 
 foreach($data2 as $row){
 
-  $etat=$row->etat ;
+$etat=$row->etat ;
 }
 
 if($etat!="null")
 {
 
-  $etablissement = Mouvement::find($id);
-  $etablissement->delete();
- /* return response()->json([
-    'message' => 'Data deleted successfully!'
-  ]);*/
+$etablissement = Mouvement::find($id);
+$etablissement->delete(); 
+$scr = Score::find($id);
+$scr->delete(); 
+/* return response()->json([
+'message' => 'Data deleted successfully!'
+]);*/
 
-    }
+}
 
-    if($etablissement){
-      echo "Data deleted successfully!";
-    }else{
-      echo "Error";
-    }
+if($etablissement){
+  echo "Data deleted successfully!";
+}else{
+  echo "Error";
+}
 }
 
 
@@ -564,7 +567,3 @@ if($etat!="null")
 
 
 }
-
-
-
-

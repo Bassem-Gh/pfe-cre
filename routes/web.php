@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     //return redirect('/index');
     return redirect('/login');
+    Route::post('registerE','Auth.RegisterController@test')->name('rg');
+
+    
 });
 
-Auth::routes();
 Route::get('logout', 'QovexController@logout');
-
-Route::post('registerE','Auth.RegisterController@test')->name('rg');
+//Route::post('reset-password','UserController@update')->name('password.update');
 
 //Route::get('pages-login', 'QovexController@index');
 //Route::get('pages-login-2', 'QovexController@index');
@@ -82,6 +84,7 @@ Route::group(['middleware' => 'auth'], function() {
    
     Route::post('/c-enseignant/insertscore', 'compteEnseignantController@insertscore');
 
+    Auth::routes();
 
 
 });
@@ -200,5 +203,8 @@ Route::delete('/enseignants/deletemv/{id}', 'EnseignantController@deletemv')->na
 
 Route::delete('/enseignants/deletemv2/{id}', 'EnseignantController@deletemv2')->name('enseignants.deletemv2');
 //Route::delete('/colleges/deletecollege/{id}', 'CollegeController@destroy')->name('college.destroy');
+Auth::routes();
+
 });
 
+Auth::routes();
