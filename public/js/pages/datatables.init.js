@@ -93,7 +93,13 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
- 
+/*
+Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
+Author: Themesbrand
+Website: https://themesbrand.com/
+Contact: themesbrand@gmail.com
+File: Datatables
+*/
 $(document).ready(function () {
   $('#datatable').DataTable(); //Buttons examples
 
@@ -113,7 +119,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\asus\Desktop\Pfe-Cre\Admin\resources\js\pages\datatables.init.js */"./resources/js/pages/datatables.init.js");
+module.exports = __webpack_require__(/*! C:\Users\asus\Desktop\Pfe-Cre-git\Cre-Nabeul\resources\js\pages\datatables.init.js */"./resources/js/pages/datatables.init.js");
 
 
 /***/ })

@@ -100,27 +100,11 @@ Website: https://themesbrand.com/
 Contact: themesbrand@gmail.com
 File: Form wizard
 */
-
 $(function () {
   $("#form-horizontal").steps({
     headerTag: "h3",
     bodyTag: "fieldset",
-    transitionEffect: "slide",
-    onFinished: function (event, currentIndex) {
-      $("#form-horizontal").submit();
-    }
-  });
-});
-
-
-$(function () {
-  $("#form-horizontal2").steps({
-    headerTag: "h3",
-    bodyTag: "fieldset",
-    transitionEffect: "slide",
-    onFinished: function (event, currentIndex) {
-      $("#form-horizontal2").submit();
-    }
+    transitionEffect: "slide"
   });
 });
 
@@ -133,7 +117,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\asus\Desktop\Pfe-Cre\Admin\resources\js\pages\form-wizard.init.js */"./resources/js/pages/form-wizard.init.js");
+module.exports = __webpack_require__(/*! C:\Users\asus\Desktop\Pfe-Cre-git\Cre-Nabeul\resources\js\pages\form-wizard.init.js */"./resources/js/pages/form-wizard.init.js");
 
 
 /***/ })

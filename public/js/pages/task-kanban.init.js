@@ -111,7 +111,7 @@ dragula([document.getElementById("upcoming-task"), document.getElementById("inpr
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\asus\Desktop\Pfe-Cre\Admin\resources\js\pages\task-kanban.init.js */"./resources/js/pages/task-kanban.init.js");
+module.exports = __webpack_require__(/*! C:\Users\asus\Desktop\Pfe-Cre-git\Cre-Nabeul\resources\js\pages\task-kanban.init.js */"./resources/js/pages/task-kanban.init.js");
 
 
 /***/ })

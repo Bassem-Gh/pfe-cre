@@ -41,12 +41,12 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item ">
+                           {{--   <li class="nav-item ">
                                 <a class="nav-link arrow-none" href="{{ route('print2') }}" id="topnav-dashboard" role="button"  >
                                 تاريخ طلبات الحركة
                                 </a>
                               
-                            </li>
+                            </li>  --}}
 
                          
 

@@ -1,5 +1,4 @@
-@import url(https://fonts.cdnfonts.com/css/sf-ui-text-2);
-
+@import url(https://fonts.cdnfonts.com/css/sf-ui-text-2);@charset "UTF-8";
 
 /*
 Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
@@ -2473,10 +2472,6 @@ body[data-layout=detached] .page-title-box .breadcrumb-item + .breadcrumb-item::
 
 .select2-container .select2-selection--multiple .select2-search__field {
   border: 0;
-  color: #495057;
-}
-
-.select2-container .select2-selection--multiple .select2-search__field::-webkit-input-placeholder {
   color: #495057;
 }
 

@@ -95,7 +95,7 @@ function insertl() {
       success:function(data){
        $("#msg").html("تم تعديل عدد الأقسام بنجاح");
       
-      //  location.reload();
+        location.reload();
         $( "#mytable" ).load( "#simple_data" );
         $("#msg").fadeOut(2000);
 
@@ -715,7 +715,7 @@ var annee2=diffDays2/360;
         }
 
         $score=parseFloat($nbrr) + parseFloat(annee2) + parseFloat(notebid) + parseFloat($dt);
-   alert($score);
+  // alert($score);
             $.ajax({
               type: "Get",
 
@@ -843,7 +843,7 @@ var annee2=diffDays2/360;
     var idop = document.getElementById("mat2");
         
            var ccod = $('#mat2').val();
-           alert(ccod);
+          // alert(ccod);
 
    
           $.ajax({

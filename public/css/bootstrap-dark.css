@@ -2219,11 +2219,6 @@ pre code {
   box-shadow: none;
 }
 
-.form-control::-webkit-input-placeholder {
-  color: #7f879c;
-  opacity: 1;
-}
-
 .form-control::-moz-placeholder {
   color: #7f879c;
   opacity: 1;
