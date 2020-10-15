@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <p>هل لديك حساب ؟  <a href="login" class="font-weight-medium text-primary"> تسجيل الدخول</a> </p> 
+                        <p>هل لديك حساب ؟  <a href="/login" class="font-weight-medium text-primary"> تسجيل الدخول</a> </p> 
                             <p><script> document.write(new Date().getFullYear())</script> المندوبية الجهوية للتربية بنابل</i> ©   </p>
                     </div> 
 

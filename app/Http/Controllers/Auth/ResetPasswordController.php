@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-
+use App\Http\Controllers\Auth\Closure ; 
+use App\Http\Controllers\Auth\Auth;
 class ResetPasswordController extends Controller
 {
     /*
@@ -26,5 +27,27 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+     /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string|null  $guard
+     * @return mixed
+     */
+    
+    public function handle($request, Closure $next, $guard = null)
+    {        
+        if (Auth::guard($guard)->check()) {      
+           // dd(Auth::user()->role); 
+            if (Auth::user()->role == 'admin')
+                
+                return redirect('/index');
+
+             elseif (Auth::user()->role == 'user')
+                 return redirect('/home');
+                }
+
+        return $next($request);
+    }
 }
