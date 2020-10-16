@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('Cre_Nabeul', 'Laravel'),
+    'name' => env('Cre_Nabeul', 'Cre_Nabeul'),
 
     /*
     |--------------------------------------------------------------------------
